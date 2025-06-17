@@ -1,0 +1,1448 @@
+<?php
+
+
+$list = [
+  [
+      "name" => "Bikham Cyr Script",
+    	"url" => "https://allfont.ru/allfont.css?fonts=bikham-cyr-script"
+  ],
+  [
+      "name" => "Lobster",
+    	"url" => "https://allfont.ru/allfont.css?fonts=lobster"
+  ],
+  [
+      "name" => "Open Sans",
+  	"url" => "https://allfont.ru/allfont.css?fonts=open-sans"
+  ],
+  [
+      "name" => "Andantino script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=andantino-script"
+  ],
+  [
+      "name" => "PT Sans",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pt-sans"
+  ],
+  [
+      "name" => "Capture it",
+  	"url" => "https://allfont.ru/allfont.css?fonts=capture-it"
+  ],
+  [
+      "name" => "Roboto Regular",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-regular"
+  ],
+  [
+      "name" => "Carolina",
+  	"url" => "https://allfont.ru/allfont.css?fonts=carolina"
+  ],
+  [
+      "name" => "Annabelle",
+  	"url" => "https://allfont.ru/allfont.css?fonts=annabelle"
+  ],
+  [
+      "name" => "Mon Amour Two Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=mon-amour-two-medium"
+  ],
+  [
+      "name" => "Futura-Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=futura-normal"
+  ],
+  [
+      "name" => "Aquarelle",
+  	"url" => "https://allfont.ru/allfont.css?fonts=aquarelle"
+  ],
+  [
+      "name" => "CyrillicOld",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cyrillicold"
+  ],
+  [
+      "name" => "Deutsch Gothic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=deutsch-gothic"
+  ],
+  [
+      "name" => "Micra",
+  	"url" => "https://allfont.ru/allfont.css?fonts=micra"
+  ],
+  [
+      "name" => "Arial Narrow",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arial-narrow"
+  ],
+  [
+      "name" => "Bodoni",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bodoni"
+  ],
+  [
+      "name" => "BrushType Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=brushtype-normal"
+  ],
+  [
+      "name" => "Hermes",
+  	"url" => "https://allfont.ru/allfont.css?fonts=hermes"
+  ],
+  [
+      "name" => "Izhitsa",
+  	"url" => "https://allfont.ru/allfont.css?fonts=izhitsa"
+  ],
+  [
+      "name" => "RodchenkoCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=rodchenkoctt"
+  ],
+  [
+      "name" => "Calligraph",
+  	"url" => "https://allfont.ru/allfont.css?fonts=calligraph"
+  ],
+  [
+      "name" => "Garamond",
+  	"url" => "https://allfont.ru/allfont.css?fonts=garamond"
+  ],
+  [
+      "name" => "B52",
+  	"url" => "https://allfont.ru/allfont.css?fonts=b52"
+  ],
+  [
+      "name" => "Pragmatica",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pragmatica"
+  ],
+  [
+      "name" => "Compact",
+  	"url" => "https://allfont.ru/allfont.css?fonts=compact"
+  ],
+  [
+      "name" => "DS Arabic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ds-arabic"
+  ],
+  [
+      "name" => "Ubuntu",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ubuntu"
+  ],
+  [
+      "name" => "Rosamunda One Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=rosamunda-one-normal"
+  ],
+  [
+      "name" => "Corinthia",
+  	"url" => "https://allfont.ru/allfont.css?fonts=corinthia"
+  ],
+  [
+      "name" => "Stencil",
+  	"url" => "https://allfont.ru/allfont.css?fonts=stencil"
+  ],
+  [
+      "name" => "Open Sans Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=open-sans-bold"
+  ],
+  [
+      "name" => "Roboto Thin",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-thin"
+  ],
+  [
+      "name" => "AvantGardeCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=avantgardectt"
+  ],
+  [
+      "name" => "Izhitsa Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=izhitsa-cyrillic"
+  ],
+  [
+      "name" => "Europe Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=europe-normal"
+  ],
+  [
+      "name" => "Bebas Neue",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bebas-neue"
+  ],
+  [
+      "name" => "Bickham Script Two",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bickham-script-two"
+  ],
+  [
+      "name" => "Junegull-Regular",
+  	"url" => "https://allfont.ru/allfont.css?fonts=junegull-regular"
+  ],
+  [
+      "name" => "Times New Roman Cyr",
+  	"url" => "https://allfont.ru/allfont.css?fonts=times-new-roman-cyr"
+  ],
+  [
+      "name" => "PT Sans Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pt-sans-bold"
+  ],
+  [
+      "name" => "Marianna",
+  	"url" => "https://allfont.ru/allfont.css?fonts=marianna"
+  ],
+  [
+      "name" => "CircleC",
+  	"url" => "https://allfont.ru/allfont.css?fonts=circlec"
+  ],
+  [
+      "name" => "DisneyPark",
+  	"url" => "https://allfont.ru/allfont.css?fonts=disneypark"
+  ],
+  [
+      "name" => "PopularScript",
+  	"url" => "https://allfont.ru/allfont.css?fonts=popularscript"
+  ],
+  [
+      "name" => "Anfisa Grotesk",
+  	"url" => "https://allfont.ru/allfont.css?fonts=anfisa-grotesk"
+  ],
+  [
+      "name" => "AnastasiaScript",
+  	"url" => "https://allfont.ru/allfont.css?fonts=anastasiascript"
+  ],
+  [
+      "name" => "OlgaCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=olgactt"
+  ],
+  [
+      "name" => "Teddy Bear",
+  	"url" => "https://allfont.ru/allfont.css?fonts=teddy-bear"
+  ],
+  [
+      "name" => "Roboto Condensed",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-condensed"
+  ],
+  [
+      "name" => "Capture it 2",
+  	"url" => "https://allfont.ru/allfont.css?fonts=capture-it-2"
+  ],
+  [
+      "name" => "Roboto Black",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-black"
+  ],
+  [
+      "name" => "Open Sans Semibold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=open-sans-semibold"
+  ],
+  [
+      "name" => "CyrillicGoth Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cyrillicgoth-medium"
+  ],
+  [
+      "name" => "Benguiat Rus",
+  	"url" => "https://allfont.ru/allfont.css?fonts=benguiat-rus"
+  ],
+  [
+      "name" => "Open Sans Light",
+  	"url" => "https://allfont.ru/allfont.css?fonts=open-sans-light"
+  ],
+  [
+      "name" => "Boyarsky Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=boyarsky-normal"
+  ],
+  [
+      "name" => "Helios Cond Light",
+  	"url" => "https://allfont.ru/allfont.css?fonts=helios-cond-light"
+  ],
+  [
+      "name" => "New_Zelek",
+  	"url" => "https://allfont.ru/allfont.css?fonts=new_zelek"
+  ],
+  [
+      "name" => "Bickham Script One",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bickham-script-one"
+  ],
+  [
+      "name" => "a_LCDNova",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_lcdnova"
+  ],
+  [
+      "name" => "a_FuturaRound",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_futuraround"
+  ],
+  [
+      "name" => "Micra Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=micra-bold"
+  ],
+  [
+      "name" => "Futuris Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=futuris-cyrillic"
+  ],
+  [
+      "name" => "Roboto Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-bold"
+  ],
+  [
+      "name" => "Mon Amour One Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=mon-amour-one-medium"
+  ],
+  [
+      "name" => "Grunge",
+  	"url" => "https://allfont.ru/allfont.css?fonts=grunge"
+  ],
+  [
+      "name" => "Bodoni Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bodoni-cyrillic"
+  ],
+  [
+      "name" => "1Isadora M Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=1isadora-m-bold"
+  ],
+  [
+      "name" => "Scriptorama",
+  	"url" => "https://allfont.ru/allfont.css?fonts=scriptorama"
+  ],
+  [
+      "name" => "PT Sans Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pt-sans-italic"
+  ],
+  [
+      "name" => "1 Flamme LET   Plain1.0",
+  	"url" => "https://allfont.ru/allfont.css?fonts=1-flamme-let-plain10"
+  ],
+  [
+      "name" => "Rurintania",
+  	"url" => "https://allfont.ru/allfont.css?fonts=rurintania"
+  ],
+  [
+      "name" => "Taurus Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=taurus-normal"
+  ],
+  [
+      "name" => "FreeSet Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=freeset-cyrillic"
+  ],
+  [
+      "name" => "PT Serif",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pt-serif"
+  ],
+  [
+      "name" => "President Cyr",
+  	"url" => "https://allfont.ru/allfont.css?fonts=president-cyr"
+  ],
+  [
+      "name" => "Bickham Script Three",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bickham-script-three"
+  ],
+  [
+      "name" => "Europe Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=europe-bold"
+  ],
+  [
+      "name" => "Helios Black",
+  	"url" => "https://allfont.ru/allfont.css?fonts=helios-black"
+  ],
+  [
+      "name" => "Helvetica Cyrillic Oblique",
+  	"url" => "https://allfont.ru/allfont.css?fonts=helvetica-cyrillic-oblique"
+  ],
+  [
+      "name" => "Roboto Light",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-light"
+  ],
+  [
+      "name" => "Cricket",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cricket"
+  ],
+  [
+      "name" => "a_CampusGrav",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_campusgrav"
+  ],
+  [
+      "name" => "Comic Sans MS",
+  	"url" => "https://allfont.ru/allfont.css?fonts=comic-sans-ms"
+  ],
+  [
+      "name" => "Playfair Display",
+  	"url" => "https://allfont.ru/allfont.css?fonts=playfair-display"
+  ],
+  [
+      "name" => "Days",
+  	"url" => "https://allfont.ru/allfont.css?fonts=days"
+  ],
+  [
+      "name" => "Runic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=runic"
+  ],
+  [
+      "name" => "a_Stamper Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_stamper-bold"
+  ],
+  [
+      "name" => "Franklin Gothic Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=franklin-gothic-medium"
+  ],
+  [
+      "name" => "a_FuturaRound Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_futuraround-bold"
+  ],
+  [
+      "name" => "BirchCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=birchctt"
+  ],
+  [
+      "name" => "Droid Sans",
+  	"url" => "https://allfont.ru/allfont.css?fonts=droid-sans"
+  ],
+  [
+      "name" => "a_CampusOtlSh Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_campusotlsh-bold"
+  ],
+  [
+      "name" => "Exo 2.0",
+  	"url" => "https://allfont.ru/allfont.css?fonts=exo-20"
+  ],
+  [
+      "name" => "Europe_Ext",
+  	"url" => "https://allfont.ru/allfont.css?fonts=europe_ext"
+  ],
+  [
+      "name" => "CyrillicGoth",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cyrillicgoth"
+  ],
+  [
+      "name" => "PT Sans Narrow",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pt-sans-narrow"
+  ],
+  [
+      "name" => "Esenin script One",
+  	"url" => "https://allfont.ru/allfont.css?fonts=esenin-script-one"
+  ],
+  [
+      "name" => "Antiqua",
+  	"url" => "https://allfont.ru/allfont.css?fonts=antiqua"
+  ],
+  [
+      "name" => "DSCyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=dscyrillic"
+  ],
+  [
+      "name" => "FreeSet",
+  	"url" => "https://allfont.ru/allfont.css?fonts=freeset"
+  ],
+  [
+      "name" => "Lazurski Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=lazurski-cyrillic"
+  ],
+  [
+      "name" => "Futuris",
+  	"url" => "https://allfont.ru/allfont.css?fonts=futuris"
+  ],
+  [
+      "name" => "AG_Helvetica",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ag_helvetica"
+  ],
+  [
+      "name" => "Avanti",
+  	"url" => "https://allfont.ru/allfont.css?fonts=avanti"
+  ],
+  [
+      "name" => "AG_Cooper",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ag_cooper"
+  ],
+  [
+      "name" => "NinaCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ninactt"
+  ],
+  [
+      "name" => "Decor Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=decor-cyrillic"
+  ],
+  [
+      "name" => "Pragmatica Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pragmatica-cyrillic"
+  ],
+  [
+      "name" => "Cuprum",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cuprum"
+  ],
+  [
+      "name" => "PresentScript Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=presentscript-cyrillic"
+  ],
+  [
+      "name" => "Book Antiqua",
+  	"url" => "https://allfont.ru/allfont.css?fonts=book-antiqua"
+  ],
+  [
+      "name" => "CrashCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=crashctt"
+  ],
+  [
+      "name" => "Ariadna script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ariadna-script"
+  ],
+  [
+      "name" => "Cassandra",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cassandra"
+  ],
+  [
+      "name" => "Academy",
+  	"url" => "https://allfont.ru/allfont.css?fonts=academy"
+  ],
+  [
+      "name" => "Avalon Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=avalon-medium"
+  ],
+  [
+      "name" => "AvantGardeCTT Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=avantgardectt-bold"
+  ],
+  [
+      "name" => "Baltica",
+  	"url" => "https://allfont.ru/allfont.css?fonts=baltica"
+  ],
+  [
+      "name" => "American Retro",
+  	"url" => "https://allfont.ru/allfont.css?fonts=american-retro"
+  ],
+  [
+      "name" => "Arctika script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arctika-script"
+  ],
+  [
+      "name" => "Futuris Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=futuris-bold"
+  ],
+  [
+      "name" => "Courier New",
+  	"url" => "https://allfont.ru/allfont.css?fonts=courier-new"
+  ],
+  [
+      "name" => "Alexandra Script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=alexandra-script"
+  ],
+  [
+      "name" => "DrPoDecorRu",
+  	"url" => "https://allfont.ru/allfont.css?fonts=drpodecorru"
+  ],
+  [
+      "name" => "Parsek",
+  	"url" => "https://allfont.ru/allfont.css?fonts=parsek"
+  ],
+  [
+      "name" => "Arial Black",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arial-black"
+  ],
+  [
+      "name" => "Forum",
+  	"url" => "https://allfont.ru/allfont.css?fonts=forum"
+  ],
+  [
+      "name" => "Slavjanic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=slavjanic"
+  ],
+  [
+      "name" => "DynarShadow Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=dynarshadow-bold"
+  ],
+  [
+      "name" => "Breeze Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=breeze-bold"
+  ],
+  [
+      "name" => "Ekaterina Velikaya Two",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ekaterina-velikaya-two"
+  ],
+  [
+      "name" => "EuroStyle Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=eurostyle-normal"
+  ],
+  [
+      "name" => "PT Sans Bold Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pt-sans-bold-italic"
+  ],
+  [
+      "name" => "Pudelinka",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pudelinka"
+  ],
+  [
+      "name" => "Compact Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=compact-bold"
+  ],
+  [
+      "name" => "EuropeExt Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=europeext-bold"
+  ],
+  [
+      "name" => "BankGothic RUSS Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bankgothic-russ-medium"
+  ],
+  [
+      "name" => "Minion Cyrillic Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=minion-cyrillic-bold"
+  ],
+  [
+      "name" => "University Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=university-cyrillic"
+  ],
+  [
+      "name" => "Fita_Vjaz",
+  	"url" => "https://allfont.ru/allfont.css?fonts=fita_vjaz"
+  ],
+  [
+      "name" => "Ubuntu Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ubuntu-bold"
+  ],
+  [
+      "name" => "Bauhaus-Light",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bauhaus-light"
+  ],
+  [
+      "name" => "Boyarsky Bold Italic:00",
+  	"url" => "https://allfont.ru/allfont.css?fonts=boyarsky-bold-italic00"
+  ],
+  [
+      "name" => "Adine Kirnberg",
+  	"url" => "https://allfont.ru/allfont.css?fonts=adine-kirnberg"
+  ],
+  [
+      "name" => "Freestyle Script Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=freestyle-script-normal"
+  ],
+  [
+      "name" => "SchoolBook",
+  	"url" => "https://allfont.ru/allfont.css?fonts=schoolbook"
+  ],
+  [
+      "name" => "BIP",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bip"
+  ],
+  [
+      "name" => "Arial Narrow Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arial-narrow-bold"
+  ],
+  [
+      "name" => "Caviar Dreams",
+  	"url" => "https://allfont.ru/allfont.css?fonts=caviar-dreams"
+  ],
+  [
+      "name" => "StudioScriptCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=studioscriptctt"
+  ],
+  [
+      "name" => "ArtScript",
+  	"url" => "https://allfont.ru/allfont.css?fonts=artscript"
+  ],
+  [
+      "name" => "Arbat-Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arbat-bold"
+  ],
+  [
+      "name" => "Ekaterina Velikaya One",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ekaterina-velikaya-one"
+  ],
+  [
+      "name" => "DS Yermak_D",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ds-yermak_d"
+  ],
+  [
+      "name" => "PT Sans Narrow Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pt-sans-narrow-bold"
+  ],
+  [
+      "name" => "Roboto Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-medium"
+  ],
+  [
+      "name" => "Molot",
+  	"url" => "https://allfont.ru/allfont.css?fonts=molot"
+  ],
+  [
+      "name" => "DS Kork",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ds-kork"
+  ],
+  [
+      "name" => "Decor",
+  	"url" => "https://allfont.ru/allfont.css?fonts=decor"
+  ],
+  [
+      "name" => "Adana script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=adana-script"
+  ],
+  [
+      "name" => "a_GroticTitulShHv",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_grotictitulshhv"
+  ],
+  [
+      "name" => "Pragmatica Bold Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pragmatica-bold-cyrillic"
+  ],
+  [
+      "name" => "Bodoni Bold Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bodoni-bold-cyrillic"
+  ],
+  [
+      "name" => "Aurora Script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=aurora-script"
+  ],
+  [
+      "name" => "FreeSet Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=freeset-bold"
+  ],
+  [
+      "name" => "1 Shelley Volante",
+  	"url" => "https://allfont.ru/allfont.css?fonts=1-shelley-volante"
+  ],
+  [
+      "name" => "EuropeExt Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=europeext-normal"
+  ],
+  [
+      "name" => "Harlequinade",
+  	"url" => "https://allfont.ru/allfont.css?fonts=harlequinade"
+  ],
+  [
+      "name" => "Open Sans Bold Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=open-sans-bold-italic"
+  ],
+  [
+      "name" => "Neuropol Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=neuropol-medium"
+  ],
+  [
+      "name" => "Ariston Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ariston-normal"
+  ],
+  [
+      "name" => "TagirCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=tagirctt"
+  ],
+  [
+      "name" => "Hair-2",
+  	"url" => "https://allfont.ru/allfont.css?fonts=hair-2"
+  ],
+  [
+      "name" => "Open Sans Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=open-sans-italic"
+  ],
+  [
+      "name" => "a_CooperBlack",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_cooperblack"
+  ],
+  [
+      "name" => "Franklin Gothic Book",
+  	"url" => "https://allfont.ru/allfont.css?fonts=franklin-gothic-book"
+  ],
+  [
+      "name" => "AGBengaly",
+  	"url" => "https://allfont.ru/allfont.css?fonts=agbengaly"
+  ],
+  [
+      "name" => "Ametist ",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ametist-"
+  ],
+  [
+      "name" => "a_BosaNova",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_bosanova"
+  ],
+  [
+      "name" => "Roboto Bold Condensed",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-bold-condensed"
+  ],
+  [
+      "name" => "Acquest Script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=acquest-script"
+  ],
+  [
+      "name" => "Aksent",
+  	"url" => "https://allfont.ru/allfont.css?fonts=aksent"
+  ],
+  [
+      "name" => "HeinrichScript",
+  	"url" => "https://allfont.ru/allfont.css?fonts=heinrichscript"
+  ],
+  [
+      "name" => "a_AvanteTitulInline",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_avantetitulinline"
+  ],
+  [
+      "name" => "FreeSet Bold Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=freeset-bold-cyrillic"
+  ],
+  [
+      "name" => "Noto Sans",
+  	"url" => "https://allfont.ru/allfont.css?fonts=noto-sans"
+  ],
+  [
+      "name" => "1 Vivaldi  Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=1-vivaldi-bold"
+  ],
+  [
+      "name" => "Bernhard",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bernhard"
+  ],
+  [
+      "name" => "Wooden Ship Decorated",
+  	"url" => "https://allfont.ru/allfont.css?fonts=wooden-ship-decorated"
+  ],
+  [
+      "name" => "Courier",
+  	"url" => "https://allfont.ru/allfont.css?fonts=courier"
+  ],
+  [
+      "name" => "Open Sans Extrabold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=open-sans-extrabold"
+  ],
+  [
+      "name" => "a_MachinaOrtoSht",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_machinaortosht"
+  ],
+  [
+      "name" => "Rodeo",
+  	"url" => "https://allfont.ru/allfont.css?fonts=rodeo"
+  ],
+  [
+      "name" => "Pragmatica Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pragmatica-bold"
+  ],
+  [
+      "name" => "Arbat",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arbat"
+  ],
+  [
+      "name" => "Venski Sad Two Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=venski-sad-two-medium"
+  ],
+  [
+      "name" => "Droid Serif",
+  	"url" => "https://allfont.ru/allfont.css?fonts=droid-serif"
+  ],
+  [
+      "name" => "Broadway Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=broadway-cyrillic"
+  ],
+  [
+      "name" => "Barocco Initial",
+  	"url" => "https://allfont.ru/allfont.css?fonts=barocco-initial"
+  ],
+  [
+      "name" => "Antiqua Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=antiqua-bold"
+  ],
+  [
+      "name" => "Herold Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=herold-normal"
+  ],
+  [
+      "name" => "AdverGothic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=advergothic"
+  ],
+  [
+      "name" => "Moyenage",
+  	"url" => "https://allfont.ru/allfont.css?fonts=moyenage"
+  ],
+  [
+      "name" => "Cricket Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cricket-bold"
+  ],
+  [
+      "name" => "Play",
+  	"url" => "https://allfont.ru/allfont.css?fonts=play"
+  ],
+  [
+      "name" => "Runic Alt",
+  	"url" => "https://allfont.ru/allfont.css?fonts=runic-alt"
+  ],
+  [
+      "name" => "Bookman Old Style Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bookman-old-style-bold"
+  ],
+  [
+      "name" => "Fritz Quadrata Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=fritz-quadrata-cyrillic"
+  ],
+  [
+      "name" => "DS StandartCyr",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ds-standartcyr"
+  ],
+  [
+      "name" => "a_AvanteBs",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_avantebs"
+  ],
+  [
+      "name" => "a_LCDNovaObl",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_lcdnovaobl"
+  ],
+  [
+      "name" => "Muse ",
+  	"url" => "https://allfont.ru/allfont.css?fonts=muse-"
+  ],
+  [
+      "name" => "Franklin Gothic Heavy",
+  	"url" => "https://allfont.ru/allfont.css?fonts=franklin-gothic-heavy"
+  ],
+  [
+      "name" => "Olietta script Lyrica BoldItalic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=olietta-script-lyrica-bolditalic"
+  ],
+  [
+      "name" => "Calligraph  Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=calligraph-medium"
+  ],
+  [
+      "name" => "Fita_Poluustav",
+  	"url" => "https://allfont.ru/allfont.css?fonts=fita_poluustav"
+  ],
+  [
+      "name" => "Furore",
+  	"url" => "https://allfont.ru/allfont.css?fonts=furore"
+  ],
+  [
+      "name" => "a_MachinaOrto",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_machinaorto"
+  ],
+  [
+      "name" => "OCR_OneCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ocr_onectt"
+  ],
+  [
+      "name" => "Franklin Gothic Demi Cond",
+  	"url" => "https://allfont.ru/allfont.css?fonts=franklin-gothic-demi-cond"
+  ],
+  [
+      "name" => "Graffiti2CTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=graffiti2ctt"
+  ],
+  [
+      "name" => "OfficinaSansWinCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=officinasanswinctt"
+  ],
+  [
+      "name" => "Bolero script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bolero-script"
+  ],
+  [
+      "name" => "BrushType-SemiBold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=brushtype-semibold"
+  ],
+  [
+      "name" => "KB Danube",
+  	"url" => "https://allfont.ru/allfont.css?fonts=kb-danube"
+  ],
+  [
+      "name" => "Yanone Kaffeesatz",
+  	"url" => "https://allfont.ru/allfont.css?fonts=yanone-kaffeesatz"
+  ],
+  [
+      "name" => "NewtonC",
+  	"url" => "https://allfont.ru/allfont.css?fonts=newtonc"
+  ],
+  [
+      "name" => "Benguiat Rus Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=benguiat-rus-bold"
+  ],
+  [
+      "name" => "Futura-Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=futura-bold"
+  ],
+  [
+      "name" => "Julia Script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=julia-script"
+  ],
+  [
+      "name" => "Alexandra Zeferino One",
+  	"url" => "https://allfont.ru/allfont.css?fonts=alexandra-zeferino-one"
+  ],
+  [
+      "name" => "Bodoni Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bodoni-bold"
+  ],
+  [
+      "name" => "Optima Cyr",
+  	"url" => "https://allfont.ru/allfont.css?fonts=optima-cyr"
+  ],
+  [
+      "name" => "a_AntiqueTitulDcFr",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_antiquetituldcfr"
+  ],
+  [
+      "name" => "Festus",
+  	"url" => "https://allfont.ru/allfont.css?fonts=festus"
+  ],
+  [
+      "name" => "GothicRus Condenced",
+  	"url" => "https://allfont.ru/allfont.css?fonts=gothicrus-condenced"
+  ],
+  [
+      "name" => "CyrillicHover",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cyrillichover"
+  ],
+  [
+      "name" => "Peterburg",
+  	"url" => "https://allfont.ru/allfont.css?fonts=peterburg"
+  ],
+  [
+      "name" => "a_Campus",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_campus"
+  ],
+  [
+      "name" => "Avanti Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=avanti-bold"
+  ],
+  [
+      "name" => "1 Papyrus",
+  	"url" => "https://allfont.ru/allfont.css?fonts=1-papyrus"
+  ],
+  [
+      "name" => "Bodoni Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bodoni-italic"
+  ],
+  [
+      "name" => "FrankC",
+  	"url" => "https://allfont.ru/allfont.css?fonts=frankc"
+  ],
+  [
+      "name" => "Roboto Slab Regular",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-slab-regular"
+  ],
+  [
+      "name" => "Garamond Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=garamond-bold"
+  ],
+  [
+      "name" => "Time Roman",
+  	"url" => "https://allfont.ru/allfont.css?fonts=time-roman"
+  ],
+  [
+      "name" => "MasonChronicles",
+  	"url" => "https://allfont.ru/allfont.css?fonts=masonchronicles"
+  ],
+  [
+      "name" => "Monti-Decor B",
+  	"url" => "https://allfont.ru/allfont.css?fonts=monti-decor-b"
+  ],
+  [
+      "name" => "DreamScar",
+  	"url" => "https://allfont.ru/allfont.css?fonts=dreamscar"
+  ],
+  [
+      "name" => "CricketInlineShadow",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cricketinlineshadow"
+  ],
+  [
+      "name" => "Petersburg Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=petersburg-cyrillic"
+  ],
+  [
+      "name" => "DS Goose",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ds-goose"
+  ],
+  [
+      "name" => "Elizabeta Modern",
+  	"url" => "https://allfont.ru/allfont.css?fonts=elizabeta-modern"
+  ],
+  [
+      "name" => "Pollock2CTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pollock2ctt"
+  ],
+  [
+      "name" => "Perfo",
+  	"url" => "https://allfont.ru/allfont.css?fonts=perfo"
+  ],
+  [
+      "name" => "EpsilonCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=epsilonctt"
+  ],
+  [
+      "name" => "Ceremonious One",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ceremonious-one"
+  ],
+  [
+      "name" => "Venus Rising Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=venus-rising-cyrillic"
+  ],
+  [
+      "name" => "Alice",
+  	"url" => "https://allfont.ru/allfont.css?fonts=alice"
+  ],
+  [
+      "name" => "a_RubricaCn BoldItalic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_rubricacn-bolditalic"
+  ],
+  [
+      "name" => "Prestige Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=prestige-normal"
+  ],
+  [
+      "name" => "GothicRus Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=gothicrus-bold"
+  ],
+  [
+      "name" => "SkazkaForSerge Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=skazkaforserge-medium"
+  ],
+  [
+      "name" => "Gesso",
+  	"url" => "https://allfont.ru/allfont.css?fonts=gesso"
+  ],
+  [
+      "name" => "KabelCTT Ultra",
+  	"url" => "https://allfont.ru/allfont.css?fonts=kabelctt-ultra"
+  ],
+  [
+      "name" => "Haettenschweiler",
+  	"url" => "https://allfont.ru/allfont.css?fonts=haettenschweiler"
+  ],
+  [
+      "name" => "Lucida Sans Unicode",
+  	"url" => "https://allfont.ru/allfont.css?fonts=lucida-sans-unicode"
+  ],
+  [
+      "name" => "Zanesennyj",
+  	"url" => "https://allfont.ru/allfont.css?fonts=zanesennyj"
+  ],
+  [
+      "name" => "Terminator Cyr Semi-expanded Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=terminator-cyr-semi-expanded-bol"
+  ],
+  [
+      "name" => "DS Crystal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ds-crystal"
+  ],
+  [
+      "name" => "Secession",
+  	"url" => "https://allfont.ru/allfont.css?fonts=secession"
+  ],
+  [
+      "name" => "Uk_Caslon",
+  	"url" => "https://allfont.ru/allfont.css?fonts=uk_caslon"
+  ],
+  [
+      "name" => "1 Shelley Volante Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=1-shelley-volante-bold"
+  ],
+  [
+      "name" => "FuturaPress Press:ver.1.15",
+  	"url" => "https://allfont.ru/allfont.css?fonts=futurapress-pressver115"
+  ],
+  [
+      "name" => "Ubuntu Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ubuntu-italic"
+  ],
+  [
+      "name" => "Academy Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=academy-bold"
+  ],
+  [
+      "name" => "Caslon",
+  	"url" => "https://allfont.ru/allfont.css?fonts=caslon"
+  ],
+  [
+      "name" => "Opium Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=opium-bold"
+  ],
+  [
+      "name" => "Teslic`s Document Cyr Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=teslics-document-cyr-normal"
+  ],
+  [
+      "name" => "Victorian Gothic Two",
+  	"url" => "https://allfont.ru/allfont.css?fonts=victorian-gothic-two"
+  ],
+  [
+      "name" => "TypeWriter",
+  	"url" => "https://allfont.ru/allfont.css?fonts=typewriter"
+  ],
+  [
+      "name" => "Cyrvetica Extra Outline",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cyrvetica-extra-outline"
+  ],
+  [
+      "name" => "Liberation Sans",
+  	"url" => "https://allfont.ru/allfont.css?fonts=liberation-sans"
+  ],
+  [
+      "name" => "PT Sans Caption",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pt-sans-caption"
+  ],
+  [
+      "name" => "Arimo",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arimo"
+  ],
+  [
+      "name" => "Kaliakra",
+  	"url" => "https://allfont.ru/allfont.css?fonts=kaliakra"
+  ],
+  [
+      "name" => "a_Futurica",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_futurica"
+  ],
+  [
+      "name" => "Decor Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=decor-bold"
+  ],
+  [
+      "name" => "Champagne Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=champagne-cyrillic"
+  ],
+  [
+      "name" => "a_CooperBlackOtl",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_cooperblackotl"
+  ],
+  [
+      "name" => "Helvetica_Light-Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=helvetica_light-normal"
+  ],
+  [
+      "name" => "Kot Leopold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=kot-leopold"
+  ],
+  [
+      "name" => "Bodoni BoldItalic Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=bodoni-bolditalic-cyrillic"
+  ],
+  [
+      "name" => "Matura MT Script Capitals",
+  	"url" => "https://allfont.ru/allfont.css?fonts=matura-mt-script-capitals"
+  ],
+  [
+      "name" => "Open Sans Condensed Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=open-sans-condensed-bold"
+  ],
+  [
+      "name" => "AGAalenBold Roman",
+  	"url" => "https://allfont.ru/allfont.css?fonts=agaalenbold-roman"
+  ],
+  [
+      "name" => "VivaldiD CL",
+  	"url" => "https://allfont.ru/allfont.css?fonts=vivaldid-cl"
+  ],
+  [
+      "name" => "Metropol 95",
+  	"url" => "https://allfont.ru/allfont.css?fonts=metropol-95"
+  ],
+  [
+      "name" => "Epson1",
+  	"url" => "https://allfont.ru/allfont.css?fonts=epson1"
+  ],
+  [
+      "name" => "Artemis Deco",
+  	"url" => "https://allfont.ru/allfont.css?fonts=artemis-deco"
+  ],
+  [
+      "name" => "Devanagari Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=devanagari-normal"
+  ],
+  [
+      "name" => "Monte-Carlo",
+  	"url" => "https://allfont.ru/allfont.css?fonts=monte-carlo"
+  ],
+  [
+      "name" => "DomCasual Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=domcasual-normal"
+  ],
+  [
+      "name" => "Exo 2.0 Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=exo-20-bold"
+  ],
+  [
+      "name" => "Play Rus",
+  	"url" => "https://allfont.ru/allfont.css?fonts=play-rus"
+  ],
+  [
+      "name" => "Arnold BocklinC",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arnold-bocklinc"
+  ],
+  [
+      "name" => "Cheshirskiy Cat Roman",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cheshirskiy-cat-roman"
+  ],
+  [
+      "name" => "Roboto Slab Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-slab-bold"
+  ],
+  [
+      "name" => "Calligraphia One",
+  	"url" => "https://allfont.ru/allfont.css?fonts=calligraphia-one"
+  ],
+  [
+      "name" => "Ampir Deco",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ampir-deco"
+  ],
+  [
+      "name" => "Open Sans Light Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=open-sans-light-italic"
+  ],
+  [
+      "name" => "Taurus-Light",
+  	"url" => "https://allfont.ru/allfont.css?fonts=taurus-light"
+  ],
+  [
+      "name" => "Taurus Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=taurus-bold"
+  ],
+  [
+      "name" => "a_Alterna",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_alterna"
+  ],
+  [
+      "name" => "DelphianC",
+  	"url" => "https://allfont.ru/allfont.css?fonts=delphianc"
+  ],
+  [
+      "name" => "Roboto Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-italic"
+  ],
+  [
+      "name" => "Iris Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=iris-normal"
+  ],
+  [
+      "name" => "Gals",
+  	"url" => "https://allfont.ru/allfont.css?fonts=gals"
+  ],
+  [
+      "name" => "Odessa Script",
+  	"url" => "https://allfont.ru/allfont.css?fonts=odessa-script"
+  ],
+  [
+      "name" => "Roboto Condensed Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-condensed-bold"
+  ],
+  [
+      "name" => "Olietta script-Poesia BoldItalic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=olietta-script-poesia-bolditalic"
+  ],
+  [
+      "name" => "a_AntiqueGr",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_antiquegr"
+  ],
+  [
+      "name" => "Arial Narrow Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arial-narrow-italic"
+  ],
+  [
+      "name" => "Roboto Thin Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-thin-italic"
+  ],
+  [
+      "name" => "Oranienbaum",
+  	"url" => "https://allfont.ru/allfont.css?fonts=oranienbaum"
+  ],
+  [
+      "name" => "Droid Serif Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=droid-serif-bold"
+  ],
+  [
+      "name" => "Roboto Condensed Light",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-condensed-light"
+  ],
+  [
+      "name" => "Alexandra Zeferino Three",
+  	"url" => "https://allfont.ru/allfont.css?fonts=alexandra-zeferino-three"
+  ],
+  [
+      "name" => "PT Serif Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=pt-serif-bold"
+  ],
+  [
+      "name" => "Roboto Condensed Regular",
+  	"url" => "https://allfont.ru/allfont.css?fonts=roboto-condensed-regular"
+  ],
+  [
+      "name" => "Liberation Serif",
+  	"url" => "https://allfont.ru/allfont.css?fonts=liberation-serif"
+  ],
+  [
+      "name" => "Motter Tektura Cyrilic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=motter-tektura-cyrilic"
+  ],
+  [
+      "name" => "Herold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=herold"
+  ],
+  [
+      "name" => "HermesCTT",
+  	"url" => "https://allfont.ru/allfont.css?fonts=hermesctt"
+  ],
+  [
+      "name" => "Parsek Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=parsek-cyrillic"
+  ],
+  [
+      "name" => "Rosamunda Two",
+  	"url" => "https://allfont.ru/allfont.css?fonts=rosamunda-two"
+  ],
+  [
+      "name" => "Boycott",
+  	"url" => "https://allfont.ru/allfont.css?fonts=boycott"
+  ],
+  [
+      "name" => "CricketHeavy",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cricketheavy"
+  ],
+  [
+      "name" => "a_RubricaCn Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_rubricacn-bold"
+  ],
+  [
+      "name" => "AGPresquire",
+  	"url" => "https://allfont.ru/allfont.css?fonts=agpresquire"
+  ],
+  [
+      "name" => "Ukrainian?Izhitsa",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ukrainianizhitsa"
+  ],
+  [
+      "name" => "a_AvanteTitlerCpsUpC Light",
+  	"url" => "https://allfont.ru/allfont.css?fonts=a_avantetitlercpsupc-light"
+  ],
+  [
+      "name" => "Arial Narrow Bold Italic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=arial-narrow-bold-italic"
+  ],
+  [
+      "name" => "1 Vivaldi ",
+  	"url" => "https://allfont.ru/allfont.css?fonts=1-vivaldi-"
+  ],
+  [
+      "name" => "Playfair Display Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=playfair-display-bold"
+  ],
+  [
+      "name" => "Kabel",
+  	"url" => "https://allfont.ru/allfont.css?fonts=kabel"
+  ],
+  [
+      "name" => "Esenin script Two",
+  	"url" => "https://allfont.ru/allfont.css?fonts=esenin-script-two"
+  ],
+  [
+      "name" => "CyrillicBrush Medium",
+  	"url" => "https://allfont.ru/allfont.css?fonts=cyrillicbrush-medium"
+  ],
+  [
+      "name" => "Ubuntu Condensed",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ubuntu-condensed"
+  ],
+  [
+      "name" => "NERVOUS",
+  	"url" => "https://allfont.ru/allfont.css?fonts=nervous"
+  ],
+  [
+      "name" => "Lazurski Bold",
+  	"url" => "https://allfont.ru/allfont.css?fonts=lazurski-bold"
+  ],
+  [
+      "name" => "Runic AltNo",
+  	"url" => "https://allfont.ru/allfont.css?fonts=runic-altno"
+  ],
+  [
+      "name" => "Journal Cyrillic",
+  	"url" => "https://allfont.ru/allfont.css?fonts=journal-cyrillic"
+  ],
+  [
+      "name" => "Banco Normal",
+  	"url" => "https://allfont.ru/allfont.css?fonts=banco-normal"
+  ],
+  [
+      "name" => "DS Russia Demo",
+  	"url" => "https://allfont.ru/allfont.css?fonts=ds-russia-demo"
+  ],
+  [
+      "name" => "KursivC",
+  	"url" => "https://allfont.ru/allfont.css?fonts=kursivc"
+  ],
+  [
+      "name" => "1 Malibu LET  Let Plain1.0",
+  	"url" => "https://allfont.ru/allfont.css?fonts=1-malibu-let-let-plain10"
+  ],
+  [
+      "name" => "Victorian Gothic One",
+  	"url" => "https://allfont.ru/allfont.css?fonts=victorian-gothic-one"
+  ]
+];
+
+
+
