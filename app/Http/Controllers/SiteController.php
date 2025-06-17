@@ -17,7 +17,7 @@ class SiteController extends Controller
         $this->add_js_css_files_to_the_data([
             'vendors',
             'main',
-            // 'admin',
+            'admin',
             'home',
             // 'logs',
             // 'applications',

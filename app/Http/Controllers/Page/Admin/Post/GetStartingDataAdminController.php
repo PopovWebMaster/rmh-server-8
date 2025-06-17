@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Page\Home\Post;
+namespace App\Http\Controllers\Page\Admin\Post;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Auth;
-use App\Http\Controllers\Page\Home\Traits\GetStartingDataHomeTrait;
+use  App\Http\Controllers\Page\Admin\Traits\GetStartingDataAdminTrait;
 
-class GetStartingDataController extends Controller
+class GetStartingDataAdminController extends Controller
 {
-    use GetStartingDataHomeTrait;
+    use GetStartingDataAdminTrait;
 
     public function post( Request $request ){
 
@@ -20,7 +20,7 @@ class GetStartingDataController extends Controller
             $user = Auth::user();
         };
 
-        $result = $this->GetStartingDataHome( $request, $user );
+        $result = $this->GetStartingDataAdmin( $request, $user );
 
         return response()->json( $result, 200, ['Content-Type' => 'application/json; charset=UTF-8'] );
     //     ->withHeaders([

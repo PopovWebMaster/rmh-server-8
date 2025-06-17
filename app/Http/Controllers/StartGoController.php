@@ -20,7 +20,7 @@ class StartGoController extends SiteController
     function get( Request $request ){
 
         // Artisan::call('cache:clear');
-        Artisan::call('config:cache');
+        // Artisan::call('config:cache');
         // Artisan::call('view:clear');
         // Artisan::call('route:clear');
         
