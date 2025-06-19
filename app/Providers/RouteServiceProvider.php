@@ -17,7 +17,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    // public const HOME = '/dashboard';
+    public const HOME = '/';
+
 
     /**
      * The controller namespace for the application.
@@ -50,12 +52,14 @@ class RouteServiceProvider extends ServiceProvider
                     require base_path('routes/web.php');
                     require base_path('routes/page/home.php');
                     require base_path('routes/page/admin.php');
+                    require base_path('routes/page/company.php');
 
-
-                    // require base_path('routes/post/get_starting_data.php');
-                    // require base_path('routes/post/logs.php');
-                    // require base_path('routes/post/layout.php');
-                    // require base_path('routes/post/application.php');
+                    require base_path('routes/page/air_main.php');
+                    require base_path('routes/page/air_schedule.php');
+                    require base_path('routes/page/air_application.php');
+                    require base_path('routes/page/air_layout.php');
+                    require base_path('routes/page/air_play_report.php');
+                    require base_path('routes/page/air_logs.php');
 
 
                     // require base_path('routes/web_printing_office_orders.php');

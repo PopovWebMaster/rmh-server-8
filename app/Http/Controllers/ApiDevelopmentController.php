@@ -4,67 +4,101 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-// use App\Http\Controllers\Page\Home\Traits\GetStartingDataHomeTrait;
+use App\Http\Controllers\Page\Home\Traits\GetStartingDataHomeTrait;
+use App\Http\Controllers\Page\Login\Traits\GetStartingDataLoginTrait;
+use App\Http\Controllers\Page\Company\Traits\GetStartingDataCompanyTrait;
+
+use App\Http\Controllers\Page\AirApplications\Traits\GetStartingDataAirApplicationsTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\GetStartingDataAirLayoutTrait;
+
+use App\Http\Controllers\Page\AirLogs\Traits\GetStartingDataAirLogsTrait;
+use App\Http\Controllers\Page\AirMain\Traits\GetStartingDataAirMainTrait;
+use App\Http\Controllers\Page\AirPlayReport\Traits\GetStartingDataAirPlayReportTrait;
+use App\Http\Controllers\Page\AirSchedule\Traits\GetStartingDataAirScheduleTrait;
+
+
+use App\Models\User;
+
 
 class ApiDevelopmentController extends Controller
 {
 
-    // use GetStartingDataHomeTrait;
+    use GetStartingDataHomeTrait;
+    use GetStartingDataLoginTrait;
+    use GetStartingDataCompanyTrait;
+    use GetStartingDataAirApplicationsTrait;
+    use GetStartingDataAirLayoutTrait;
+    use GetStartingDataAirLogsTrait;
+    use GetStartingDataAirMainTrait;
+    use GetStartingDataAirPlayReportTrait;
+    use GetStartingDataAirScheduleTrait;
 
     public function store(Request $request)
     {
-        $result = [
-            100,
-            200
-        ];
 
-        // $route = $request['data']['route'];
-        
-        // // $user = User::find( 1 );
+        $result = [];
 
-        // $result[ 'user' ] = null;
+        $route = $request['data']['route'];
+        $user = User::find( 1 );
+        // $user = null;
 
-        // switch( $route ){
 
-        //     case 'home/get-starting-data':
-        //         $result = $this->GetStartingDataHome( $request, $user );
-        //         break;
 
-        // };
+        switch( $route ){
+
+            case 'home/get-starting-data':
+                $result = $this->GetStartingDataHome( $request, $user );
+                break;
+
+            case 'login/get-starting-data':
+                $result = $this->GetStartingDataLogin( $request, null );
+                break;
+
+            case 'company/get-starting-data':
+                $result = $this->GetStartingDataCompany( $request, $user );
+                break;
+
+
+
+            case 'air-main/get-starting-data':
+                $result = $this->GetStartingDataAirMain( $request, $user );
+
+                break;
+
+            case 'air-schedule/get-starting-data':
+                $result = $this->GetStartingDataAirSchedule( $request, $user );
+                break;
+
+            case 'air-application/get-starting-data':
+                $result = $this->GetStartingDataAirApplications( $request, $user );
+                break;
+
+            case 'air-layout/get-starting-data':
+                $result = $this->GetStartingDataAirLayout( $request, $user );
+                break;
+
+            case 'air-play-report/get-starting-data':
+                $result = $this->GetStartingDataAirPlayReport( $request, $user );
+                break;
+
+            case 'air-logs/get-starting-data':
+                $result = $this->GetStartingDataAirLogs( $request, $user );
+                break;
+
+
+
+
+
+
+
+        };
 
         return response()->json( $result, 200, [
             'Access-Control-Allow-Origin' => '*',
             'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
             'Access-Control-Allow-Headers' => 'Accept,Content-Type,Authorization',
             'Content-Type' => 'application/json; charset=UTF-8'
-            
-            ] );
-                // ->header('Access-Control-Allow-Origin', '*')
-                // ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-                // ->header('Access-Control-Allow-Headers', 'Accept,Content-Type,Authorization');
-
-    //     ->withHeaders([
-    //     'Access-Control-Allow-Origin' => '*',
-    //     'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
-    //     // 'Access-Control-Allow-Headers' => 'Accept,Content-Type,Authorization',
-
-
-    //     'Access-Control-Allow-Headers', 'Content-Type, X-Auth-Token, Origin'
-    // ]);
-
-
-    // ->header('Access-Control-Allow-Origin', '*')
-    //             ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    //             ->header('Access-Control-Allow-Headers', 'Accept,Content-Type,Authorization');
-
-
-
-
-            // ->header('Access-Control-Allow-Origin', '*')
-            // ->header('Access-Control-Allow-Methods', '*')
-            // ->header('Access-Control-Allow-Credentials', true)
-            // ->header('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type,X-Token-Auth,Authorization')
-            // ->header('Accept', 'application/json');
+        ] );
     }
 
 }

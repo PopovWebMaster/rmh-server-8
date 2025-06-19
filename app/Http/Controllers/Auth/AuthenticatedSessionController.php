@@ -2,22 +2,40 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller; // heare
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthenticatedSessionController extends Controller
+use App\Http\Controllers\SiteController;
+
+class AuthenticatedSessionController extends SiteController
 {
     /**
      * Display the login view.
      *
      * @return \Illuminate\View\View
      */
+
+    public function __construct(){
+        parent::__construct();
+
+    }
+
     public function create()
     {
-        return view('auth.login');
+
+        $this->data['robots'] = 'noindex';
+        $this->data['pageTitle'] = 'Login';
+        $this->data['companyAlias'] = '';
+        $this->data['companyName'] = '';
+        $this->data['companyType'] = '';
+        $this->data['page'] = 'login';
+
+
+        // return view( 'home', $this->data );
+        return view('auth.login', $this->data );
     }
 
     /**

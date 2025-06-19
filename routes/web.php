@@ -18,7 +18,11 @@ Route::get( '/start-go', [ StartGoController::class, 'get' ]);
 // });
 
 Route::get('/dashboard', function () {
+
+    
     return view('dashboard');
+
+
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

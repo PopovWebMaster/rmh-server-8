@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Page\Home\Post;
+namespace App\Http\Controllers\Page\AirLogs\Post;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Page\AirLogs\Traits\GetStartingDataAirLogsTrait;
 use Auth;
-use App\Http\Controllers\Page\Home\Traits\GetStartingDataHomeTrait;
 
-class GetStartingDataController extends Controller
+class GetStartingDataAirLogsController extends Controller
 {
-    use GetStartingDataHomeTrait;
+    use GetStartingDataAirLogsTrait;
 
     public function post( Request $request ){
 
@@ -20,7 +20,7 @@ class GetStartingDataController extends Controller
             $user = Auth::user();
         };
 
-        $result = $this->GetStartingDataHome( $request, $user );
+        $result = $this->GetStartingDataAirLogs( $request, $user );
 
         return response()->json( $result, 200, ['Content-Type' => 'application/json; charset=UTF-8'] );
 

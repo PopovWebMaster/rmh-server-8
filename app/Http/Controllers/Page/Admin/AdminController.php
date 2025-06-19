@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\SiteController;
 
 use App\Http\Controllers\Page\Admin\Traits\AddNewUserTrait;
+use App\Http\Controllers\Page\Admin\Traits\AddNewCompanyTvTrait;
 
 class AdminController extends SiteController
 {
 
     use AddNewUserTrait;
+    use AddNewCompanyTvTrait;
 
     public function __construct(){
         parent::__construct();
@@ -34,6 +36,17 @@ class AdminController extends SiteController
         //     'email' => 'aaa@mail.ru',
         //     'password' => '111222333',
         //     // 'companyAlias' => null,
+        // ]);
+
+
+        // $this->AddNewCompanyTv([
+        //     'companyFullName' => 'Первый республиканский',
+        //     'companyAlias' => '1-resp',
+        // ]);
+
+        // $this->AddNewCompanyTv([
+        //     'companyFullName' => 'Оплот',
+        //     'companyAlias' => 'oplot',
         // ]);
 
 

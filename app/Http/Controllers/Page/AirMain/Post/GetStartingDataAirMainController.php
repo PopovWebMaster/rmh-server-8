@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Page\Home\Post;
+namespace App\Http\Controllers\Page\AirMain\Post;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Page\AirMain\Traits\GetStartingDataAirMainTrait;
 use Auth;
-use App\Http\Controllers\Page\Home\Traits\GetStartingDataHomeTrait;
 
-class GetStartingDataController extends Controller
+class GetStartingDataAirMainController extends Controller
 {
-    use GetStartingDataHomeTrait;
+    use GetStartingDataAirMainTrait;
 
     public function post( Request $request ){
 
@@ -20,7 +20,8 @@ class GetStartingDataController extends Controller
             $user = Auth::user();
         };
 
-        $result = $this->GetStartingDataHome( $request, $user );
+        $result = $this->GetStartingDataAirMain( $request, $user );
+        $result[ 'request_all' ] = $request->all();
 
         return response()->json( $result, 200, ['Content-Type' => 'application/json; charset=UTF-8'] );
 
