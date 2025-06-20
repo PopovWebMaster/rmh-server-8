@@ -14,7 +14,16 @@ use App\Http\Controllers\Page\AirLayout\Traits\GetStartingDataAirLayoutTrait;
 use App\Http\Controllers\Page\AirLogs\Traits\GetStartingDataAirLogsTrait;
 use App\Http\Controllers\Page\AirMain\Traits\GetStartingDataAirMainTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetStartingDataAirPlayReportTrait;
+use App\Http\Controllers\Page\AirPlayReport\Traits\GetEntierListForSearchValueTrait;
+use App\Http\Controllers\Page\AirPlayReport\Traits\GetOneDayPlayReportListTrait;
+
+
+
+
+
 use App\Http\Controllers\Page\AirSchedule\Traits\GetStartingDataAirScheduleTrait;
+
+use App\Http\Controllers\Page\AirLogs\Traits\AddPlayReportTrait;
 
 
 use App\Models\User;
@@ -31,7 +40,10 @@ class ApiDevelopmentController extends Controller
     use GetStartingDataAirLogsTrait;
     use GetStartingDataAirMainTrait;
     use GetStartingDataAirPlayReportTrait;
+    use GetEntierListForSearchValueTrait;
+    use GetOneDayPlayReportListTrait;
     use GetStartingDataAirScheduleTrait;
+    use AddPlayReportTrait;
 
     public function store(Request $request)
     {
@@ -81,8 +93,26 @@ class ApiDevelopmentController extends Controller
                 $result = $this->GetStartingDataAirPlayReport( $request, $user );
                 break;
 
+            case 'air-play-report/get-entier-list-for-search-value':
+                $result = $this->GetEntierListForSearchValue( $request, $user );
+                break;
+
+            case 'air-play-report/get-one-day-entire-list':
+                $result = $this->GetOneDayPlayReportList( $request, $user );
+                break;
+
+                
+                
+
+
+
+
             case 'air-logs/get-starting-data':
                 $result = $this->GetStartingDataAirLogs( $request, $user );
+                break;
+
+            case 'air-logs/add-play-report':
+                $result = $this->AddPlayReport( $request, $user );
                 break;
 
 

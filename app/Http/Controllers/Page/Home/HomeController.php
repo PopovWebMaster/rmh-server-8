@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\SiteController;
 
+use Auth;
+
 class HomeController extends SiteController
 {
     public function __construct(){
@@ -16,14 +18,24 @@ class HomeController extends SiteController
 
     function get( Request $request ){
 
+        $this->AddCompanyDataToThisData();
+
         $this->data['robots'] = 'noindex';
         $this->data['pageTitle'] = 'Главная Home';
-        $this->data['companyAlias'] = '';
-        $this->data['companyName'] = '';
-        $this->data['companyType'] = '';
+        
         $this->data['page'] = 'home';
 
+        if( Auth::check() ){
+            $user = Auth::user();
+            if( $user->email === config( 'app.admin_email' ) ){
+                return view( 'home', $this->data );
+            }else{
+                return redirect()->route( 'air_main', [ 'company' => $this->data['companyAlias'] ] );
+            };
+        }else{
+            return view( 'home', $this->data );
+        };
 
-        return view( 'home', $this->data );
+        
     }
 }

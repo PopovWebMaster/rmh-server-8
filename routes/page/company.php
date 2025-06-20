@@ -7,7 +7,7 @@ use App\Http\Controllers\Page\Company\CompanyController;
 
 
 
-Route::get('/company', [ CompanyController::class, 'get' ])->middleware( [ 'auth' ] );
+Route::get('/company', [ CompanyController::class, 'get' ])->middleware( [ 'auth' ] )->name( 'company' );
 Route::post('/company/get-starting-data', [ GetStartingDataCompanyController::class, 'post' ])->middleware( [ 'auth' ] );
 
 

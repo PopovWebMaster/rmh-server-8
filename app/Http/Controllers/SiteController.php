@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 
 use Storage;
 
+use App\Http\Controllers\Traits\GetUserCompanyDataTrait;
+use Auth;
+
 class SiteController extends Controller
 {
+
+    use GetUserCompanyDataTrait;
+
     protected $data;
 
     protected function __construct(){
@@ -87,4 +93,16 @@ class SiteController extends Controller
 
 
     }
+
+    public function AddCompanyDataToThisData( $company = null ){
+        
+        $userCompany = $this->GetUserCompanyData( Auth::user(), $company );
+
+        $this->data['companyAlias'] = $userCompany[ 'alias' ];
+        $this->data['companyName'] = $userCompany[ 'name' ];
+        $this->data['companyType'] = $userCompany[ 'type' ];
+
+    }
+
+    
 }

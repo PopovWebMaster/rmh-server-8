@@ -49,6 +49,13 @@ class AdminController extends SiteController
         //     'companyAlias' => 'oplot',
         // ]);
 
+        // $this->AddNewUser([
+        //     'name' => 'Aleksandr',
+        //     'email' => 'bbb@mail.ru',
+        //     'password' => '111222333',
+        //     'companyAlias' => 'oplot',
+        // ]);
+
 
 
 

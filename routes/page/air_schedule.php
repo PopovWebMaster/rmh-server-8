@@ -6,11 +6,11 @@ use App\Http\Controllers\Page\AirSchedule\AirScheduleController;
 use App\Http\Controllers\Page\AirSchedule\Post\GetStartingDataAirScheduleController;
 
 
-Route::get('/company/air-schedule/{company?}', [ AirApplicationsController::class, 'get' ])->middleware( [ 'auth' ] );
+Route::get('/company/{company?}/air-schedule', [ AirScheduleController::class, 'get' ])->middleware( [ 'auth', 'validate.company.get' ] );
 
-Route::prefix('/air-schedule')->middleware( [ 'auth' ] )->group(function ($router) {
+Route::prefix('/air-schedule')->middleware( [ 'auth', 'validate.company', 'validate.access.right' ] )->group(function ($router) {
 
-    Route::post('/get-starting-data/{company?}', [ GetStartingDataAirApplicationsController::class, 'post' ]);
+    Route::post('/get-starting-data', [ GetStartingDataAirScheduleController::class, 'post' ]);
 
 });
 

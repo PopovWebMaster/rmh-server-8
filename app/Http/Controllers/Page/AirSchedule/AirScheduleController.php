@@ -14,13 +14,13 @@ class AirScheduleController extends SiteController
 
     }
 
-    function get( Request $request, $company ){
+    function get( Request $request, $company = null ){
+
+        $this->AddCompanyDataToThisData( $company );
 
         $this->data['robots'] = 'noindex';
         $this->data['pageTitle'] = 'Эфир. Расписание';
-        $this->data['companyAlias'] = '';
-        $this->data['companyName'] = '';
-        $this->data['companyType'] = '';
+        
         $this->data['page'] = 'air-schedule';
 
 

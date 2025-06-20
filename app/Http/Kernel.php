@@ -67,6 +67,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
 
-        'chackCompany' => \App\Http\Middleware\CheckCompany::class,
+        'validate.company' => \App\Http\Middleware\ValidateCompany::class,
+        'validate.company.get' => \App\Http\Middleware\ValidateCompanyGet::class,
+        'validate.access.right' => \App\Http\Middleware\ValidateAccessRight::class,
+
     ];
 }

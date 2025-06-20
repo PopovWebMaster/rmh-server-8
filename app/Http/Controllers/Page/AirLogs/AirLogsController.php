@@ -14,14 +14,13 @@ class AirLogsController extends SiteController
 
     }
 
-    function get( Request $request, $company ){
+    function get( Request $request, $company = null ){
+
+        $this->AddCompanyDataToThisData( $company );
 
         $this->data['robots'] = 'noindex';
         $this->data['pageTitle'] = 'Эфир. Logs';
-        $this->data['companyAlias'] = '';
-        $this->data['companyName'] = '';
-        $this->data['companyType'] = '';
-        $this->data['page'] = 'logs';
+        $this->data['page'] = 'air-logs';
 
 
         return view( 'air_logs', $this->data );

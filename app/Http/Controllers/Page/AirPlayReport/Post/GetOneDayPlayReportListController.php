@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Page\AirMain\Post;
+namespace App\Http\Controllers\Page\AirPlayReport\Post;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\Page\AirMain\Traits\GetStartingDataAirMainTrait;
+use App\Http\Controllers\Page\AirPlayReport\Traits\GetOneDayPlayReportListTrait;
 use Auth;
 
-class GetStartingDataAirMainController extends Controller
+class GetOneDayPlayReportListController extends Controller
 {
-    use GetStartingDataAirMainTrait;
+    use GetOneDayPlayReportListTrait;
 
     public function post( Request $request ){
 
@@ -20,8 +20,7 @@ class GetStartingDataAirMainController extends Controller
             $user = Auth::user();
         };
 
-        $result = $this->GetStartingDataAirMain( $request, $user );
-        // $result[ 'request_all' ] = $request->all();
+        $result = $this->GetOneDayPlayReportList( $request, $user );
 
         return response()->json( $result, 200, ['Content-Type' => 'application/json; charset=UTF-8'] );
 

@@ -7,11 +7,11 @@ use App\Http\Controllers\Page\AirMain\Post\GetStartingDataAirMainController;
 
 
 
-Route::get('/company/air-main/{company?}', [ AirMainController::class, 'get' ])->middleware( [ 'auth' ] );
+Route::get('/company/{company?}/air-main', [ AirMainController::class, 'get' ])->middleware( [ 'auth', 'validate.company.get' ] )->name( 'air_main' );
 
-Route::prefix('/air-main')->middleware( [ 'auth', 'chackCompany' ] )->group(function ($router) {
+Route::prefix('/air-main')->middleware( [ 'auth', 'validate.company', 'validate.access.right' ] )->group(function ($router) {
 
-    Route::post('/get-starting-data/{company?}', [ GetStartingDataAirMainController::class, 'post' ]);
+    Route::post('/get-starting-data', [ GetStartingDataAirMainController::class, 'post' ]);
 
 });
 

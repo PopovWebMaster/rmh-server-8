@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Traits;
 use App\Http\Controllers\Traits\GetUserDataFromModelTrait;
 use App\Http\Controllers\Traits\GetCompanyListTrait;
 
+use App\Models\Company;
+use App\Models\CompanyProgramSystem;
+
+use Storage;
+
 trait GetStartingDataTrait{
 
     use GetUserDataFromModelTrait;
@@ -19,6 +24,9 @@ trait GetStartingDataTrait{
             $what_to_take = [
                 'companyList',
                 'userData',
+                'programSystem',
+                'playReportFiles'
+
             ];
 
         */
@@ -34,6 +42,24 @@ trait GetStartingDataTrait{
 
         if( in_array( 'companyList', $what_to_take ) ){
             $result[ 'companyList' ] = $this->GetCompanyList();
+        };
+
+        if( in_array( 'programSystem', $what_to_take ) ){
+            $result[ 'programSystem' ] = null;
+            if( $user !== null ){
+                $companyAlias = $request['data']['companyAlias'];
+                $company = Company::where( 'alias', '=',  $companyAlias )->first();
+                $company_id = $company->id;
+                $companyProgramSystem = CompanyProgramSystem::where( 'company_id', '=',  $company_id )->first();
+                if( $companyProgramSystem !== null ){
+                    $result[ 'programSystem' ] = $companyProgramSystem->name;
+                };
+            };
+        };
+
+        if( in_array( 'playReportFiles', $what_to_take ) ){
+            $companyAlias = $request['data']['companyAlias'];
+            $result[ 'playReportFiles' ] = Storage::disk('play_report')->files( $companyAlias );
         };
 
         

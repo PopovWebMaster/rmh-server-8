@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class CheckCompany
 {
     /**
@@ -18,8 +20,21 @@ class CheckCompany
     {
 
         // $request['test'] = $request->getRequestUri();
-        $list = $request->route()->parameters();
-        $request['company'] = $list[ 'company' ];
+        // $list = $request->route()->parameters();
+        $request['companyAlias'] = $request[ 'data' ][ 'companyAlias' ];
+        $request['currentPage'] = $request[ 'data' ][ 'currentPage' ];
+        $uri = $request->getRequestUri();
+        $arr = explode('/', $uri);  
+        $request['route'] = $arr[2];
+
+        $user = null;
+
+        if( Auth::check() ){
+            $user = Auth::user();
+        };
+
+        $request['user'] = $user;
+
 
 
         return $next($request);

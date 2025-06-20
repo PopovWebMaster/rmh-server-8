@@ -12,6 +12,7 @@ trait GetStartingDataAirLogsTrait{
 
         $what_to_take = [
             'userData',
+            'programSystem'
         ];
 
         $result = $this->GetStartingData( $what_to_take, $request, $user );

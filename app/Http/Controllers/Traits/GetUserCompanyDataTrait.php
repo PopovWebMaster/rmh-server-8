@@ -11,7 +11,7 @@ use Auth;
 
 trait GetUserCompanyDataTrait{
 
-    public function GetUserCompanyData( $user ){
+    public function GetUserCompanyData( $user, $companyAlias = null ){
 
         $result = [
             'name' => '',
@@ -23,25 +23,41 @@ trait GetUserCompanyDataTrait{
 
             $user_id = $user->id;
 
-            $list = [];
+            if( $companyAlias === null ){
+                $list = [];
+                $userCompany = UserCompany::where( 'user_id', '=', $user_id )->get();
+                foreach( $userCompany as $model ){
+                    $company_id = $model->company_id;
+                    $companyModel = Company::find( $company_id );
+                    if( $companyModel !== null ){
+                        array_push( $list, [
+                            'name' => $companyModel->name,
+                            'alias' => $companyModel->alias,
+                            'type' => $companyModel->type,
+                        ] );
+                    };
+                };
 
-            $userCompany = UserCompany::where( 'user_id', '=', $user_id )->get();
-            foreach( $userCompany as $model ){
-                $company_id = $model->company_id;
-                $company = Company::find( $company_id );
-                if( $company !== null ){
-                    array_push( $list, [
-                        'name' => $company->name,
-                        'alias' => $company->alias,
-                        'type' => $company->type,
-                    ] );
+                if( isset( $list[ 0 ] ) ){
+                    $result = $list[ 0 ];
+                };
+            }else{
+                $companyModel = Company::where( 'alias', '=', $companyAlias )->first();
+                
+                if( $companyModel !== null ){
+                    $company_id = $companyModel->id;
+                    $userCompany = UserCompany::where( 'user_id', '=', $user_id )->where( 'company_id', '=', $company_id )->first();
+
+                    if( $userCompany !== null ){
+                        $result = [
+                            'name' => $companyModel->name,
+                            'alias' => $companyModel->alias,
+                            'type' => $companyModel->type,
+                        ];
+                    };
                 };
             };
 
-            if( isset( $list[ 0 ] ) ){
-                $result = $list[ 0 ];
-            };
-            
         };
 
         return $result;

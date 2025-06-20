@@ -7,11 +7,11 @@ use App\Http\Controllers\Page\AirLayout\Post\GetStartingDataAirLayoutController;
 
 
 
-Route::get('/company/air-layout/{company?}', [ AirLayoutController::class, 'get' ])->middleware( [ 'auth' ] );
+Route::get('/company/{company?}/air-layout', [ AirLayoutController::class, 'get' ])->middleware( [ 'auth', 'validate.company.get' ] );
 
-Route::prefix('/air-layout')->middleware( [ 'auth' ] )->group(function ($router) {
+Route::prefix('/air-layout')->middleware( [ 'auth', 'validate.company', 'validate.access.right' ] )->group(function ($router) {
 
-    Route::post('/get-starting-data/{company?}', [ GetStartingDataAirLayoutController::class, 'post' ]);
+    Route::post('/get-starting-data', [ GetStartingDataAirLayoutController::class, 'post' ]);
 
 });
 

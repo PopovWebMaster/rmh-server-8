@@ -20,7 +20,7 @@ class GetStartingDataAirApplicationsController extends Controller
             $user = Auth::user();
         };
 
-        $result = $this->GetStartingDataCompany( $request, $user );
+        $result = $this->GetStartingDataAirApplications( $request, $user );
 
         return response()->json( $result, 200, ['Content-Type' => 'application/json; charset=UTF-8'] );
 
