@@ -10,6 +10,8 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\Page\Admin\Traits\AddNewUserTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewCompanyTvTrait;
 
+
+
 class AdminController extends SiteController
 {
 
@@ -29,6 +31,8 @@ class AdminController extends SiteController
         $this->data['companyName'] = '';
         $this->data['companyType'] = '';
         $this->data['page'] = 'admin';
+
+        ;
 
 
         // $this->AddNewUser([

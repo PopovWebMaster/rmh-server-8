@@ -10,12 +10,18 @@ use App\Http\Controllers\Page\Company\Traits\GetStartingDataCompanyTrait;
 
 use App\Http\Controllers\Page\AirApplications\Traits\GetStartingDataAirApplicationsTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\GetStartingDataAirLayoutTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\AddNewCategoryTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\RemoveCategoryTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\SaveCategoryListTrait;
+
+
 
 use App\Http\Controllers\Page\AirLogs\Traits\GetStartingDataAirLogsTrait;
 use App\Http\Controllers\Page\AirMain\Traits\GetStartingDataAirMainTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetStartingDataAirPlayReportTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetEntierListForSearchValueTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetOneDayPlayReportListTrait;
+
 
 
 
@@ -37,6 +43,9 @@ class ApiDevelopmentController extends Controller
     use GetStartingDataCompanyTrait;
     use GetStartingDataAirApplicationsTrait;
     use GetStartingDataAirLayoutTrait;
+    use AddNewCategoryTrait;
+    use RemoveCategoryTrait;
+    use SaveCategoryListTrait;
     use GetStartingDataAirLogsTrait;
     use GetStartingDataAirMainTrait;
     use GetStartingDataAirPlayReportTrait;
@@ -44,6 +53,7 @@ class ApiDevelopmentController extends Controller
     use GetOneDayPlayReportListTrait;
     use GetStartingDataAirScheduleTrait;
     use AddPlayReportTrait;
+
 
     public function store(Request $request)
     {
@@ -88,6 +98,26 @@ class ApiDevelopmentController extends Controller
             case 'air-layout/get-starting-data':
                 $result = $this->GetStartingDataAirLayout( $request, $user );
                 break;
+
+
+            case 'air-layout/add-new-category':
+                $result = $this->AddNewCategory( $request, $user );
+                break;
+
+            case 'air-layout/remove-category':
+                $result = $this->RemoveCategory( $request, $user );
+                break;
+
+            case 'air-layout/save-category-list':
+                $result = $this->SaveCategoryList( $request, $user );
+                break;
+
+
+
+
+
+
+
 
             case 'air-play-report/get-starting-data':
                 $result = $this->GetStartingDataAirPlayReport( $request, $user );

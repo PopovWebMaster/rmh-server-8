@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Traits;
 
 use App\Http\Controllers\Traits\GetUserDataFromModelTrait;
 use App\Http\Controllers\Traits\GetCompanyListTrait;
+use App\Http\Controllers\Traits\GetKeyPointListTrait;
+use App\Http\Controllers\Traits\GetCategoryListTrait;
+use App\Http\Controllers\Traits\GetEventsListTrait;
+use App\Http\Controllers\Traits\GetGridEventsListTrait;
 
 use App\Models\Company;
 use App\Models\CompanyProgramSystem;
@@ -14,18 +18,24 @@ trait GetStartingDataTrait{
 
     use GetUserDataFromModelTrait;
     use GetCompanyListTrait;
+    use GetKeyPointListTrait;
+    use GetCategoryListTrait;
+    use GetEventsListTrait;
+    use GetGridEventsListTrait;
 
     public function GetStartingData( $what_to_take, $request, $user ){
 
         /*
-            НЕ УДАЛЯТЬ! 
-            Это список того, что можно брать!!!!!!!!!!
 
             $what_to_take = [
                 'companyList',
                 'userData',
                 'programSystem',
                 'playReportFiles'
+                'keyPountList'
+                'categoryList'
+                'eventsList'
+                'gridEventsList'
 
             ];
 
@@ -35,6 +45,8 @@ trait GetStartingDataTrait{
             'ok' => true,
             'message' => '',
         ];
+
+        $companyAlias = $request['data']['companyAlias'];
 
         if( in_array( 'userData', $what_to_take ) ){
             $result[ 'userData' ] = $this->GetUserDataFromModel( $request, $user );
@@ -47,7 +59,7 @@ trait GetStartingDataTrait{
         if( in_array( 'programSystem', $what_to_take ) ){
             $result[ 'programSystem' ] = null;
             if( $user !== null ){
-                $companyAlias = $request['data']['companyAlias'];
+                // $companyAlias = $request['data']['companyAlias'];
                 $company = Company::where( 'alias', '=',  $companyAlias )->first();
                 $company_id = $company->id;
                 $companyProgramSystem = CompanyProgramSystem::where( 'company_id', '=',  $company_id )->first();
@@ -58,8 +70,23 @@ trait GetStartingDataTrait{
         };
 
         if( in_array( 'playReportFiles', $what_to_take ) ){
-            $companyAlias = $request['data']['companyAlias'];
             $result[ 'playReportFiles' ] = Storage::disk('play_report')->files( $companyAlias );
+        };
+
+        if( in_array( 'keyPountList', $what_to_take ) ){
+            $result[ 'keyPountList' ] = $this->GetKeyPointList( $companyAlias );
+        };
+
+        if( in_array( 'categoryList', $what_to_take ) ){
+            $result[ 'categoryList' ] = $this->GetCategoryList( $companyAlias );
+        };
+
+        if( in_array( 'eventsList', $what_to_take ) ){
+            $result[ 'eventsList' ] = $this->GetEventsList( $companyAlias );
+        };
+
+        if( in_array( 'gridEventsList', $what_to_take ) ){
+            $result[ 'gridEventsList' ] = $this->GetGridEventsList( $companyAlias );
         };
 
         
