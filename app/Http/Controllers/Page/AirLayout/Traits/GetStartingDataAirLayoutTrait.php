@@ -15,6 +15,7 @@ trait GetStartingDataAirLayoutTrait{
             'keyPountList',
             'categoryList',
             'eventsList',
+            'gridEventsList',
         ];
 
         $result = $this->GetStartingData( $what_to_take, $request, $user );

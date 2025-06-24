@@ -13,7 +13,13 @@ use App\Http\Controllers\Page\AirLayout\Traits\GetStartingDataAirLayoutTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\AddNewCategoryTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\RemoveCategoryTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\SaveCategoryListTrait;
-
+use App\Http\Controllers\Page\AirLayout\Traits\AddNewEventTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\SaveEventListTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\RemoveEventTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\SaveGridEventListTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\AddNewGridEventTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\RemoveGridEventTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\SetGridEventsDayListAfterCuttingTrait;
 
 
 use App\Http\Controllers\Page\AirLogs\Traits\GetStartingDataAirLogsTrait;
@@ -46,6 +52,14 @@ class ApiDevelopmentController extends Controller
     use AddNewCategoryTrait;
     use RemoveCategoryTrait;
     use SaveCategoryListTrait;
+    use AddNewEventTrait;
+    use SaveEventListTrait;
+    use RemoveEventTrait;
+    use SaveGridEventListTrait;
+    use AddNewGridEventTrait;
+    use RemoveGridEventTrait;
+    use SetGridEventsDayListAfterCuttingTrait;
+
     use GetStartingDataAirLogsTrait;
     use GetStartingDataAirMainTrait;
     use GetStartingDataAirPlayReportTrait;
@@ -113,7 +127,39 @@ class ApiDevelopmentController extends Controller
                 break;
 
 
+            case 'air-layout/add-new-event':
+                $result = $this->AddNewEvent( $request, $user );
+                break;
 
+            case 'air-layout/save-event-list':
+                $result = $this->SaveEventList( $request, $user );
+                break;
+
+            case 'air-layout/remove-event':
+                $result = $this->RemoveEvent( $request, $user );
+                break;
+
+            case 'air-layout/save-grid-event-list':
+                $result = $this->RemoveEvent( $request, $user );
+                break;
+
+            case 'air-layout/add-new-grid-event':
+                $result = $this->AddNewGridEvent( $request, $user );
+                break;
+
+            case 'air-layout/remove-grid-event':
+                $result = $this->RemoveGridEvent( $request, $user );
+                break;
+
+            case 'air-layout/set-grid-events-day-list-after-cutting':
+                $result = $this->SetGridEventsDayListAfterCutting( $request, $user );
+                break;
+
+
+                
+                
+
+                
 
 
 

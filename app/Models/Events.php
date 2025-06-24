@@ -20,4 +20,15 @@ class Events extends Model
     ];
 
     public $timestamps = true;
+
+    public const RULE = [
+        'id' =>             [ 'required', 'exists:events,id' ],
+        'name' =>           [ 'required', 'string', 'max:255' ],
+        'notes' =>          [ 'nullable', 'string', 'max:255' ],
+        'type' =>           [ 'required', 'string', 'in:file,block' ],
+        'category_id' =>    [ 'nullable', 'exists:category,id' ],
+        'durationTime' =>   [ 'required', 'string', 'max:10' ],
+
+    ];
+
 }

@@ -48,6 +48,8 @@ trait SaveCategoryListTrait{
             if( $validate[ 'fails' ] ){
                 array_push( $result[ 'message' ], $validate[ 'message' ]);
             }else{
+
+
                 $category = Category::find( $categoryId );
                 if( $category !== null  ){
 
@@ -62,6 +64,7 @@ trait SaveCategoryListTrait{
         };
 
         $result[ 'list' ] = $this->GetCategoryList( $companyAlias );
+        $result[ 'data' ] = $request['data'];
 
         return $result;
         
