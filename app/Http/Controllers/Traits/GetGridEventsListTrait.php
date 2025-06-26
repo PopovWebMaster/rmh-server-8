@@ -91,7 +91,7 @@ trait GetGridEventsListTrait{
             if ( $val1['startTime'] == $val2['startTime'] ){
                 return 0;
             }else{
-                return ( $val1['startTime'] < $val2['startTime'] ) ? 1 : -1;
+                return ( $val1['startTime'] > $val2['startTime'] ) ? 1 : -1;
             };
         } );
         usort( $day_4, function( $val1, $val2 ){

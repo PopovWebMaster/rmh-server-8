@@ -8,6 +8,7 @@ use App\Http\Controllers\Traits\GetKeyPointListTrait;
 use App\Http\Controllers\Traits\GetCategoryListTrait;
 use App\Http\Controllers\Traits\GetEventsListTrait;
 use App\Http\Controllers\Traits\GetGridEventsListTrait;
+use App\Http\Controllers\Traits\GetApplicationListTrait;
 
 use App\Models\Company;
 use App\Models\CompanyProgramSystem;
@@ -22,6 +23,7 @@ trait GetStartingDataTrait{
     use GetCategoryListTrait;
     use GetEventsListTrait;
     use GetGridEventsListTrait;
+    use GetApplicationListTrait;
 
     public function GetStartingData( $what_to_take, $request, $user ){
 
@@ -36,6 +38,8 @@ trait GetStartingDataTrait{
                 'categoryList'
                 'eventsList'
                 'gridEventsList'
+
+                'applicationList'
 
             ];
 
@@ -87,6 +91,10 @@ trait GetStartingDataTrait{
 
         if( in_array( 'gridEventsList', $what_to_take ) ){
             $result[ 'gridEventsList' ] = $this->GetGridEventsList( $companyAlias );
+        };
+
+        if( in_array( 'applicationList', $what_to_take ) ){
+            $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );
         };
 
         

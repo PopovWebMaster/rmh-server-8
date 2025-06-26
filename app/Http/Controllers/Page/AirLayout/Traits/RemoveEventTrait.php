@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Page\AirLayout\Traits;
 
 use App\Http\Controllers\Traits\Validate\ValidateEventIdTrait;
 use App\Http\Controllers\Traits\GetEventsListTrait;
+use App\Http\Controllers\Traits\GetGridEventsListTrait;
 
 use App\Models\Company;
 use App\Models\Events;
@@ -12,6 +13,7 @@ trait RemoveEventTrait{
 
     use ValidateEventIdTrait;
     use GetEventsListTrait;
+    use GetGridEventsListTrait;
 
     public function RemoveEvent( $request, $user ){
 
@@ -40,7 +42,9 @@ trait RemoveEventTrait{
             $event = Events::find( $eventId );
             $event->delete();
 
-            $result[ 'list' ] = $this->GetEventsList( $companyAlias );
+            $result[ 'eventsList' ] = $this->GetEventsList( $companyAlias );
+            $result[ 'gridEventsList' ] = $this->GetGridEventsList( $companyAlias );
+
 
         };
  
