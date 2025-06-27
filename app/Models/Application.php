@@ -21,4 +21,17 @@ class Application extends Model
     ];
 
     public $timestamps = true;
+
+    public const RULE = [
+        'id' =>             [ 'required', 'exists:application,id' ],
+        'company_id' =>     [ 'required', 'exists:company,id' ],
+        'category_id' =>    [ 'nullable', 'exists:category,id' ],
+        'manager_id' =>     [ 'nullable', 'exists:users,id' ],
+        'name' =>           [ 'required', 'string', 'min:1', 'max:255' ],
+        'num' =>            [ 'nullable', 'numeric', 'min:0', 'max:1000000' ],
+        'manager_notes' =>  [ 'nullable', 'string' ],
+
+
+
+    ];
 }

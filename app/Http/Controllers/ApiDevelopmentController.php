@@ -9,6 +9,22 @@ use App\Http\Controllers\Page\Login\Traits\GetStartingDataLoginTrait;
 use App\Http\Controllers\Page\Company\Traits\GetStartingDataCompanyTrait;
 
 use App\Http\Controllers\Page\AirApplications\Traits\GetStartingDataAirApplicationsTrait;
+
+
+use App\Http\Controllers\Page\AirApplications\Traits\AddNewApplicationTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\GetApplicationDataTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\SaveApplicationChangesTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\AddSubApplicationSeriesTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\AddSubApplicationReleaseTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\RemoveSubApplicationTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\RemoveApplicationTrait;
+
+
+
+
+
+
+
 use App\Http\Controllers\Page\AirLayout\Traits\GetStartingDataAirLayoutTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\AddNewCategoryTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\RemoveCategoryTrait;
@@ -48,6 +64,15 @@ class ApiDevelopmentController extends Controller
     use GetStartingDataLoginTrait;
     use GetStartingDataCompanyTrait;
     use GetStartingDataAirApplicationsTrait;
+    use AddNewApplicationTrait;
+    use GetApplicationDataTrait;
+    use SaveApplicationChangesTrait;
+    use AddSubApplicationSeriesTrait;
+    use AddSubApplicationReleaseTrait;
+    use RemoveSubApplicationTrait;
+    use RemoveApplicationTrait;
+
+
     use GetStartingDataAirLayoutTrait;
     use AddNewCategoryTrait;
     use RemoveCategoryTrait;
@@ -105,9 +130,65 @@ class ApiDevelopmentController extends Controller
                 $result = $this->GetStartingDataAirSchedule( $request, $user );
                 break;
 
+
+
+
+
+
+
+
+
             case 'air-application/get-starting-data':
                 $result = $this->GetStartingDataAirApplications( $request, $user );
                 break;
+
+            case 'air-application/add-new-application':
+                $result = $this->AddNewApplication( $request, $user );
+                break;
+
+            case 'air-application/get-application-data':
+                $result = $this->GetApplicationData( $request, $user );
+                break;
+
+            case 'air-application/seve-application-data':
+                $result = $this->SaveApplicationChanges( $request, $user );
+                break;
+
+            case 'air-application/add-new-subapplication-release':
+                $result = $this->AddSubApplicationRelease( $request, $user );
+                break;
+
+            case 'air-application/add-new-subapplication-series':
+                $result = $this->AddSubApplicationSeries( $request, $user );
+                break;
+
+            case 'air-application/remove-sub-application':
+                $result = $this->RemoveSubApplication( $request, $user );
+                break;
+
+           case 'air-application/remove-application':
+                $result = $this->RemoveApplication( $request, $user );
+                break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             case 'air-layout/get-starting-data':
                 $result = $this->GetStartingDataAirLayout( $request, $user );
@@ -155,16 +236,6 @@ class ApiDevelopmentController extends Controller
                 $result = $this->SetGridEventsDayListAfterCutting( $request, $user );
                 break;
 
-
-                
-                
-
-                
-
-
-
-
-
             case 'air-play-report/get-starting-data':
                 $result = $this->GetStartingDataAirPlayReport( $request, $user );
                 break;
@@ -176,12 +247,6 @@ class ApiDevelopmentController extends Controller
             case 'air-play-report/get-one-day-entire-list':
                 $result = $this->GetOneDayPlayReportList( $request, $user );
                 break;
-
-                
-                
-
-
-
 
             case 'air-logs/get-starting-data':
                 $result = $this->GetStartingDataAirLogs( $request, $user );

@@ -7,11 +7,12 @@ use App\Models\Company;
 use App\Models\Category;
 use App\Models\SubApplication;
 
-use App\Http\Controllers\Traits\SetSubApplicationChangesTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\GetSubApplicationListTrait;
+
 
 trait GetApplicationListTrait{
 
-    use SetSubApplicationChangesTrait;
+    use GetSubApplicationListTrait;
 
     public function GetApplicationList( $companyAlias ){
 
