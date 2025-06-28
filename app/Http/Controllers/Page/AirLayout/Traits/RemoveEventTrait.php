@@ -17,6 +17,8 @@ trait RemoveEventTrait{
 
     public function RemoveEvent( $request, $user ){
 
+        
+
         $result = [
             'ok' => false,
             'message' => '',
@@ -35,7 +37,7 @@ trait RemoveEventTrait{
         ]);
 
         if( $validateEventId[ 'fails' ] ){
-            $result[ 'message' ] = $validateCategoryId[ 'message' ];
+            $result[ 'message' ] = $validateEventId[ 'message' ];
         }else{
             $result[ 'ok' ] = true;
 

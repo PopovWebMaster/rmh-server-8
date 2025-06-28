@@ -36,6 +36,7 @@ use App\Http\Controllers\Page\AirLayout\Traits\SaveGridEventListTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\AddNewGridEventTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\RemoveGridEventTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\SetGridEventsDayListAfterCuttingTrait;
+use App\Http\Controllers\Page\AirLayout\Traits\SaveOneEventDataTrait;
 
 
 use App\Http\Controllers\Page\AirLogs\Traits\GetStartingDataAirLogsTrait;
@@ -84,6 +85,7 @@ class ApiDevelopmentController extends Controller
     use AddNewGridEventTrait;
     use RemoveGridEventTrait;
     use SetGridEventsDayListAfterCuttingTrait;
+    use SaveOneEventDataTrait;
 
     use GetStartingDataAirLogsTrait;
     use GetStartingDataAirMainTrait;
@@ -216,12 +218,18 @@ class ApiDevelopmentController extends Controller
                 $result = $this->SaveEventList( $request, $user );
                 break;
 
+            case 'air-layout/save-one-event-data':
+                $result = $this->SaveOneEventData( $request, $user );
+                break;
+
+            
+
             case 'air-layout/remove-event':
                 $result = $this->RemoveEvent( $request, $user );
                 break;
 
             case 'air-layout/save-grid-event-list':
-                $result = $this->RemoveEvent( $request, $user );
+                $result = $this->SaveGridEventList( $request, $user );
                 break;
 
             case 'air-layout/add-new-grid-event':

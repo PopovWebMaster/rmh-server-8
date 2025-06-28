@@ -16,6 +16,8 @@ trait SaveGridEventListTrait{
 
     public function SaveGridEventList( $request, $user ){
 
+        
+
         $result = [
             'ok' => false,
             'message' => '',
@@ -35,6 +37,8 @@ trait SaveGridEventListTrait{
 
         if( $validateList[ 'fails' ] ){
             $result[ 'message' ] = $validateList[ 'message' ];
+
+            $result[ 'list' ] = $list;
         }else{
             $list =  $request['data']['list'];
             $result[ 'ok' ] = true;
