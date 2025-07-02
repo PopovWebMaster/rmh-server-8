@@ -56,7 +56,7 @@ trait SaveGridEventListTrait{
                     $notes =          $list[ $day_num ][ $i ][ 'notes' ];
                     $pushIt =         $list[ $day_num ][ $i ][ 'pushIt' ];
                     $startTime =      $list[ $day_num ][ $i ][ 'startTime' ];
-
+                    $is_premiere =    $list[ $day_num ][ $i ][ 'is_premiere' ];
 
                     $gridEvent = GridEvents::where( 'company_id', '=', $company_id )
                                             ->where( 'id', '=', $id )
@@ -72,6 +72,8 @@ trait SaveGridEventListTrait{
                         $gridEvent->notes = $notes;
                         $gridEvent->cut_part = $cutPart;
                         $gridEvent->push_it = $pushIt;
+                        $gridEvent->is_premiere = $is_premiere;
+
                         $gridEvent->save();
                     };
 

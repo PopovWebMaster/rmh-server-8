@@ -40,6 +40,7 @@ trait GetGridEventsListTrait{
                     'eventId' =>        $model->event_id,
                     'pushIt' =>         $model->push_it,
                     'cutPart' =>        $model->cut_part,
+                    'is_premiere' =>    ( bool ) $model->is_premiere,
                     'isKeyPoint' =>     ( bool ) $model->is_a_key_point,
                 ];
 

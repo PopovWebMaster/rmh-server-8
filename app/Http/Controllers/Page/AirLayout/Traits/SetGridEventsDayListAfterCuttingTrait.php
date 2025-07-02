@@ -60,6 +60,7 @@ trait SetGridEventsDayListAfterCuttingTrait{
                     $notes =            $dayList[ $i ][ 'notes' ];
                     $pushIt =           $dayList[ $i ][ 'pushIt' ];
                     $startTime =        $dayList[ $i ][ 'startTime' ];
+                    $is_premiere =      $dayList[ $i ][ 'is_premiere' ];
 
                     if( $id === null ){
 
@@ -74,6 +75,9 @@ trait SetGridEventsDayListAfterCuttingTrait{
                         $model->notes = $notes;
                         $model->cut_part = $cutPart;
                         $model->push_it = $pushIt;
+                        $model->is_premiere = $is_premiere;
+
+
                         $model->save();
                         $newId = $model->id;
                         array_push( $id_participants, $newId );

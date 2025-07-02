@@ -24,6 +24,8 @@ trait ValidateOneGridEventTrait{
         $notes =            isset( $oneGridEvent[ 'notes' ] )?          $oneGridEvent[ 'notes' ]: null;
         $pushIt =           isset( $oneGridEvent[ 'pushIt' ] )?         $oneGridEvent[ 'pushIt' ]: null;
         $startTime =        isset( $oneGridEvent[ 'startTime' ] )?      $oneGridEvent[ 'startTime' ]: null;
+        $is_premiere =      isset( $oneGridEvent[ 'is_premiere' ] )?    $oneGridEvent[ 'is_premiere' ]: null;
+
 
         $id_rule = [];
         if( $id_isRequired ){
@@ -47,6 +49,8 @@ trait ValidateOneGridEventTrait{
             'notes' =>          $notes,
             'pushIt' =>         $pushIt,
             'startTime' =>      $startTime,
+            'is_premiere' =>     $is_premiere,
+
         ], [
             'dayNum' =>         [ 'required', 'numeric', Rule::in([ 0, 1, 2, 3, 4, 5, 6 ]) ],
             'cutPart' =>        [ 'nullable', 'numeric', 'max:500' ],
@@ -58,6 +62,7 @@ trait ValidateOneGridEventTrait{
             'notes' =>          [ 'nullable', 'string', 'max:255' ],
             'pushIt' =>         [ 'nullable', 'string', 'max:10' ],
             'startTime' =>      [ 'required', 'numeric', 'min:0', 'max:86400' ],
+            'is_premiere' =>     [ 'required', 'boolean' ],
 
         ]);
 

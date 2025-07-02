@@ -21,6 +21,7 @@ class GridEvents extends Model
         'notes',
         'cut_part',
         'push_it',
+        'is_premiere',
     ];
 
     public $timestamps = true;

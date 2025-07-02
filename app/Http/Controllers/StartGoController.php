@@ -28,7 +28,7 @@ class StartGoController extends SiteController
         // Artisan::call('migrate');
         // Artisan::call('db:seed');
 
-        dd( config( 'app' ) );
+        // dd( config( 'app' ) );
 
 
         dd( 'start-go' );

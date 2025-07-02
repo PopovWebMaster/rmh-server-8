@@ -71,15 +71,19 @@ trait SaveOneEventDataTrait{
                 $events->durationTime = $eventDurationTime;
                 $events->save();
 
-                if( $durationSec !== null ){
+                $gridEvents = GridEvents::where( 'company_id', '=', $company_id )->where( 'event_id', '=', $eventId )->get();
 
-                    $gridEvents = GridEvents::where( 'company_id', '=', $company_id )->where( 'event_id', '=', $eventId )->get();
-
-                    foreach( $gridEvents as $model ){
+                foreach( $gridEvents as $model ){
+                    $model->notes = $eventNotes;
+                    
+                    if( $durationSec !== null ){
                         $model->duration_time = $durationSec;
-                        $model->save();
                     };
+
+                    $model->save();
                 };
+
+                
             };
 
             $result[ 'list' ] = $this->GetEventsList( $companyAlias );
