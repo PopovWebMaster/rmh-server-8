@@ -18,6 +18,8 @@ trait GetOneApplicationDataTrait{
 
         // $application_id =   $application->id;
         $category_id =      $application->category_id;
+        $event_id =         $application->event_id;
+
         $manager_id =       $application->manager_id;
         $name =             $application->name;
         $num =              $application->num === null? '': $application->num;
@@ -32,6 +34,8 @@ trait GetOneApplicationDataTrait{
 
         $result[ 'application_id' ] =       $application_id;
         $result[ 'category_id' ] =          $category_id;
+        $result[ 'event_id' ] =             $event_id;
+
         $result[ 'manager_id' ] =           $manager_id;
         $result[ 'name' ] =                 $name;
         $result[ 'num' ] =                  $num;

@@ -17,6 +17,7 @@ class Application extends Model
         'name', 
         'num', 
         'manager_notes', 
+        'event_id',
 
     ];
 
@@ -30,6 +31,7 @@ class Application extends Model
         'name' =>           [ 'required', 'string', 'min:1', 'max:255' ],
         'num' =>            [ 'nullable', 'numeric', 'min:0', 'max:1000000' ],
         'manager_notes' =>  [ 'nullable', 'string' ],
+        'event_id' =>       [ 'nullable', 'exists:events,id' ],
 
 
 

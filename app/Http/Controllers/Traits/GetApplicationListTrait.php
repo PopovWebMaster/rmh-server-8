@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Traits;
 use App\Models\Application;
 use App\Models\Company;
 use App\Models\Category;
+use App\Models\Events;
+
 use App\Models\SubApplication;
 
 use App\Http\Controllers\Page\AirApplications\Traits\GetSubApplicationListTrait;
@@ -38,12 +40,23 @@ trait GetApplicationListTrait{
                 };
             };
 
+            $event_id = $model->event_id;
+            if( $event_id !== null ){
+                $event = Events::find( $event_id );
+                if( $event === null ){
+                    $event_id = null;
+                    $model->event_id = null;
+                    $model->save();
+                };
+            };
+
             array_push( $list, [
                 'id' =>                     $application_id,
                 'name' =>                   $model->name,
                 'num' =>                    $model->num === null? '': $model->num,
                 'manager_notes' =>          $model->manager_notes === null? '': $model->manager_notes,
                 'category_id' =>            $category_id,
+                'event_id' =>               $event_id,
                 'sub_application_list' =>   $this->GetSubApplicationList( $application_id ),
             ] );
 
