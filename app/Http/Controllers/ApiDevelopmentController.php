@@ -18,6 +18,8 @@ use App\Http\Controllers\Page\AirApplications\Traits\AddSubApplicationSeriesTrai
 use App\Http\Controllers\Page\AirApplications\Traits\AddSubApplicationReleaseTrait;
 use App\Http\Controllers\Page\AirApplications\Traits\RemoveSubApplicationTrait;
 use App\Http\Controllers\Page\AirApplications\Traits\RemoveApplicationTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\SaveSubApplicationReleaseTrait;
+
 
 
 
@@ -72,6 +74,7 @@ class ApiDevelopmentController extends Controller
     use AddSubApplicationReleaseTrait;
     use RemoveSubApplicationTrait;
     use RemoveApplicationTrait;
+    use SaveSubApplicationReleaseTrait;
 
 
     use GetStartingDataAirLayoutTrait;
@@ -172,6 +175,9 @@ class ApiDevelopmentController extends Controller
                 $result = $this->RemoveApplication( $request, $user );
                 break;
 
+            case 'air-application/save-sub-application-release':
+                $result = $this->SaveSubApplicationRelease( $request, $user );
+                break;
 
 
 
