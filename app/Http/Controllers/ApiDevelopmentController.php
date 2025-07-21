@@ -53,6 +53,9 @@ use App\Http\Controllers\Page\AirPlayReport\Traits\GetOneDayPlayReportListTrait;
 
 
 use App\Http\Controllers\Page\AirSchedule\Traits\GetStartingDataAirScheduleTrait;
+use App\Http\Controllers\Page\AirSchedule\Traits\GetScheduleResultDayDataTrait;
+
+
 
 use App\Http\Controllers\Page\AirLogs\Traits\AddPlayReportTrait;
 
@@ -95,7 +98,14 @@ class ApiDevelopmentController extends Controller
     use GetStartingDataAirPlayReportTrait;
     use GetEntierListForSearchValueTrait;
     use GetOneDayPlayReportListTrait;
+
+
     use GetStartingDataAirScheduleTrait;
+    use GetScheduleResultDayDataTrait;
+
+
+
+
     use AddPlayReportTrait;
 
 
@@ -134,6 +144,27 @@ class ApiDevelopmentController extends Controller
             case 'air-schedule/get-starting-data':
                 $result = $this->GetStartingDataAirSchedule( $request, $user );
                 break;
+
+            case 'air-schedule/get-schedule-result-day-data':
+                $result = $this->GetScheduleResultDayData( $request, $user );
+                break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -179,25 +210,6 @@ class ApiDevelopmentController extends Controller
                 $result = $this->SaveSubApplicationRelease( $request, $user );
                 break;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             case 'air-layout/get-starting-data':
                 $result = $this->GetStartingDataAirLayout( $request, $user );
                 break;
@@ -215,7 +227,6 @@ class ApiDevelopmentController extends Controller
                 $result = $this->SaveCategoryList( $request, $user );
                 break;
 
-
             case 'air-layout/add-new-event':
                 $result = $this->AddNewEvent( $request, $user );
                 break;
@@ -227,8 +238,6 @@ class ApiDevelopmentController extends Controller
             case 'air-layout/save-one-event-data':
                 $result = $this->SaveOneEventData( $request, $user );
                 break;
-
-            
 
             case 'air-layout/remove-event':
                 $result = $this->RemoveEvent( $request, $user );
