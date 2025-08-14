@@ -20,7 +20,7 @@ trait AddNewCompanyTvTrait{
         $companyAlias =         $params[ 'companyAlias' ];
         
         $companyType =          config( 'app.company_type_tv' );
-        $companyProgramSystem = isset( $params[ 'companyProgramSystem' ] )? $params[ 'companyProgramSystem' ]: config( 'app.company_program_system_forward' );
+        $companyProgramSystem = isset( $params[ 'companyProgramSystem' ] )? $params[ 'companyProgramSystem' ]: config( 'app.company_program_system_forward' ); // !!!!!!!!!! <- внимание сюда 
 
         $company = new Company;
         $company->name = $companyFullName;
@@ -32,7 +32,7 @@ trait AddNewCompanyTvTrait{
 
         $companyProgramSystem_model = new CompanyProgramSystem;
         $companyProgramSystem_model->company_id = $company_id;
-        $companyProgramSystem_model->name = 'Forward-TA';
+        $companyProgramSystem_model->name = 'Forward-TA'; // !!!!!!!!!! <- внимание сюда 
         $companyProgramSystem_model->save();
 
         $alminModel = User::where( 'email', '=', config( 'app.admin_email' ) )->first();

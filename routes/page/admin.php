@@ -4,22 +4,28 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Page\Admin\AdminController;
 use App\Http\Controllers\Page\Admin\Post\GetStartingDataAdminController;
+use App\Http\Controllers\Page\Admin\Post\AddNewCompanyController;
 
 
-Route::get( '/admin', [ AdminController::class, 'get' ])->name('admin');
-Route::post( '/admin/get-starting-data', [ GetStartingDataAdminController::class, 'post' ]);
-// Route::resource( '/home/get-starting-data', ApiDevelopmentController::class);
+use App\Http\Controllers\Page\Admin\RedirectAllToAdminHomeController;
 
 
-// Route::prefix('/home')->middleware( [ 'web' ] )->group(function ($router) {
 
-//     Route::post('/get-starting-data',    [ 'uses' => 'Post\GetStartingData\GetStartingDataHomeController@post' ]);
+Route::prefix('/admin')->middleware( [ 'auth', 'validate.access.only.admin' ] )->group(function ($router) {
 
-// });
 
-// Route::get('/home', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+    Route::get( '/', [ AdminController::class, 'get' ])->name('admin_home');
+
+    Route::get( '/company', [ RedirectAllToAdminHomeController::class, 'get' ]);
+
+    Route::post( '/get-starting-data', [ GetStartingDataAdminController::class, 'post' ]);
+    Route::post( '/add-new-company', [ AddNewCompanyController::class, 'post' ]);
+
+
+
+
+
+});
 
 
 

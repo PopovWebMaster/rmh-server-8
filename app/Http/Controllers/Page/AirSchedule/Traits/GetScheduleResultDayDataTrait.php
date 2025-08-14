@@ -69,6 +69,7 @@ trait GetScheduleResultDayDataTrait{
 
                     foreach( $subApplicationRelease as $release_model ){
                         array_push( $list, [
+                            'id' =>                 $release_model->id,
                             'grid_event_id' =>      $release_model->grid_event_id, 
                             'YYYY_MM_DD' =>         $release_model->date, 
                             'startTime' =>          $release_model->time_sec,

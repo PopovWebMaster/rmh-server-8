@@ -6,7 +6,7 @@ use App\Http\Controllers\Page\Home\Post\GetStartingDataController;
 use App\Http\Controllers\Page\Home\HomeController;
 use App\Http\Controllers\ApiDevelopmentController;
 
-Route::get( '/', [ HomeController::class, 'get' ]);
+Route::get( '/', [ HomeController::class, 'get' ])->name('home');
 
 
 Route::post( '/home/get-starting-data', [ GetStartingDataController::class, 'post' ]);

@@ -20,13 +20,6 @@ use App\Http\Controllers\Page\AirApplications\Traits\RemoveSubApplicationTrait;
 use App\Http\Controllers\Page\AirApplications\Traits\RemoveApplicationTrait;
 use App\Http\Controllers\Page\AirApplications\Traits\SaveSubApplicationReleaseTrait;
 
-
-
-
-
-
-
-
 use App\Http\Controllers\Page\AirLayout\Traits\GetStartingDataAirLayoutTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\AddNewCategoryTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\RemoveCategoryTrait;
@@ -40,24 +33,21 @@ use App\Http\Controllers\Page\AirLayout\Traits\RemoveGridEventTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\SetGridEventsDayListAfterCuttingTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\SaveOneEventDataTrait;
 
-
 use App\Http\Controllers\Page\AirLogs\Traits\GetStartingDataAirLogsTrait;
 use App\Http\Controllers\Page\AirMain\Traits\GetStartingDataAirMainTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetStartingDataAirPlayReportTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetEntierListForSearchValueTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetOneDayPlayReportListTrait;
 
-
-
-
-
-
 use App\Http\Controllers\Page\AirSchedule\Traits\GetStartingDataAirScheduleTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\GetScheduleResultDayDataTrait;
 
-
-
 use App\Http\Controllers\Page\AirLogs\Traits\AddPlayReportTrait;
+
+
+
+use App\Http\Controllers\Page\Admin\Traits\GetStartingDataAdminTrait;
+use App\Http\Controllers\Page\Admin\Traits\AddNewCompanyTrait;
 
 
 use App\Models\User;
@@ -103,10 +93,9 @@ class ApiDevelopmentController extends Controller
     use GetStartingDataAirScheduleTrait;
     use GetScheduleResultDayDataTrait;
 
-
-
-
     use AddPlayReportTrait;
+    use GetStartingDataAdminTrait;
+    use AddNewCompanyTrait;
 
 
     public function store(Request $request)
@@ -121,6 +110,36 @@ class ApiDevelopmentController extends Controller
 
 
         switch( $route ){
+
+
+
+
+
+
+
+            case 'admin/get-starting-data':
+                $result = $this->GetStartingDataAdmin( $request, $user );
+                break;
+
+                
+            case 'admin/add-new-company':
+                $result = $this->AddNewCompany( $request, $user );
+                break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             case 'home/get-starting-data':
                 $result = $this->GetStartingDataHome( $request, $user );
