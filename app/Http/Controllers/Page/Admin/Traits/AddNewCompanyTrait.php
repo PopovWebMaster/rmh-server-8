@@ -16,7 +16,7 @@ trait AddNewCompanyTrait{
 
     use GetAllCompanysDataTrait;
 
-    public function AddNewCompany( $request, $user  ){
+    public function AddNewCompany( $request, $user ){
 
         $result = [
             'ok' => false,

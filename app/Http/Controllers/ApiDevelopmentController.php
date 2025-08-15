@@ -48,7 +48,7 @@ use App\Http\Controllers\Page\AirLogs\Traits\AddPlayReportTrait;
 
 use App\Http\Controllers\Page\Admin\Traits\GetStartingDataAdminTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewCompanyTrait;
-
+use App\Http\Controllers\Page\Admin\Traits\GetCompanyDataTrait;
 
 use App\Models\User;
 
@@ -96,6 +96,7 @@ class ApiDevelopmentController extends Controller
     use AddPlayReportTrait;
     use GetStartingDataAdminTrait;
     use AddNewCompanyTrait;
+    use GetCompanyDataTrait;
 
 
     public function store(Request $request)
@@ -124,6 +125,10 @@ class ApiDevelopmentController extends Controller
                 
             case 'admin/add-new-company':
                 $result = $this->AddNewCompany( $request, $user );
+                break;
+
+            case 'admin/get-company-data':
+                $result = $this->GetCompanyData( $request, $user );
                 break;
 
 
