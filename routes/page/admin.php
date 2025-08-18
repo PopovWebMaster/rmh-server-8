@@ -6,6 +6,13 @@ use App\Http\Controllers\Page\Admin\AdminController;
 use App\Http\Controllers\Page\Admin\Post\GetStartingDataAdminController;
 use App\Http\Controllers\Page\Admin\Post\AddNewCompanyController;
 use App\Http\Controllers\Page\Admin\Post\GetCompanyDataController;
+use App\Http\Controllers\Page\Admin\Post\ChangeUserDataController;
+use App\Http\Controllers\Page\Admin\Post\RemoveUserController;
+use App\Http\Controllers\Page\Admin\Post\RemoveCompanyController;
+use App\Http\Controllers\Page\Admin\Post\ChangeCompanyDataController;
+
+
+
 
 
 
@@ -26,6 +33,11 @@ Route::prefix('/admin')->middleware( [ 'auth', 'validate.access.only.admin' ] )-
     Route::post( '/get-starting-data',  [ GetStartingDataAdminController::class, 'post' ]);
     Route::post( '/add-new-company',    [ AddNewCompanyController::class, 'post' ]);
     Route::post( '/get-company-data',   [ GetCompanyDataController::class, 'post' ]);
+    Route::post( '/change-user-data',   [ ChangeUserDataController::class, 'post' ]);
+    Route::post( '/remove-user',        [ RemoveUserController::class, 'post' ]);
+    Route::post( '/remove-company',     [ RemoveCompanyController::class, 'post' ]);
+    Route::post( '/change-company-data',[ ChangeCompanyDataController::class, 'post' ]);
+
 
 
 

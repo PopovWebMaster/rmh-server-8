@@ -7,16 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\SiteController;
 
-use App\Http\Controllers\Page\Admin\Traits\AddNewUserTrait;
-use App\Http\Controllers\Page\Admin\Traits\AddNewCompanyTvTrait;
-
-
-
 class AdminController extends SiteController
 {
-
-    use AddNewUserTrait;
-    use AddNewCompanyTvTrait;
 
     public function __construct(){
         parent::__construct();
@@ -32,7 +24,7 @@ class AdminController extends SiteController
         $this->data['companyType'] = '';
         $this->data['page'] = 'admin';
 
-        ;
+        
 
 
         // $this->AddNewUser([

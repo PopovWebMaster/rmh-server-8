@@ -2,27 +2,33 @@
 
 namespace App\Http\Controllers\Page\Admin\Traits;
 
+use App\Http\Controllers\Page\Admin\Traits\GetOneCompanyDataTrait;
 
-use App\Models\Company;
-use App\Models\CompanyProgramSystem;
 use App\Models\UserCompany;
-
 use App\Models\User;
 
 trait AddNewUserTrait{
 
-    public function AddNewUser( $params ){
+    use GetOneCompanyDataTrait;
 
-        $result = [];
+    public function AddNewUser( $request, $user ){
 
-        $userName =         $params[ 'name' ];
-        $userEmail =        $params[ 'email' ];
-        $userPassword =     $params[ 'password' ];
-        $companyAlias =     isset( $params[ 'companyAlias' ] )? $params[ 'companyAlias' ]: null;
+        $result = [
+            'ok' => false,
+            'message' => '',
+        ];
+
+        $userName =     isset( $request[ 'data' ][ 'userName' ] )?      $request[ 'data' ][ 'userName' ]: null;
+        $userEmail =    isset( $request[ 'data' ][ 'userEmail' ] )?     $request[ 'data' ][ 'userEmail' ]: null;
+        $userPassword = isset( $request[ 'data' ][ 'userPassword' ] )?  $request[ 'data' ][ 'userPassword' ]: null;
+
+        $companyId =    isset( $request[ 'data' ][ 'companyId' ] )? $request[ 'data' ][ 'companyId' ]: null;
 
         $userChack = User::where( 'email', '=', $userEmail )->first();
 
         if( $userChack === null ){
+
+            $result[ 'ok' ] = true;
 
             User::create([
                 'name' => $userName,
@@ -35,22 +41,19 @@ trait AddNewUserTrait{
             if( $user !== null ){
                 $user_id = $user->id;
 
-                $company = Company::where( 'alias', '=', $companyAlias )->first();
-                if( $company !== null ){
-                    $company_id = $company->id;
+                $userCompanyChak = UserCompany::where( 'user_id', '=', $user_id )
+                                            ->where( 'company_id', '=', $companyId )
+                                            ->first();
 
-                    $userCompanyChak = UserCompany::where( 'user_id', '=', $user_id )
-                                                ->where( 'company_id', '=', $company_id )
-                                                ->first();
-
-                    if( $userCompanyChak === null ){
-                        $userCompany = new UserCompany;
-                        $userCompany->user_id = $user_id;
-                        $userCompany->company_id = $company_id;
-                        $userCompany->save();
-                    };
+                if( $userCompanyChak === null ){
+                    $userCompany = new UserCompany;
+                    $userCompany->user_id = $user_id;
+                    $userCompany->company_id = $companyId;
+                    $userCompany->save();
                 };
             };
+
+            $result[ 'company' ] = $this->GetOneCompanyData( $request, $companyId );
         };
 
         return $result;

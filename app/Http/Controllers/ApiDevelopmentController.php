@@ -49,6 +49,13 @@ use App\Http\Controllers\Page\AirLogs\Traits\AddPlayReportTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetStartingDataAdminTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewCompanyTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetCompanyDataTrait;
+use App\Http\Controllers\Page\Admin\Traits\ChangeUserDataTrait;
+use App\Http\Controllers\Page\Admin\Traits\RemoveUserTrait;
+use App\Http\Controllers\Page\Admin\Traits\AddNewUserTrait;
+use App\Http\Controllers\Page\Admin\Traits\RemoveCompanyTrait;
+use App\Http\Controllers\Page\Admin\Traits\ChangeCompanyDataTrait;
+
+
 
 use App\Models\User;
 
@@ -97,7 +104,11 @@ class ApiDevelopmentController extends Controller
     use GetStartingDataAdminTrait;
     use AddNewCompanyTrait;
     use GetCompanyDataTrait;
-
+    use ChangeUserDataTrait;
+    use RemoveUserTrait;
+    use AddNewUserTrait;
+    use RemoveCompanyTrait;
+    use ChangeCompanyDataTrait;
 
     public function store(Request $request)
     {
@@ -131,7 +142,26 @@ class ApiDevelopmentController extends Controller
                 $result = $this->GetCompanyData( $request, $user );
                 break;
 
+            case 'admin/change-user-data':
+                $result = $this->ChangeUserData( $request, $user );
+                break;
 
+            case 'admin/remove-user':
+                $result = $this->RemoveUser( $request, $user );
+                break;
+
+            case 'admin/add-new-user':
+                $result = $this->AddNewUser( $request, $user );
+                break;
+
+            
+            case 'admin/remove-company':
+                $result = $this->RemoveCompany( $request, $user );
+                break;
+
+            case 'admin/change-company-data':
+                $result = $this->ChangeCompanyData( $request, $user );
+                break;
 
 
 

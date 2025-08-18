@@ -16,6 +16,7 @@ trait GetStartingDataAirApplicationsTrait{
             'eventsList',
             'gridEventsList',
             'applicationList',
+            'companyLegalName',
         ];
 
         $result = $this->GetStartingData( $what_to_take, $request, $user );

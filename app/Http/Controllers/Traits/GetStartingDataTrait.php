@@ -9,6 +9,7 @@ use App\Http\Controllers\Traits\GetCategoryListTrait;
 use App\Http\Controllers\Traits\GetEventsListTrait;
 use App\Http\Controllers\Traits\GetGridEventsListTrait;
 use App\Http\Controllers\Traits\GetApplicationListTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetOneCompanyDataTrait;
 
 use App\Models\Company;
 use App\Models\CompanyProgramSystem;
@@ -24,6 +25,7 @@ trait GetStartingDataTrait{
     use GetEventsListTrait;
     use GetGridEventsListTrait;
     use GetApplicationListTrait;
+    use GetOneCompanyDataTrait;
 
     public function GetStartingData( $what_to_take, $request, $user ){
 
@@ -40,6 +42,7 @@ trait GetStartingDataTrait{
                 'gridEventsList'
 
                 'applicationList'
+                companyLegalName,
 
             ];
 
@@ -95,6 +98,18 @@ trait GetStartingDataTrait{
 
         if( in_array( 'applicationList', $what_to_take ) ){
             $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );
+        };
+
+        if( in_array( 'companyLegalName', $what_to_take ) ){
+            $company = Company::where( 'alias', '=',  $companyAlias )->first();
+            $legalName = '';
+            if( $company !== null ){
+                $company_id = $company->id;
+
+                $companyData = $this->GetOneCompanyData( $request, $company_id );
+                $legalName = $companyData[ 'company_legal_name' ];
+            };
+            $result[ 'companyLegalName' ] = $legalName;
         };
 
         
