@@ -9,7 +9,11 @@ use App\Models\UserCompany;
 
 use App\Models\User;
 
+use App\Http\Controllers\Traits\GetUserAccessRightsTrait;
+
 trait GetUserDataFromModelTrait{
+
+    use GetUserAccessRightsTrait;
 
     public function GetUserDataFromModel( $request, $user ){
 
@@ -50,7 +54,10 @@ trait GetUserDataFromModelTrait{
                 'email' =>          $user_email,
                 'position' =>       $user_position,
                 'company' =>        $companyAliasList,
-                'accessRights' =>   $this->GetUserAccessRightsList( $user ),
+                // 'accessRights' =>   $this->GetUserAccessRightsList( $user ),
+                'accessRights' =>   $this->GetUserAccessRights( $user_id ),
+
+
                 'isAuth' =>         true,
             ];
         };
@@ -59,16 +66,16 @@ trait GetUserDataFromModelTrait{
         
     }
 
-    private function GetUserAccessRightsList( $user ){
-        return [
-            // config( 'access_rights.logs.see_page.action' ),
-            // config( 'access_rights.logs.add_files.action' ),
-            // config( 'access_rights.logs.deleting_files.action' ),
-            // config( 'access_rights.logs.add_to_report.action' ),
+    // private function GetUserAccessRightsList( $user ){
+    //     return [
+    //         // config( 'access_rights.logs.see_page.action' ),
+    //         // config( 'access_rights.logs.add_files.action' ),
+    //         // config( 'access_rights.logs.deleting_files.action' ),
+    //         // config( 'access_rights.logs.add_to_report.action' ),
 
-        ];
+    //     ];
 
-    }
+    // }
 
         
 

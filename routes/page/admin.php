@@ -10,9 +10,8 @@ use App\Http\Controllers\Page\Admin\Post\ChangeUserDataController;
 use App\Http\Controllers\Page\Admin\Post\RemoveUserController;
 use App\Http\Controllers\Page\Admin\Post\RemoveCompanyController;
 use App\Http\Controllers\Page\Admin\Post\ChangeCompanyDataController;
-
-
-
+use App\Http\Controllers\Page\Admin\Post\AddNewUserController;
+use App\Http\Controllers\Page\Admin\Post\GetUserAccessDataController;
 
 
 
@@ -30,13 +29,17 @@ Route::prefix('/admin')->middleware( [ 'auth', 'validate.access.only.admin' ] )-
     Route::get( '/company/{company_id}', [ RedirectAllToAdminHomeController::class, 'get' ]);
 
 
-    Route::post( '/get-starting-data',  [ GetStartingDataAdminController::class, 'post' ]);
-    Route::post( '/add-new-company',    [ AddNewCompanyController::class, 'post' ]);
-    Route::post( '/get-company-data',   [ GetCompanyDataController::class, 'post' ]);
-    Route::post( '/change-user-data',   [ ChangeUserDataController::class, 'post' ]);
-    Route::post( '/remove-user',        [ RemoveUserController::class, 'post' ]);
-    Route::post( '/remove-company',     [ RemoveCompanyController::class, 'post' ]);
-    Route::post( '/change-company-data',[ ChangeCompanyDataController::class, 'post' ]);
+    Route::post( '/get-starting-data',      [ GetStartingDataAdminController::class, 'post' ]);
+    Route::post( '/add-new-company',        [ AddNewCompanyController::class, 'post' ]);
+    Route::post( '/get-company-data',       [ GetCompanyDataController::class, 'post' ]);
+    Route::post( '/change-user-data',       [ ChangeUserDataController::class, 'post' ]);
+    Route::post( '/remove-user',            [ RemoveUserController::class, 'post' ]);
+    Route::post( '/remove-company',         [ RemoveCompanyController::class, 'post' ]);
+    Route::post( '/change-company-data',    [ ChangeCompanyDataController::class, 'post' ]);
+    Route::post( '/add-new-user',           [ AddNewUserController::class, 'post' ]);
+    Route::post( '/get-user-access-right',  [ GetUserAccessDataController::class, 'post' ]);
+
+
 
 
 
