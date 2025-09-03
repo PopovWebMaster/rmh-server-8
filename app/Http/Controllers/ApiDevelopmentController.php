@@ -55,6 +55,8 @@ use App\Http\Controllers\Page\Admin\Traits\AddNewUserTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveCompanyTrait;
 use App\Http\Controllers\Page\Admin\Traits\ChangeCompanyDataTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetUserAccessDataTrait;
+use App\Http\Controllers\Page\Admin\Traits\SetUserAccessRightsChangesTrait;
+
 
 
 
@@ -112,6 +114,11 @@ class ApiDevelopmentController extends Controller
     use RemoveCompanyTrait;
     use ChangeCompanyDataTrait;
     use GetUserAccessDataTrait;
+    use SetUserAccessRightsChangesTrait;
+
+
+
+
 
     public function store(Request $request)
     {
@@ -173,6 +180,14 @@ class ApiDevelopmentController extends Controller
             case 'admin/get-user-access-right':
                 $result = $this->GetUserAccessData( $request, $user );
                 break;
+
+            case 'admin/set-user-access-rights-changes':
+                $result = $this->SetUserAccessRightsChanges( $request, $user );
+                break;
+
+
+
+                
 
 
 
