@@ -47,7 +47,7 @@ trait RemoveGridEventTrait{
 
             };
 
-            $result[ 'list' ] = $this->GetGridEventsList( $companyAlias );
+            // $result[ 'list' ] = $this->GetGridEventsList( $companyAlias );
 
         };
 

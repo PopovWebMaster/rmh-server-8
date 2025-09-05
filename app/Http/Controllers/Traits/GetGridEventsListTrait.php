@@ -6,8 +6,12 @@ use App\Models\GridEvents;
 use App\Models\Company;
 use App\Models\Events;
 
+use App\Http\Controllers\Page\AirLayout\Traits\GetOneGridEventItemFromModelTrait;
+
 
 trait GetGridEventsListTrait{
+
+    use GetOneGridEventItemFromModelTrait;
 
     public function GetGridEventsList( $companyAlias ){
 
@@ -30,19 +34,21 @@ trait GetGridEventsListTrait{
             if( $event === null ){
                 $model->delete();
             }else{
-                $item = [
-                    'id' =>             $model->id,
-                    'dayNum' =>         $model->day_num,
-                    'firstSegmentId' => $model->first_segment_id,
-                    'startTime' =>      $model->start_time,
-                    'durationTime' =>   $model->duration_time,
-                    'notes' =>          $model->notes === null? '': $model->notes,
-                    'eventId' =>        $model->event_id,
-                    'pushIt' =>         $model->push_it,
-                    'cutPart' =>        $model->cut_part,
-                    'is_premiere' =>    ( bool ) $model->is_premiere,
-                    'isKeyPoint' =>     ( bool ) $model->is_a_key_point,
-                ];
+                // $item = [
+                //     'id' =>             $model->id,
+                //     'dayNum' =>         $model->day_num,
+                //     'firstSegmentId' => $model->first_segment_id,
+                //     'startTime' =>      $model->start_time,
+                //     'durationTime' =>   $model->duration_time,
+                //     'notes' =>          $model->notes === null? '': $model->notes,
+                //     'eventId' =>        $model->event_id,
+                //     'pushIt' =>         $model->push_it,
+                //     'cutPart' =>        $model->cut_part,
+                //     'is_premiere' =>    ( bool ) $model->is_premiere,
+                //     'isKeyPoint' =>     ( bool ) $model->is_a_key_point,
+                // ];
+
+                $item = $this->GetOneGridEventItemFromModel( $model );
 
                 if( $item[ 'dayNum' ] === 0 ){
                     array_push( $day_0, $item );

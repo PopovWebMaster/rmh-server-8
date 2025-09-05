@@ -15,6 +15,11 @@ use App\Http\Controllers\Page\AirLayout\Post\AddNewGridEventController;
 use App\Http\Controllers\Page\AirLayout\Post\RemoveGridEventController;
 use App\Http\Controllers\Page\AirLayout\Post\SetGridEventsDayListAfterCuttingController;
 use App\Http\Controllers\Page\AirLayout\Post\SaveOneEventDataController;
+use App\Http\Controllers\Page\AirLayout\Post\SaveGridEvenListForOneDayController;
+
+
+
+
 
 
 
@@ -37,8 +42,7 @@ Route::prefix('/air-layout')->middleware( [ 'auth', 'validate.company', 'validat
     Route::post('/remove-grid-event',                       [ RemoveGridEventController::class, 'post' ]);
     Route::post('/set-grid-events-day-list-after-cutting',  [ SetGridEventsDayListAfterCuttingController::class, 'post' ]);
     Route::post('/save-one-event-data',                     [ SaveOneEventDataController::class, 'post' ]);
-
-
+    Route::post('/save-grid-event-list-for-one-day',        [ SaveGridEvenListForOneDayController::class, 'post' ]);
 
 
 

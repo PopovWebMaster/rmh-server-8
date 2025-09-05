@@ -6,6 +6,8 @@ use App\Http\Controllers\Traits\GetGridEventsListTrait;
 
 use App\Http\Controllers\Traits\Validate\ValidateNewGridEventTrait;
 
+use App\Http\Controllers\Page\AirLayout\Traits\GetOneGridEventItemFromModelTrait;
+
 use App\Models\Company;
 use App\Models\GridEvents;
 
@@ -13,6 +15,7 @@ trait AddNewGridEventTrait{
 
     use ValidateNewGridEventTrait;
     use GetGridEventsListTrait;
+    use GetOneGridEventItemFromModelTrait;
 
     public function AddNewGridEvent( $request, $user ){
 
@@ -55,7 +58,11 @@ trait AddNewGridEventTrait{
 
             $gridEvents->save();
 
-            $result[ 'list' ] = $this->GetGridEventsList( $companyAlias );
+            $gridEvent = $this->GetOneGridEventItemFromModel( $gridEvents );
+
+            // $result[ 'list' ] = $this->GetGridEventsList( $companyAlias );
+            $result[ 'newGridEvent' ] = $gridEvent;
+
 
         };
 
