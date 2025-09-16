@@ -75,6 +75,16 @@ return [
             
         ],
 
+        'schedule_result' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/private/schedule_result/'),
+            // 'visibility' => 'public',
+            'visibility' => 'private',
+
+
+            
+        ],
+
         
 
     ],

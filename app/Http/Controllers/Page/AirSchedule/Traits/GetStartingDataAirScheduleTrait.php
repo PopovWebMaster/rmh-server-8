@@ -15,6 +15,7 @@ trait GetStartingDataAirScheduleTrait{
             'categoryList',
             'eventsList',
             'gridEventsList',
+            // 'currentDaySchaduleList',
         ];
 
         $result = $this->GetStartingData( $what_to_take, $request, $user );

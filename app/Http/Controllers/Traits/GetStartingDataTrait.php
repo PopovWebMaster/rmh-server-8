@@ -10,6 +10,7 @@ use App\Http\Controllers\Traits\GetEventsListTrait;
 use App\Http\Controllers\Traits\GetGridEventsListTrait;
 use App\Http\Controllers\Traits\GetApplicationListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetOneCompanyDataTrait;
+use App\Http\Controllers\Page\AirSchedule\Traits\GetSchaduleResultListTrait;
 
 use App\Models\Company;
 use App\Models\CompanyProgramSystem;
@@ -26,6 +27,7 @@ trait GetStartingDataTrait{
     use GetGridEventsListTrait;
     use GetApplicationListTrait;
     use GetOneCompanyDataTrait;
+    use GetSchaduleResultListTrait;
 
     public function GetStartingData( $what_to_take, $request, $user ){
 
@@ -42,7 +44,8 @@ trait GetStartingDataTrait{
                 'gridEventsList'
 
                 'applicationList'
-                companyLegalName,
+                'companyLegalName,
+                'currentDaySchaduleList'
 
             ];
 
@@ -111,6 +114,27 @@ trait GetStartingDataTrait{
             };
             $result[ 'companyLegalName' ] = $legalName;
         };
+
+        if( in_array( 'currentDaySchaduleList', $what_to_take ) ){
+            $YYYY_MM_DD = date("Y-m-d");
+
+            $result[ 'currentDaySchaduleList' ] = $this->GetSchaduleResultList( $companyAlias, $YYYY_MM_DD );
+        }
+
+
+
+
+        // currentDaySchaduleList
+
+
+        // $result[ 'YYYY_MM_DD' ] = date(DATE_ATOM, mktime(0, 0, 0, 7, 1, 2000));
+        // $result[ 'YYYY_MM_DD' ] = date(DATE_ATOM, mktime());
+        // $result[ 'YYYY_MM_DD' ] = date("Y-m-d H:i:s");
+        // $result[ 'YYYY_MM_DD' ] = date("Y-m-d");
+
+
+        // date("Y-m-d H:i:s")
+
 
         
 

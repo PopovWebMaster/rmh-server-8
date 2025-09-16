@@ -13,10 +13,12 @@ use App\Models\SubApplication;
 use App\Models\SubApplicationFileName;
 use App\Models\SubApplicationRelease;
 
-
+use App\Http\Controllers\Page\AirSchedule\Traits\GetSchaduleResultListTrait;
 
 
 trait GetScheduleResultDayDataTrait{
+
+    use GetSchaduleResultListTrait;
 
 
     public function GetScheduleResultDayData( $request, $user ){
@@ -104,6 +106,8 @@ trait GetScheduleResultDayDataTrait{
             });
 
             $result[ 'release_list' ] = $list;
+            $result[ 'scheduleEventsList' ] = $this->GetSchaduleResultList( $companyAlias, $YYYY_MM_DD );
+
 
         };
 
