@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Page\AirSchedule\Traits;
 
 use App\Models\Company;
+use App\Models\GridEvents;
+
+
 
 use Storage;
 
@@ -26,9 +29,38 @@ trait GetSchaduleResultListTrait{
             $result[ $i ]->notes = $result[ $i ]->notes === null? '': $result[ $i ]->notes;
             $result[ $i ]->finalNotes = $result[ $i ]->finalNotes === null? '': $result[ $i ]->finalNotes;
 
+            $gridEventId = null;
+
+            if( isset( $result[ $i ]->gridEventId ) ){
+                if( $result[ $i ]->gridEventId !== null ){
+                    $gridEventId = $result[ $i ]->gridEventId;
+                };
+            }else if( isset( $result[ $i ]->id )){
+                if( $result[ $i ]->id !== null ){
+                    $gridEventId = $result[ $i ]->id;
+                };
+            };
+            if( $gridEventId !== null ){
+                $gridEvents = GridEvents::find( $gridEventId );
+                if( $gridEvents !== null ){
+
+                    array_push( $arr, $result[ $i ] );
+
+                };
+            };
+
+
+
+//             gridEventId
+// : 
+// 504
+// id
+// : 
+// 504
+
         };
 
-        return $result;
+        return $arr;
         
     }
 
