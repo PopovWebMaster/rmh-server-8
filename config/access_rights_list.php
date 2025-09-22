@@ -11,8 +11,21 @@
     */
         
     return [
-        'layout_remove_category',
-        'layout_remove_event',
+        // 'layout_remove_category',
+
+
+        // 'layout_remove_event',
+
+        'layout_event_remove',
+        'layout_event_edit',
+        'layout_event_add',
+
+        'layout_category_add',
+        'layout_category_edit',
+        'layout_category_remove',
+
+
+
 
     ];
 

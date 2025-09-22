@@ -73,6 +73,22 @@ class Kernel extends HttpKernel
         'validate.access.only.admin' => \App\Http\Middleware\ValidateAccessRightOnlyAdmin::class,
 
 
+        // 'access.layout_remove_event' => \App\Http\Middleware\AccessRights\LayoutRemoveEvent::class,
+        'access.layout_event_remove' => \App\Http\Middleware\AccessRights\LayoutEventRemove::class,
+        'access.layout_event_edit' => \App\Http\Middleware\AccessRights\LayoutEventEdit::class,
+        'access.layout_event_add' => \App\Http\Middleware\AccessRights\LayoutEventAdd::class,
+
+        'access.layout_category_add' => \App\Http\Middleware\AccessRights\LayoutCategoryAdd::class,
+        'access.layout_category_edit' => \App\Http\Middleware\AccessRights\LayoutCategoryEdit::class,
+        'access.layout_category_remove' => \App\Http\Middleware\AccessRights\LayoutCategoryRemove::class,
+
+
+
+
+
+
+
+
 
         
 
