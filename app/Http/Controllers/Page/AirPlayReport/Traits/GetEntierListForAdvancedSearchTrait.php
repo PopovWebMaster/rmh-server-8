@@ -4,7 +4,13 @@ namespace App\Http\Controllers\Page\AirPlayReport\Traits;
 
 use Storage;
 
+use App\Http\Controllers\Traits\Validate\ValidateYYYYMMDDTrait;
+
+use Validator;
+
 trait GetEntierListForAdvancedSearchTrait{
+
+    use ValidateYYYYMMDDTrait;
 
     public function GetEntierListForAdvancedSearch( $request, $user ){
 
@@ -13,91 +19,150 @@ trait GetEntierListForAdvancedSearchTrait{
             'message' => '',
         ];
 
-
         $companyAlias = $request['data']['companyAlias'];
 
         $result[ 'ok' ] = true;
 
-        /*
-        $searchPeriod = $request[ 'data' ][ 'searchPeriod' ];
-        $searchValue = mb_convert_case( $request[ 'data' ][ 'searchValue' ], MB_CASE_UPPER );
+        $dataFrom =         isset( $request[ 'data' ][ 'dataFrom' ] )?          $request[ 'data' ][ 'dataFrom' ]:       null;
+        $dataTo =           isset( $request[ 'data' ][ 'dataTo' ] )?            $request[ 'data' ][ 'dataTo' ]:         null;
+        $requestList =      isset( $request[ 'data' ][ 'requestList' ] )?       $request[ 'data' ][ 'requestList' ]:    null;
+        $isOnlyPremiers =   isset( $request[ 'data' ][ 'isOnlyPremiers' ] )?    $request[ 'data' ][ 'isOnlyPremiers' ]: null;
 
-        $result[ 'list' ] = [];
-
-        if( $searchPeriod === 'all' ){
-
-            $files = Storage::disk('play_report')->files( $companyAlias );
-
-            for( $i = 0; $i < count( $files ); $i++ ){
-
-                $file = $files[ $i ];
-                $json = Storage::disk('play_report')->get( $file );
-
-                $arr = json_decode( $json );
-
-                for( $index = 0; $index < count($arr); $index++ ){
-                    $type = $arr[$index]->type;
-                    if( $type === 'movie' ){
-                        $fileName = mb_convert_case( $type = $arr[$index]->file->name, MB_CASE_UPPER );
-
-                        if( strpos( $fileName, $searchValue ) !== false ){
-                            array_push( $result[ 'list' ], $arr[$index] );
-                        }else{
-
-                            for( $gi = 0; $gi < count( $arr[$index]->graphics ); $gi++ ){
-                                $GfileName = mb_convert_case( $arr[ $index ]->graphics[ $gi ]->file->name, MB_CASE_UPPER );
-                                if( strpos( $GfileName, $searchValue ) !== false ){
-                                    array_push( $result[ 'list' ], $arr[$index] );
-                                    break;
-                                };
-                            };
-
-                        };
-                    };
-                };
-            };
+        $validate = $this->ValidateRequestData_GEL( $request );
+        if( $validate[ 'ok' ] === false ){
+            $result = $validate;
         }else{
-            $files = Storage::disk('play_report')->files( $companyAlias );
 
-            $mouthFiles = [];
+            $files = $this->GetArrayOfFiles( $dataFrom, $dataTo, $companyAlias );
+
+            $result[ 'files' ] = $files;
+
+            usort( $requestList, function( $a, $b ){
+                $la = strlen( $a );
+                $lb = strlen( $b );
+                if( $la == $lb ) {
+                    return strcmp( $a, $b );
+                };
+                return $lb - $la;
+            });
+
+            $result[ 'requestList' ] = $requestList;
+            $result[ 'list' ] = [];
+
+            $premiers = [];
 
             for( $i = 0; $i < count( $files ); $i++ ){
-                if( strpos( $files[ $i ], $searchPeriod ) !== false ){
-                    array_push( $mouthFiles, $files[ $i ] );
-                };
-            };
+                if( Storage::disk('play_report')->exists( $files[ $i ] ) ){
+                    $json = Storage::disk('play_report')->get( $files[ $i ] );
+                    $arr = json_decode( $json );
 
-            for( $i = 0; $i < count( $mouthFiles ); $i++ ){
-                $file = $mouthFiles[ $i ];
-                $json = Storage::disk('play_report')->get( $file );
+                    for( $index = 0; $index < count( $arr ); $index++ ){
+                        $type = $arr[$index]->type;
+                        if( $type === 'movie' ){
 
-                $arr = json_decode( $json );
+                            $fileName = mb_convert_case( $arr[$index]->file->name, MB_CASE_UPPER );
 
-                for( $index = 0; $index < count($arr); $index++ ){
-                    $type = $arr[$index]->type;
-                    if( $type === 'movie' ){
-                        $fileName = mb_convert_case( $arr[$index]->file->name, MB_CASE_UPPER );
+                            $makeSearch = false;
 
-                        if( strpos( $fileName, $searchValue ) !== false ){
-                            array_push( $result[ 'list' ], $arr[$index] );
-                        }else{
-                            for( $gi = 0; $gi < count( $arr[$index]->graphics ); $gi++ ){
-                                $GfileName = mb_convert_case( $arr[ $index ]->graphics[ $gi ]->file->puth, MB_CASE_UPPER );
-                                if( strpos( $GfileName, $searchValue ) !== false ){
-                                    array_push( $result[ 'list' ], $arr[$index] );
-                                    break;
+                            if( $isOnlyPremiers ){
+                                if( in_array( $fileName, $premiers ) ){
+                                    $makeSearch = false;
+                                }else{
+                                    $makeSearch = true;
+                                };
+                            }else{
+                                $makeSearch = true;
+                            };
+
+                            if( $makeSearch ){
+                                for( $y = 0; $y < count( $requestList ); $y++ ){
+                                    $searchValue = mb_convert_case( $requestList[ $y ], MB_CASE_UPPER );
+                                    if( strpos( $fileName, $searchValue ) !== false ){
+                                        array_push( $result[ 'list' ], $arr[$index] );
+
+                                        if( $isOnlyPremiers ){
+                                            array_push( $premiers, $fileName );
+                                        };
+                                        break;
+                                    };
                                 };
                             };
+
                         };
                     };
+
                 };
+
             };
 
-            
+
         };
-*/
+
+
+
         return $result;
         
+    }
+
+    private function ValidateRequestData_GEL( $request ){
+        $result = [
+            'ok' => false,
+            'message' => '',
+        ];
+
+        $dataFrom =         isset( $request[ 'data' ][ 'dataFrom' ] )?          $request[ 'data' ][ 'dataFrom' ]:       null;
+        $dataTo =           isset( $request[ 'data' ][ 'dataTo' ] )?            $request[ 'data' ][ 'dataTo' ]:         null;
+        $requestList =      isset( $request[ 'data' ][ 'requestList' ] )?       $request[ 'data' ][ 'requestList' ]:    null;
+        $isOnlyPremiers =   isset( $request[ 'data' ][ 'isOnlyPremiers' ] )?    $request[ 'data' ][ 'isOnlyPremiers' ]: null;
+
+        $validateDateFrom = $this->ValidateYYYYMMDD( $dataFrom );
+
+        if( $validateDateFrom[ 'fails' ] ){
+            $result[ 'message' ] = 'Валидация запроса не пройдена! dataFrom - '.$dataFrom;
+        }else{
+            $validateDateTo = $this->ValidateYYYYMMDD( $dataTo );
+            if( $validateDateTo[ 'fails' ] ){
+                $result[ 'message' ] = 'Валидация запроса не пройдена! dataTo - '.$dataTo;
+            }else{
+
+                 $validate = Validator::make( [ 
+                    'requestList' => $requestList,
+                    'isOnlyPremiers' => $isOnlyPremiers,
+
+                ], [
+                    'requestList' =>        [ 'required', 'array' ],
+                    'requestList.*' =>      [ 'required', 'string' ],
+                    'isOnlyPremiers' =>     [ 'required', 'boolean' ],
+                ]);
+
+                if( $validate->fails() ){
+                    $result[ 'message' ] = $validate->getMessageBag()->all();
+                }else{
+                    $result[ 'ok' ] = true;
+                };
+            };
+        };
+
+        return $result;
+    }
+
+    private function GetArrayOfFiles( $dataFrom, $dataTo, $companyAlias ){
+
+        $result = [];
+
+        $from_sec = strtotime( $dataFrom );
+        $to_sec = strtotime( $dataTo );
+
+        $next_sec = $from_sec;
+
+        do{
+            $YYYY_MM_DD = date('Y-m-d', $next_sec );
+            $file = $companyAlias.'/'.$YYYY_MM_DD.'.json';
+            array_push( $result, $file );
+            $next_sec = $next_sec + 86400;
+        }while( $next_sec <= $to_sec );
+
+        return $result;
     }
 
 }

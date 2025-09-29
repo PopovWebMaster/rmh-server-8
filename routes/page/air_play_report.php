@@ -6,6 +6,11 @@ use App\Http\Controllers\Page\AirPlayReport\AirPlayReportController;
 use App\Http\Controllers\Page\AirPlayReport\Post\GetStartingDataAirPlayReportController;;
 use App\Http\Controllers\Page\AirPlayReport\Post\GetOneDayPlayReportListController;
 use App\Http\Controllers\Page\AirPlayReport\Post\GetEntierListForSearchValueController;
+use App\Http\Controllers\Page\AirPlayReport\Post\GetEntierListForAdvancedSearchController;
+
+
+
+
 
 
 Route::get('/company/{company?}/air-play-report', [ AirPlayReportController::class, 'get' ])->middleware( [ 'auth', 'validate.company.get' ] );
@@ -16,6 +21,10 @@ Route::prefix('/air-play-report')->middleware( [ 'auth', 'validate.company', 'va
 
     Route::post('/get-entier-list-for-search-value', [ GetEntierListForSearchValueController::class, 'post' ]);
     Route::post('/get-one-day-entire-list', [ GetOneDayPlayReportListController::class, 'post' ]);
+    Route::post('/get-entier-list-for-advanced-search', [ GetEntierListForAdvancedSearchController::class, 'post' ]);
+
+
+
 
 
 });
