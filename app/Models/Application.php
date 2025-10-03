@@ -18,6 +18,7 @@ class Application extends Model
         'num', 
         'manager_notes', 
         'event_id',
+        'force_event_id',
 
     ];
 
@@ -32,6 +33,8 @@ class Application extends Model
         'num' =>            [ 'nullable', 'numeric', 'min:0', 'max:1000000' ],
         'manager_notes' =>  [ 'nullable', 'string' ],
         'event_id' =>       [ 'nullable', 'exists:events,id' ],
+        'force_event_id' => [ 'nullable', 'exists:events,id' ],
+
 
 
 

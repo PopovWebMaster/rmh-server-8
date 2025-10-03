@@ -96,6 +96,12 @@ trait RemoveEventTrait{
                     $model->save();
                 };
 
+                $applications_force = Application::where( 'force_event_id', '=', $eventId )->get();
+                foreach( $applications_force as $model ){
+                    $model->force_event_id = null;
+                    $model->save();
+                };
+
                 $result[ 'eventsList' ] = $this->GetEventsList( $companyAlias );
                 $result[ 'gridEventsList' ] = $this->GetGridEventsList( $companyAlias );
 

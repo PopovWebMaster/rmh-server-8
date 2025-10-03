@@ -92,11 +92,18 @@ trait SaveSubApplicationReleaseTrait{
                         $subApplicationRelease->save();
                     };
 
+                    $period = [
+                        'from' => $subApplication->period_from,
+                        'to' => $subApplication->period_to,
+
+                    ];
+
+                    $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
+                    $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias, $period );
 
                 };
 
-                $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
-                $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );
+
 
             };
 

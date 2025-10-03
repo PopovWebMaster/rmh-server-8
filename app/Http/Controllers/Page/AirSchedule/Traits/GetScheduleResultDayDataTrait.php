@@ -88,6 +88,7 @@ trait GetScheduleResultDayDataTrait{
                             'manager_id' =>         $model_application->manager_id,
                             'applicationName' =>    $model_application->name,
                             'event_id' =>           $model_application->event_id,
+                            'force_event_id' =>     $model_application->force_event_id,
 
                         ] );
                     };

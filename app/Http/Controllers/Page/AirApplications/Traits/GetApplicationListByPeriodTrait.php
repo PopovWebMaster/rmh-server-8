@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Http\Controllers\Traits;
+namespace App\Http\Controllers\Page\AirApplications\Traits;
 
 use App\Models\Application;
 use App\Models\Company;
@@ -11,16 +11,14 @@ use App\Models\SubApplication;
 use App\Models\User;
 
 
-
-
 use App\Http\Controllers\Page\AirApplications\Traits\GetSubApplicationListTrait;
 
 
-trait GetApplicationListTrait{
+trait GetApplicationListByPeriodTrait{
 
     use GetSubApplicationListTrait;
 
-    public function GetApplicationList( $companyAlias, $release_period = null ){
+    public function GetApplicationListByPeriod( $companyAlias, $period = null  ){
 
         $company = Company::where( 'alias', '=', $companyAlias )->first();
         $company_id = $company->id;
@@ -61,12 +59,10 @@ trait GetApplicationListTrait{
                 'name' =>                   $model->name,
                 'num' =>                    $model->num === null? '': $model->num,
                 'manager_notes' =>          $model->manager_notes === null? '': $model->manager_notes,
-                'manager' =>                $this->GetManagerInfo( $manager_id ),
+                'manager' =>                $this->GetManagerInfo__( $manager_id ),
                 'category_id' =>            $category_id,
                 'event_id' =>               $event_id,
-                'sub_application_list' =>   $this->GetSubApplicationList( $application_id, $release_period ),
-                // 'sub_application_list' =>   $sub_application_list,
-
+                'sub_application_list' =>   $this->GetSubApplicationList( $application_id, $period ),
             ] );
 
         };
@@ -74,7 +70,7 @@ trait GetApplicationListTrait{
         return $list;
         
     }
-    private function GetManagerInfo( $user_id ){
+    protected function GetManagerInfo__( $user_id ){
 
         $result = [
             'name' => '',

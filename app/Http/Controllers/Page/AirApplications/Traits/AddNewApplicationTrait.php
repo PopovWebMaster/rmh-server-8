@@ -27,7 +27,8 @@ trait AddNewApplicationTrait{
         $applicationCategoryId =    isset( $request['data']['applicationCategoryId'] )?     $request['data']['applicationCategoryId']: null;
         $applicationManagerNotes =  isset( $request['data']['applicationManagerNotes'] )?   $request['data']['applicationManagerNotes']: null;
 
-        $applicationEventId =       isset( $request['data']['applicationEventId'] )?   $request['data']['applicationEventId']: null;
+        $applicationEventId =       isset( $request['data']['applicationEventId'] )?        $request['data']['applicationEventId']: null;
+        $applicationForceEventId =  isset( $request['data']['applicationForceEventId'] )?   $request['data']['applicationForceEventId']: null;
 
 
         $validate = $this->ValidateNewApplication([
@@ -36,6 +37,8 @@ trait AddNewApplicationTrait{
             'applicationCategoryId' =>      $applicationCategoryId,
             'applicationManagerNotes' =>    $applicationManagerNotes,
             'applicationEventId' =>         $applicationEventId,
+            'applicationForceEventId' =>    $applicationForceEventId,
+
 
 
         ]);
@@ -58,6 +61,7 @@ trait AddNewApplicationTrait{
             $application->manager_notes =   $applicationManagerNotes;
             $application->category_id =     $applicationCategoryId;
             $application->event_id =        $applicationEventId;
+            $application->force_event_id =  $applicationForceEventId;
 
             $application->save();
 

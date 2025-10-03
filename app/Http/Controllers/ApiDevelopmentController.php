@@ -19,6 +19,9 @@ use App\Http\Controllers\Page\AirApplications\Traits\AddSubApplicationReleaseTra
 use App\Http\Controllers\Page\AirApplications\Traits\RemoveSubApplicationTrait;
 use App\Http\Controllers\Page\AirApplications\Traits\RemoveApplicationTrait;
 use App\Http\Controllers\Page\AirApplications\Traits\SaveSubApplicationReleaseTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\GetApplicationListForPeriodTrait;
+
+
 
 use App\Http\Controllers\Page\AirLayout\Traits\GetStartingDataAirLayoutTrait;
 use App\Http\Controllers\Page\AirLayout\Traits\AddNewCategoryTrait;
@@ -82,6 +85,7 @@ class ApiDevelopmentController extends Controller
     use RemoveSubApplicationTrait;
     use RemoveApplicationTrait;
     use SaveSubApplicationReleaseTrait;
+    use GetApplicationListForPeriodTrait;
 
 
     use GetStartingDataAirLayoutTrait;
@@ -298,6 +302,27 @@ class ApiDevelopmentController extends Controller
             case 'air-application/save-sub-application-release':
                 $result = $this->SaveSubApplicationRelease( $request, $user );
                 break;
+
+            case 'air-application/get_application_list_for_period':
+                $result = $this->GetApplicationListForPeriod( $request, $user );
+                break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             case 'air-layout/get-starting-data':
                 $result = $this->GetStartingDataAirLayout( $request, $user );

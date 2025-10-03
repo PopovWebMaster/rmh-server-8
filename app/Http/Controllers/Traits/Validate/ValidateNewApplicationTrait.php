@@ -18,17 +18,18 @@ trait ValidateNewApplicationTrait{
         $applicationNum =           $params[ 'applicationNum' ];
         $applicationCategoryId =    $params[ 'applicationCategoryId' ];
         $applicationManagerNotes =  $params[ 'applicationManagerNotes' ];
-        $applicationEventId =  $params[ 'applicationEventId' ];
+        $applicationEventId =       $params[ 'applicationEventId' ];
+        $applicationForceEventId =  $params[ 'applicationForceEventId' ];
 
-
-        
 
         $validate = Validator::make( [ 
             'applicationName' =>            $applicationName,
             'applicationNum' =>             $applicationNum,
             'applicationCategoryId' =>      $applicationCategoryId,
             'applicationManagerNotes' =>    $applicationManagerNotes,
-            'applicationEventId' =>    $applicationEventId,
+            'applicationEventId' =>         $applicationEventId,
+            'applicationForceEventId' =>    $applicationForceEventId,
+
 
 
         ], [
@@ -37,6 +38,8 @@ trait ValidateNewApplicationTrait{
             'applicationCategoryId' =>      [ 'nullable', 'exists:category,id' ],
             'applicationManagerNotes' =>    [ 'nullable', 'string', ],
             'applicationEventId' =>         [ 'nullable', 'exists:events,id' ],
+            'applicationForceEventId' =>    [ 'nullable', 'exists:events,id' ],
+
 
         ]);
 

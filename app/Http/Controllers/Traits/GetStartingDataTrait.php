@@ -12,6 +12,7 @@ use App\Http\Controllers\Traits\GetApplicationListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetOneCompanyDataTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\GetSchaduleResultListTrait;
 
+
 use App\Models\Company;
 use App\Models\CompanyProgramSystem;
 
@@ -28,6 +29,7 @@ trait GetStartingDataTrait{
     use GetApplicationListTrait;
     use GetOneCompanyDataTrait;
     use GetSchaduleResultListTrait;
+
 
     public function GetStartingData( $what_to_take, $request, $user ){
 
@@ -100,7 +102,10 @@ trait GetStartingDataTrait{
         };
 
         if( in_array( 'applicationList', $what_to_take ) ){
+
             $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );
+
+
         };
 
         if( in_array( 'companyLegalName', $what_to_take ) ){

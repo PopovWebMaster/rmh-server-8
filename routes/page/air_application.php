@@ -13,6 +13,8 @@ use App\Http\Controllers\Page\AirApplications\Post\RemoveApplicationController;
 use App\Http\Controllers\Page\AirApplications\Post\RemoveSubApplicationController;
 use App\Http\Controllers\Page\AirApplications\Post\SeveApplicationDataController;
 use App\Http\Controllers\Page\AirApplications\Post\SaveSubApplicationReleaseController;
+use App\Http\Controllers\Page\AirApplications\Post\GetApplicationListForPeriodController;
+
 
 
 
@@ -36,6 +38,8 @@ Route::prefix('/air-application')->middleware( [ 'auth', 'validate.company', 'va
     Route::post('/remove-application',              [ RemoveApplicationController::class, 'post' ]);
 
     Route::post('/save-sub-application-release',    [ SaveSubApplicationReleaseController::class, 'post' ]);
+    Route::post('/get_application_list_for_period',    [ GetApplicationListForPeriodController::class, 'post' ]);
+
 
 
 

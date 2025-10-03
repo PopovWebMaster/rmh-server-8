@@ -6,6 +6,7 @@ use App\Http\Controllers\Page\AirApplications\Traits\GetSubApplicationListTrait;
 
 use App\Models\Application;
 use App\Models\Category;
+// use App\Models\SubApplication;
 
 trait GetOneApplicationDataTrait{
 
@@ -32,6 +33,12 @@ trait GetOneApplicationDataTrait{
             $category_id = null;
         };
 
+
+        // $subApplications = SubApplication::where( 'application_id', '=', $application_id )->get();
+
+
+
+
         $result[ 'application_id' ] =       $application_id;
         $result[ 'category_id' ] =          $category_id;
         $result[ 'event_id' ] =             $event_id;
@@ -40,7 +47,7 @@ trait GetOneApplicationDataTrait{
         $result[ 'name' ] =                 $name;
         $result[ 'num' ] =                  $num;
         $result[ 'manager_notes' ] =        $manager_notes;
-        $result[ 'sub_application_list' ] = $this->GetSubApplicationList( $application_id );
+        $result[ 'sub_application_list' ] = $this->GetSubApplicationList( $application_id, 'all' );
 
         return $result;
     }

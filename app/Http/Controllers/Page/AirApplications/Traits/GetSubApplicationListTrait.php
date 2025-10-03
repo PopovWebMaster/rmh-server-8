@@ -9,11 +9,35 @@ use App\Models\SubApplicationRelease;
 
 trait GetSubApplicationListTrait{
 
-    public function GetSubApplicationList( $application_id ){
+    public function GetSubApplicationList( $application_id, $period = null ){ // $period[ 'from' ] , $period[ 'to' ] || null || \all
 
         $result = [];
 
         $subApplications = SubApplication::where( 'application_id', '=', $application_id )->get();
+
+        // $subApplications = null;
+
+        // if( $period === null ){
+
+        //     $subApplications = SubApplication::where( 'application_id', '=', $application_id )->get();
+
+
+        // }else{
+        //     // $records = ModelName::whereBetween('date_column', ['2023-01-01', '2023-01-31'])->get();
+        //     // $subApplications = SubApplication::whereBetween( 'created_at', [ $period[ 'from' ] , $period[ 'to' ] ])->get();
+
+        //     $subApplications = SubApplication::where( 'application_id', '=', $application_id )
+        //                                     ->where( 'period_from', '>=', $period[ 'from' ] )
+        //                                     ->where( 'period_to', '>=', $period[ 'to' ] )
+        //                                     ->get();
+
+        // };
+
+
+
+
+
+
 
         if( $subApplications !== null ){
 
@@ -37,7 +61,33 @@ trait GetSubApplicationListTrait{
 
 
                 $release_list = [];
-                $modelRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )->get();
+                // $modelRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )->get();
+
+                $modelRelease = [];
+                if( $period !== null ){
+                    // $modelRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )
+                    //                                         ->where( 'date', '=', $period[ 'from' ] )
+                    //                                         ->where( 'date', '<=', $period[ 'to' ] )
+                    //                                         ->get();
+
+
+                    // $modelRelease = SubApplicationRelease::whereBetween( 'date', [ $period[ 'from' ] , $period[ 'to' ] ])->get();
+
+                    if(  $period === 'all' ){
+                        $modelRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )->get();
+                    }else{
+                        $modelRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )->whereBetween( 'date', [ $period[ 'from' ] , $period[ 'to' ] ])->get();
+
+                    };
+
+
+                    // $modelRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )->whereBetween( 'date', [ $period[ 'from' ] , $period[ 'to' ] ])->get();
+
+
+                };
+
+
+
                 foreach( $modelRelease as $model_release ){
 
                     $file_name = '';

@@ -22,8 +22,6 @@ trait GetEntierListForSearchValueTrait{
 
         $result[ 'list' ] = [];
 
-        // $result[ 'data' ] = $request[ 'data' ];
-
         if( $searchPeriod === 'all' ){
 
             $files = Storage::disk('play_report')->files( $companyAlias );
@@ -97,25 +95,6 @@ trait GetEntierListForSearchValueTrait{
         return $result;
         
     }
-
-    // private function GetArrayOfFiles( $dataFrom, $dataTo, $companyAlias ){
-
-    //     $result = [];
-
-    //     $from_sec = strtotime( $dataFrom );
-    //     $to_sec = strtotime( $dataTo );
-
-    //     $next_sec = $from_sec;
-
-    //     do{
-    //         $YYYY_MM_DD = date('Y-m-d', $next_sec );
-    //         $file = $companyAlias.'/'.$YYYY_MM_DD.'.json';
-    //         array_push( $result, $file );
-    //         $next_sec = $next_sec + 86400;
-    //     }while( $next_sec <= $to_sec );
-
-    //     return $result;
-    // }
 
 }
 
