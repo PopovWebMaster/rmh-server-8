@@ -25,6 +25,8 @@ trait SetSubApplicationChangesTrait{
         $file_names = isset( $subApplication['file_names'] )? $subApplication['file_names']: null;
 
         if( $file_names !== null ){
+
+            $fileNames_actual = [];
             for( $i = 0; $i < count( $file_names ); $i++ ){
                 $model = SubApplicationFileName::where( 'sub_application_id', '=', $id )
                                                ->where( 'file_name', '=', $file_names[ $i ] )
@@ -35,9 +37,26 @@ trait SetSubApplicationChangesTrait{
                     $new_model->sub_application_id = $id;
                     $new_model->file_name = $file_names[ $i ];
                     $new_model->save();
+                    
+                };
+
+                array_push( $fileNames_actual, $file_names[ $i ] );
+
+            };
+
+            $subApplicationFileName = SubApplicationFileName::where( 'sub_application_id', '=', $id )->get();
+            foreach( $subApplicationFileName as $model ){
+                $fileName = $model->file_name;
+                if( in_array( $fileName, $fileNames_actual ) ){
+
+                }else{
+                    $model->delete();
                 };
 
             };
+
+
+
         };
 
         $description = isset( $subApplication['description'] )? $subApplication['description']: null;
