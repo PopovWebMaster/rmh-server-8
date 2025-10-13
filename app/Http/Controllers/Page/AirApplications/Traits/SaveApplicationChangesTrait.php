@@ -35,6 +35,10 @@ trait SaveApplicationChangesTrait{
         $applicationCategoryId =    isset( $request['data']['applicationCategoryId'] )?     $request['data']['applicationCategoryId']: null;
         $applicationNum =           isset( $request['data']['applicationNum'] )?            $request['data']['applicationNum']: null;
         $applicationManagerNotes =  isset( $request['data']['applicationManagerNotes'] )?   $request['data']['applicationManagerNotes']: null;
+        $applicationManagerId =     isset( $request['data']['applicationManagerId'] )?   $request['data']['applicationManagerId']: null;
+
+
+        
         /*
             Внимание! subApplication можно не передавать, в таком случае будет сохранены изменения только в основной заявке
         */
@@ -46,6 +50,8 @@ trait SaveApplicationChangesTrait{
             'applicationCategoryId' =>      $applicationCategoryId,
             'applicationNum' =>             $applicationNum,
             'applicationManagerNotes' =>    $applicationManagerNotes,
+            'applicationManagerId' =>       $applicationManagerId,
+
         ]);
 
         if( $validateApp[ 'fails' ] ){
@@ -66,6 +72,13 @@ trait SaveApplicationChangesTrait{
                 $application->name =            $applicationName;
                 $application->num =             $applicationNum;
                 $application->manager_notes =   $applicationManagerNotes;
+                // $application->save();
+                if( $user->email === config( 'app.admin_email' ) ){
+                    if( $applicationManagerId !== null ){
+                        $application->manager_id = $applicationManagerId;
+                    };
+                };
+
                 $application->save();
 
                 if( $subApplication !== null ){
@@ -77,8 +90,14 @@ trait SaveApplicationChangesTrait{
 
                         $this->SetSubApplicationChanges( $subApplication );
 
+                        
+
                     };
                 };
+
+
+
+                
 
                 $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
                 $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );

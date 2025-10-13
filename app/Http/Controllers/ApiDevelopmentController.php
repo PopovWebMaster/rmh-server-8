@@ -136,19 +136,14 @@ class ApiDevelopmentController extends Controller
         $result = [];
 
         $route = $request['data']['route'];
-        // $user = User::find( 1 );
-        $user = User::find( 4 );
+        $user = User::find( 1 );
+        // $user = User::find( 4 );
 
         // $user = null;
 
 
 
         switch( $route ){
-
-
-
-
-
 
 
             case 'admin/get-starting-data':

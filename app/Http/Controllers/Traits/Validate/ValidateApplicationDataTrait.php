@@ -21,6 +21,10 @@ trait ValidateApplicationDataTrait{
         $applicationCategoryId =   $params['applicationCategoryId'];
         $applicationNum =          $params['applicationNum'];
         $applicationManagerNotes = $params['applicationManagerNotes'];
+        $applicationManagerId =    isset( $params['applicationManagerId'] )? $params['applicationManagerId']: null;
+
+
+        
 
         $validate = Validator::make( [ 
             'applicationId' =>              $applicationId,
@@ -28,6 +32,8 @@ trait ValidateApplicationDataTrait{
             'applicationCategoryId' =>      $applicationCategoryId,
             'applicationNum' =>             $applicationNum,
             'applicationManagerNotes' =>    $applicationManagerNotes,
+            'applicationManagerId' =>       $applicationManagerId,
+
 
         ], [
             'applicationId' =>              Application::RULE[ 'id' ],
@@ -35,6 +41,8 @@ trait ValidateApplicationDataTrait{
             'applicationCategoryId' =>      Application::RULE[ 'category_id' ],
             'applicationNum' =>             Application::RULE[ 'num' ],
             'applicationManagerNotes' =>    Application::RULE[ 'manager_notes' ],
+            'applicationManagerId' =>       Application::RULE[ 'manager_id' ],
+
         ]);
 
         if( $validate->fails() ){

@@ -56,6 +56,9 @@ trait GetEntierListForSearchValueTrait{
                     };
                 };
             };
+
+
+            
         }else{
             $files = Storage::disk('play_report')->files( $companyAlias );
 
