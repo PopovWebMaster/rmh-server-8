@@ -10,6 +10,9 @@ use App\Http\Controllers\Traits\GetApplicationListTrait;
 use App\Models\Application;
 use App\Models\Company;
 use App\Models\SubApplication;
+use App\Models\SubApplicationFileName;
+
+
 
 trait AddSubApplicationSeriesTrait{
 
@@ -39,6 +42,7 @@ trait AddSubApplicationSeriesTrait{
         $periodTo =                 isset( $request['data']['periodTo'] )?      $request['data']['periodTo']: null;
         $durationSec =              isset( $request['data']['durationSec'] )?   $request['data']['durationSec']: null;
         $airNotes =                 isset( $request['data']['airNotes'] )?      $request['data']['airNotes']: null;
+        $seriesDataList =           isset( $request['data']['seriesDataList'] )?$request['data']['seriesDataList']: [];
 
         $validate = $this->ValidateSubApplicationSeries([
             'applicationId' =>  $applicationId,
@@ -82,20 +86,55 @@ trait AddSubApplicationSeriesTrait{
                     $application->save();
                 };
 
-                for( $i = $serialNumFrom; $i < $serialNumTo + 1; $i++ ){
+                $result[ 'seriesDataList' ] = $seriesDataList;
+
+                for( $i = 0; $i < count( $seriesDataList ); $i++ ){
+                    $fileDuration = $seriesDataList[ $i ][ 'fileDuration' ];
+                    $fileName =     $seriesDataList[ $i ][ 'fileName' ];
+                    $seriaName =    $seriesDataList[ $i ][ 'seriaName' ];
+                    $serial_num =   $seriesDataList[ $i ][ 'serial_num' ];
+
                     $subApplication = new SubApplication;
 
                     $subApplication->application_id =   $applicationId;
                     $subApplication->period_from =      $periodFrom;
                     $subApplication->period_to =        $periodTo;
-                    $subApplication->duration_sec =     $durationSec;
-                    $subApplication->serial_num =       $i;
-                    $subApplication->name =             'Серия - '.$i;
+                    $subApplication->duration_sec =     $fileDuration;
+                    $subApplication->serial_num =       $serial_num;
+                    $subApplication->name =             $seriaName;
                     $subApplication->air_notes =        $airNotes;
                     $subApplication->type =             'series';
 
                     $subApplication->save();
+
+                    if( $fileName !== null ){
+                        $subApplicationFileName = new SubApplicationFileName;
+                        $subApplicationFileName->sub_application_id = $subApplication->id;
+                        $subApplicationFileName->file_name = $fileName;
+                        $subApplicationFileName->save();
+                    };
+
+
+
+                    
+
+
                 };
+
+                // for( $i = $serialNumFrom; $i < $serialNumTo + 1; $i++ ){
+                //     $subApplication = new SubApplication;
+
+                //     $subApplication->application_id =   $applicationId;
+                //     $subApplication->period_from =      $periodFrom;
+                //     $subApplication->period_to =        $periodTo;
+                //     $subApplication->duration_sec =     $durationSec;
+                //     $subApplication->serial_num =       $i;
+                //     $subApplication->name =             'Серия - '.$i;
+                //     $subApplication->air_notes =        $airNotes;
+                //     $subApplication->type =             'series';
+
+                //     $subApplication->save();
+                // };
 
                 $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
                 $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );

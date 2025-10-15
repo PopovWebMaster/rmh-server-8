@@ -10,6 +10,7 @@ use App\Http\Controllers\Traits\GetApplicationListTrait;
 use App\Models\Application;
 use App\Models\Company;
 use App\Models\SubApplication;
+use App\Models\SubApplicationFileName;
 
 trait AddSubApplicationReleaseTrait{
 
@@ -37,6 +38,10 @@ trait AddSubApplicationReleaseTrait{
         $periodTo =                 isset( $request['data']['periodTo'] )?      $request['data']['periodTo']: null;
         $durationSec =              isset( $request['data']['durationSec'] )?   $request['data']['durationSec']: null;
         $airNotes =                 isset( $request['data']['airNotes'] )?      $request['data']['airNotes']: null;
+        $releaseFileName =          isset( $request['data']['releaseFileName'] )?      $request['data']['releaseFileName']: null;
+
+
+        
 
         $validate = $this->ValidateSubApplicationRelease([
             'applicationId' =>  $applicationId,
@@ -90,6 +95,14 @@ trait AddSubApplicationReleaseTrait{
                 $subApplication->type =             'release';
 
                 $subApplication->save();
+
+                if( $releaseFileName !== null ){
+                    $subApplicationFileName = new SubApplicationFileName;
+                    $subApplicationFileName->sub_application_id = $subApplication->id;
+                    $subApplicationFileName->file_name = $releaseFileName;
+                    $subApplicationFileName->save();
+                };
+
 
                 $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
                 $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );
