@@ -48,6 +48,8 @@ use App\Http\Controllers\Page\AirSchedule\Traits\GetStartingDataAirScheduleTrait
 use App\Http\Controllers\Page\AirSchedule\Traits\GetScheduleResultDayDataTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\SaveScheduleListTrait;
 
+use App\Http\Controllers\Page\AirSchedule\Traits\RemoveScheduleTrait;
+
 use App\Http\Controllers\Page\AirLogs\Traits\AddPlayReportTrait;
 
 
@@ -113,6 +115,7 @@ class ApiDevelopmentController extends Controller
     use GetStartingDataAirScheduleTrait;
     use GetScheduleResultDayDataTrait;
     use SaveScheduleListTrait;
+    use RemoveScheduleTrait;
 
     use AddPlayReportTrait;
     use GetStartingDataAdminTrait;
@@ -236,6 +239,10 @@ class ApiDevelopmentController extends Controller
 
             case 'air-schedule/save-schedule-list':
                 $result = $this->SaveScheduleList( $request, $user );
+                break;
+
+            case 'air-schedule/remove-schedule':
+                $result = $this->RemoveSchedule( $request, $user );
                 break;
 
 

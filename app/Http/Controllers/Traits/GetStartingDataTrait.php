@@ -11,6 +11,7 @@ use App\Http\Controllers\Traits\GetGridEventsListTrait;
 use App\Http\Controllers\Traits\GetApplicationListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetOneCompanyDataTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\GetSchaduleResultListTrait;
+use App\Http\Controllers\Page\AirSchedule\Traits\GetAllScheduleFileNamesTrait;
 
 use App\Http\Controllers\Traits\GetManagerListTrait;
 
@@ -32,6 +33,7 @@ trait GetStartingDataTrait{
     use GetOneCompanyDataTrait;
     use GetSchaduleResultListTrait;
     use GetManagerListTrait;
+    use GetAllScheduleFileNamesTrait;
 
 
     public function GetStartingData( $what_to_take, $request, $user ){
@@ -53,6 +55,7 @@ trait GetStartingDataTrait{
                 'currentDaySchaduleList'
 
                 'managerList'
+                'allScheduleFileNames'
 
             ];
 
@@ -132,6 +135,10 @@ trait GetStartingDataTrait{
 
         if( in_array( 'managerList', $what_to_take ) ){
             $result[ 'managerList' ] = $this->GetManagerList( $request, $user );
+        };
+
+        if( in_array( 'allScheduleFileNames', $what_to_take ) ){
+            $result[ 'allScheduleFileNames' ] = $this->GetAllScheduleFileNames( $request, $user );
         };
 
 

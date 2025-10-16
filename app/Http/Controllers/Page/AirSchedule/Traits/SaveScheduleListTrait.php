@@ -30,10 +30,10 @@ trait SaveScheduleListTrait{
         if( $validateYYYY_MM_DD[ 'fails' ] ){
             $result[ 'message' ] = $validateYYYY_MM_DD[ 'message' ];
         }else{
-            $validateList = $this->ValidateYYYYMMDD( $YYYY_MM_DD );
-            if( $validateYYYY_MM_DD[ 'fails' ] ){
-                $result[ 'message' ] = $validateList[ 'message' ];
-            }else{
+            // $validateList = $this->ValidateScheduleList( $YYYY_MM_DD );
+            // if( $validateList[ 'fails' ] ){
+            //     $result[ 'message' ] = $validateList[ 'message' ];
+            // }else{
                 $result[ 'ok' ] = true;
 
                 $json = json_encode( $list, JSON_UNESCAPED_UNICODE );
@@ -48,7 +48,7 @@ trait SaveScheduleListTrait{
 
 
 
-            };
+            // };
 
         };
         return $result;
