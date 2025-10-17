@@ -267,8 +267,6 @@ class ApiDevelopmentController extends Controller
 
 
 
-
-
             case 'air-application/get-starting-data':
                 $result = $this->GetStartingDataAirApplications( $request, $user );
                 break;
