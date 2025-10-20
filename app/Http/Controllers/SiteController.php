@@ -34,6 +34,10 @@ class SiteController extends Controller
             'air_layout',
             'air_play_report',
             'air_logs',
+            'air_files',
+
+
+            
 
 
 

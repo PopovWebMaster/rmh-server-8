@@ -60,6 +60,11 @@ class RouteServiceProvider extends ServiceProvider
                     require base_path('routes/page/air_layout.php');
                     require base_path('routes/page/air_play_report.php');
                     require base_path('routes/page/air_logs.php');
+                    require base_path('routes/page/air_files.php');
+
+
+
+
 
 
                     // require base_path('routes/web_printing_office_orders.php');

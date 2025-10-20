@@ -66,7 +66,8 @@ use App\Http\Controllers\Page\Admin\Traits\GetUserAccessDataTrait;
 use App\Http\Controllers\Page\Admin\Traits\SetUserAccessRightsChangesTrait;
 
 
-
+use App\Http\Controllers\Page\AirFiles\Traits\GetStartingDataAirFilesTrait;
+use App\Http\Controllers\Page\AirFiles\Traits\CreateNewFilePrefixTrait;
 
 
 use App\Models\User;
@@ -128,6 +129,10 @@ class ApiDevelopmentController extends Controller
     use ChangeCompanyDataTrait;
     use GetUserAccessDataTrait;
     use SetUserAccessRightsChangesTrait;
+
+
+    use GetStartingDataAirFilesTrait;
+    use CreateNewFilePrefixTrait;
 
 
 
@@ -196,20 +201,6 @@ class ApiDevelopmentController extends Controller
                 break;
 
 
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
             case 'home/get-starting-data':
                 $result = $this->GetStartingDataHome( $request, $user );
                 break;
@@ -221,8 +212,6 @@ class ApiDevelopmentController extends Controller
             case 'company/get-starting-data':
                 $result = $this->GetStartingDataCompany( $request, $user );
                 break;
-
-
 
             case 'air-main/get-starting-data':
                 $result = $this->GetStartingDataAirMain( $request, $user );
@@ -244,27 +233,6 @@ class ApiDevelopmentController extends Controller
             case 'air-schedule/remove-schedule':
                 $result = $this->RemoveSchedule( $request, $user );
                 break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             case 'air-application/get-starting-data':
@@ -306,23 +274,6 @@ class ApiDevelopmentController extends Controller
             case 'air-application/get_application_list_for_period':
                 $result = $this->GetApplicationListForPeriod( $request, $user );
                 break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             case 'air-layout/get-starting-data':
                 $result = $this->GetStartingDataAirLayout( $request, $user );
@@ -367,14 +318,6 @@ class ApiDevelopmentController extends Controller
                 break;
 
 
-
-
-
-
-
-
-
-
             case 'air-layout/add-new-grid-event':
                 $result = $this->AddNewGridEvent( $request, $user );
                 break;
@@ -403,18 +346,24 @@ class ApiDevelopmentController extends Controller
                 $result = $this->GetEntierListForAdvancedSearch( $request, $user );
                 break;
 
-
-
-
-
-
-
             case 'air-logs/get-starting-data':
                 $result = $this->GetStartingDataAirLogs( $request, $user );
                 break;
 
             case 'air-logs/add-play-report':
                 $result = $this->AddPlayReport( $request, $user );
+                break;
+
+
+
+
+
+            case 'air-files/get-starting-data':
+                $result = $this->GetStartingDataAirFiles( $request, $user );
+                break;
+
+            case 'air-files/create-new-file-prefix':
+                $result = $this->CreateNewFilePrefix( $request, $user );
                 break;
 
 
