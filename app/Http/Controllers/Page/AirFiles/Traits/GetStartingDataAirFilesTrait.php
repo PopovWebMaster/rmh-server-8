@@ -14,6 +14,7 @@ trait GetStartingDataAirFilesTrait{
             'userData',
             'categoryList',
             'eventsList',
+            'airFilePrefix',
         ];
 
         $result = $this->GetStartingData( $what_to_take, $request, $user );

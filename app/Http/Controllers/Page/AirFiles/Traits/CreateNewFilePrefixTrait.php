@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Page\AirFiles\Traits;
 use Validator;
 
 use App\Models\Company;
+use App\Models\AirFilePrefix;
+
+use App\Http\Controllers\Page\AirFiles\Traits\GetAirFilePrefixListTrait;
 
 
 trait CreateNewFilePrefixTrait{
 
+    use GetAirFilePrefixListTrait;
 
     public function CreateNewFilePrefix( $request, $user ){
 
@@ -27,24 +31,35 @@ trait CreateNewFilePrefixTrait{
             'eventId' => $eventId,
 
         ], [
-            'prefix' =>     [ 'required', 'string', 'max:60' ],
-            'eventId' =>    [ 'required', 'exists:events,id' ],
+            'prefix' =>   AirFilePrefix::RULE[ 'prefix' ], //     [ 'required', 'string', 'max:60' ],
+            'eventId' =>  AirFilePrefix::RULE[ 'event_id' ], //  [ 'required', 'exists:events,id' ],
         ]);
 
         if( $validate->fails() ){
             $result[ 'message' ] = $validate->getMessageBag()->all();
         }else{
 
-            $result[ 'ok' ] = true;
-
             $company = Company::where( 'alias', '=', $companyAlias )->first();
             $company_id = $company->id;
 
-            $result[ 'company_id' ] = $company_id;
-            $result[ 'prefix' ] = $prefix;
-            $result[ 'eventId' ] = $eventId;
+            $airFilePrefix = AirFilePrefix::where( 'company_id', '=', $company_id )->where( 'prefix', '=', $prefix )->first();
 
+            if( $airFilePrefix === null ){
 
+                $model = new AirFilePrefix;
+                $model->company_id =    $company_id;
+                $model->prefix =        $prefix;
+                $model->event_id =      $eventId;
+                $model->save();
+
+            }else{
+                $airFilePrefix->event_id = $eventId;
+                $airFilePrefix->save();
+            };
+
+            $result[ 'ok' ] = true;
+
+            $result[ 'airFilePrefix' ] = $this->GetAirFilePrefixList( $companyAlias );
 
 
             
