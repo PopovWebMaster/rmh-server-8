@@ -69,6 +69,7 @@ use App\Http\Controllers\Page\Admin\Traits\SetUserAccessRightsChangesTrait;
 use App\Http\Controllers\Page\AirFiles\Traits\GetStartingDataAirFilesTrait;
 use App\Http\Controllers\Page\AirFiles\Traits\CreateNewFilePrefixTrait;
 use App\Http\Controllers\Page\AirFiles\Traits\RemoveFilePrefixTrait;
+use App\Http\Controllers\Page\AirFiles\Traits\CollectFilesDataTrait;
 
 use App\Models\User;
 
@@ -134,6 +135,7 @@ class ApiDevelopmentController extends Controller
     use GetStartingDataAirFilesTrait;
     use CreateNewFilePrefixTrait;
     use RemoveFilePrefixTrait;
+    use CollectFilesDataTrait;
 
 
 
@@ -370,6 +372,13 @@ class ApiDevelopmentController extends Controller
             case 'air-files/remove-file-prefix':
                 $result = $this->RemoveFilePrefix( $request, $user );
                 break;
+
+            case 'air-files/collect-files-data':
+                $result = $this->CollectFilesData( $request, $user );
+                break;
+
+
+                
 
 
 
