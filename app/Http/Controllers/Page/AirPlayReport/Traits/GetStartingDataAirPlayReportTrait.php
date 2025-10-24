@@ -13,6 +13,8 @@ trait GetStartingDataAirPlayReportTrait{
         $what_to_take = [
             'userData',
             'playReportFiles',
+            'categoryList',
+            'eventsList',
         ];
 
         $result = $this->GetStartingData( $what_to_take, $request, $user );

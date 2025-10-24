@@ -11,6 +11,9 @@ use App\Models\Events;
 use App\Models\GridEvents;
 use App\Models\Application;
 
+use App\Models\AirFileNames;
+use App\Models\AirFilePrefix;
+
 
 
 
@@ -101,6 +104,17 @@ trait RemoveEventTrait{
                     $model->force_event_id = null;
                     $model->save();
                 };
+
+                $airFileNames = AirFileNames::where( 'event_id', '=', $eventId )->get();
+                if( count( $airFileNames ) > 0 ){
+                    $airFileNames->map->delete();
+                };
+
+                $airFilePrefix = AirFilePrefix::where( 'event_id', '=', $eventId )->get();
+                if( count( $airFilePrefix ) > 0 ){
+                    $airFilePrefix->map->delete();
+                };
+
 
                 $result[ 'eventsList' ] = $this->GetEventsList( $companyAlias );
                 $result[ 'gridEventsList' ] = $this->GetGridEventsList( $companyAlias );

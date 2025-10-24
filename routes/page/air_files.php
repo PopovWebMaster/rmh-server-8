@@ -7,6 +7,7 @@ use App\Http\Controllers\Page\AirFiles\Post\GetStartingDataAirFilesController;
 use App\Http\Controllers\Page\AirFiles\Post\CreateNewFilePrefixController;
 use App\Http\Controllers\Page\AirFiles\Post\RemoveFilePrefixController;
 use App\Http\Controllers\Page\AirFiles\Post\CollectFilesDataController;
+use App\Http\Controllers\Page\AirFiles\Post\SeveChangesOfFilesController;
 
 
 
@@ -22,6 +23,7 @@ Route::prefix('/air-files')->middleware( [ 'auth', 'validate.company', 'validate
     Route::post('/remove-file-prefix', [ RemoveFilePrefixController::class, 'post' ]);
 
     Route::post('/collect-files-data', [ CollectFilesDataController::class, 'post' ]);
+    Route::post('/seve-changes-of-files', [ SeveChangesOfFilesController::class, 'post' ]);
 
 
 

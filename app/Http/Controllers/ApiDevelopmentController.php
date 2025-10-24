@@ -70,6 +70,7 @@ use App\Http\Controllers\Page\AirFiles\Traits\GetStartingDataAirFilesTrait;
 use App\Http\Controllers\Page\AirFiles\Traits\CreateNewFilePrefixTrait;
 use App\Http\Controllers\Page\AirFiles\Traits\RemoveFilePrefixTrait;
 use App\Http\Controllers\Page\AirFiles\Traits\CollectFilesDataTrait;
+use App\Http\Controllers\Page\AirFiles\Traits\SeveChangesOfFilesTraits;
 
 use App\Models\User;
 
@@ -136,6 +137,7 @@ class ApiDevelopmentController extends Controller
     use CreateNewFilePrefixTrait;
     use RemoveFilePrefixTrait;
     use CollectFilesDataTrait;
+    use SeveChangesOfFilesTraits;
 
 
 
@@ -375,6 +377,11 @@ class ApiDevelopmentController extends Controller
 
             case 'air-files/collect-files-data':
                 $result = $this->CollectFilesData( $request, $user );
+                break;
+
+
+            case 'air-files/seve-changes-of-files':
+                $result = $this->SeveChangesOfFiles( $request, $user );
                 break;
 
 
