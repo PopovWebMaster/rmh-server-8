@@ -43,6 +43,10 @@ use App\Http\Controllers\Page\AirPlayReport\Traits\GetStartingDataAirPlayReportT
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetEntierListForSearchValueTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetOneDayPlayReportListTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetEntierListForAdvancedSearchTrait;
+use App\Http\Controllers\Page\AirPlayReport\Traits\GetEntierListForAdvancedSearchByEventsTrait;
+
+
+
 
 use App\Http\Controllers\Page\AirSchedule\Traits\GetStartingDataAirScheduleTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\GetScheduleResultDayDataTrait;
@@ -113,6 +117,7 @@ class ApiDevelopmentController extends Controller
     use GetEntierListForSearchValueTrait;
     use GetOneDayPlayReportListTrait;
     use GetEntierListForAdvancedSearchTrait;
+    use GetEntierListForAdvancedSearchByEventsTrait;
 
 
     use GetStartingDataAirScheduleTrait;
@@ -359,7 +364,26 @@ class ApiDevelopmentController extends Controller
                 $result = $this->AddPlayReport( $request, $user );
                 break;
 
+            case 'air-play-report/get-entier-list-for-advanced-search-by-events':
+                $result = $this->GetEntierListForAdvancedSearchByEvents( $request, $user );
+                break;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
 
 
 

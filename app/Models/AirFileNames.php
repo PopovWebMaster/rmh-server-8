@@ -21,7 +21,7 @@ class AirFileNames extends Model
 
     public const RULE = [
         'company_id' =>     [ 'required', 'exists:company,id' ],
-        'name' =>           [ 'required', 'string', 'min:5', 'max:120' ],
+        'name' =>           [ 'required', 'string', 'min:5', 'max:250' ],
         'event_id' =>       [ 'nullable', 'exists:events,id' ],
         'premiere_sec' =>   [ 'nullable', 'numeric' ],
 

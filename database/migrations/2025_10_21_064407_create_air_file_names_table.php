@@ -16,7 +16,7 @@ class CreateAirFileNamesTable extends Migration
         Schema::create('air_file_names', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('company_id');
-            $table->string( 'name', 120 );
+            $table->string( 'name', 250 );
             $table->bigInteger('event_id')->nullable();
             $table->bigInteger('premiere_sec')->nullable();
 
