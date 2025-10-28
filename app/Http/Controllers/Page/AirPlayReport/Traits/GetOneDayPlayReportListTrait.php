@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Page\AirPlayReport\Traits;
 
+use App\Http\Controllers\Page\AirPlayReport\Traits\AddFileDataToPlayReportListTrait;
+
 use Storage;
 
 trait GetOneDayPlayReportListTrait{
+
+    use AddFileDataToPlayReportListTrait;
 
     public function GetOneDayPlayReportList( $request, $user ){
 
@@ -88,8 +92,22 @@ trait GetOneDayPlayReportListTrait{
             };
         };
 
+        $list_with_file_data = $this->AddFileDataToPlayReportList([
+            'companyAlias' => $companyAlias,
+            'playReportList' => $list,
 
-        $result[ 'list' ] = $list;
+        ]);
+
+
+        $result[ 'list' ] = $list_with_file_data;
+
+        // $list_2 = [];
+        // for( $index = 0; $index < count($list); $index++ ){
+        //     $list[$index]->premier = '100';
+        //     array_push( $list_2, $list[$index] );
+        // };
+        // $result[ 'list!!!!' ] = $list_2;
+
         $result[ 'ok' ] = true;
 
         return $result;

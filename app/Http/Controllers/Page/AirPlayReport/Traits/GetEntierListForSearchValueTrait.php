@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Page\AirPlayReport\Traits;
 
 use Storage;
 
+use App\Http\Controllers\Page\AirPlayReport\Traits\AddFileDataToPlayReportListTrait;
+
 trait GetEntierListForSearchValueTrait{
+
+    use AddFileDataToPlayReportListTrait;
 
     public function GetEntierListForSearchValue( $request, $user ){
 
@@ -20,9 +24,10 @@ trait GetEntierListForSearchValueTrait{
         $searchPeriod = $request[ 'data' ][ 'searchPeriod' ];
         $searchValue = mb_convert_case( $request[ 'data' ][ 'searchValue' ], MB_CASE_UPPER );
 
-        $result[ 'list' ] = [];
+        // $result[ 'list' ] = [];
 
-        // $result[ 'data' ] = $request[ 'data' ];
+        $list = [];
+
 
         if( $searchPeriod === 'all' ){
 
@@ -41,13 +46,13 @@ trait GetEntierListForSearchValueTrait{
                         $fileName = mb_convert_case( $type = $arr[$index]->file->name, MB_CASE_UPPER );
 
                         if( strpos( $fileName, $searchValue ) !== false ){
-                            array_push( $result[ 'list' ], $arr[$index] );
+                            array_push( $list, $arr[$index] );
                         }else{
 
                             for( $gi = 0; $gi < count( $arr[$index]->graphics ); $gi++ ){
                                 $GfileName = mb_convert_case( $arr[ $index ]->graphics[ $gi ]->file->name, MB_CASE_UPPER );
                                 if( strpos( $GfileName, $searchValue ) !== false ){
-                                    array_push( $result[ 'list' ], $arr[$index] );
+                                    array_push( $list, $arr[$index] );
                                     break;
                                 };
                             };
@@ -82,12 +87,12 @@ trait GetEntierListForSearchValueTrait{
                         $fileName = mb_convert_case( $arr[$index]->file->name, MB_CASE_UPPER );
 
                         if( strpos( $fileName, $searchValue ) !== false ){
-                            array_push( $result[ 'list' ], $arr[$index] );
+                            array_push( $list, $arr[$index] );
                         }else{
                             for( $gi = 0; $gi < count( $arr[$index]->graphics ); $gi++ ){
                                 $GfileName = mb_convert_case( $arr[ $index ]->graphics[ $gi ]->file->puth, MB_CASE_UPPER );
                                 if( strpos( $GfileName, $searchValue ) !== false ){
-                                    array_push( $result[ 'list' ], $arr[$index] );
+                                    array_push( $list, $arr[$index] );
                                     break;
                                 };
                             };
@@ -96,6 +101,14 @@ trait GetEntierListForSearchValueTrait{
                 };
             };
         };
+
+        $list_with_file_data = $this->AddFileDataToPlayReportList([
+            'companyAlias' => $companyAlias,
+            'playReportList' => $list,
+
+        ]);
+
+        $result[ 'list' ] = $list_with_file_data;
 
         return $result;
         

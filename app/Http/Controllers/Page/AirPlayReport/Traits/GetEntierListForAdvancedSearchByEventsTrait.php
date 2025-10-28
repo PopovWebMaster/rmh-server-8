@@ -11,11 +11,14 @@ use Validator;
 use App\Models\AirFileNames;
 use App\Models\Company;
 
+use App\Http\Controllers\Page\AirPlayReport\Traits\AddFileDataToPlayReportListTrait;
+
 
 
 trait GetEntierListForAdvancedSearchByEventsTrait{
 
     use ValidateYYYYMMDDTrait;
+    use AddFileDataToPlayReportListTrait;
 
     public function GetEntierListForAdvancedSearchByEvents( $request, $user ){
 
@@ -62,7 +65,9 @@ trait GetEntierListForAdvancedSearchByEventsTrait{
 
             $premiers = [];
 
-            $result[ 'list' ] = [];
+            // $result[ 'list' ] = [];
+
+            $list = [];
 
 
             for( $i = 0; $i < count( $files ); $i++ ){
@@ -93,11 +98,11 @@ trait GetEntierListForAdvancedSearchByEventsTrait{
                                 if( isset( $fileNames[ $fileName ] ) ){
                                     if( $isOnlyPremiers ){
                                         if( $fileNames[ $fileName ] === $arr[$index]->date->YYYY_MM_DD ){
-                                            array_push( $result[ 'list' ], $arr[$index] );
+                                            array_push( $list, $arr[$index] );
                                             array_push( $premiers, $fileName );
                                         };
                                     }else{
-                                         array_push( $result[ 'list' ], $arr[$index] );   
+                                        array_push( $list, $arr[$index] );   
                                     };
                                 };
                             };
@@ -108,6 +113,14 @@ trait GetEntierListForAdvancedSearchByEventsTrait{
                 };
 
             };
+
+            $list_with_file_data = $this->AddFileDataToPlayReportList([
+                'companyAlias' => $companyAlias,
+                'playReportList' => $list,
+
+            ]);
+
+            $result[ 'list' ] = $list_with_file_data;
 
             $result[ 'ok' ] = true;
 

@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Page\AirPlayReport\Traits;
 use Storage;
 
 use App\Http\Controllers\Traits\Validate\ValidateYYYYMMDDTrait;
+use App\Http\Controllers\Page\AirPlayReport\Traits\AddFileDataToPlayReportListTrait;
 
 use Validator;
 
 trait GetEntierListForAdvancedSearchTrait{
 
     use ValidateYYYYMMDDTrait;
+    use AddFileDataToPlayReportListTrait;
 
     public function GetEntierListForAdvancedSearch( $request, $user ){
 
@@ -47,7 +49,9 @@ trait GetEntierListForAdvancedSearchTrait{
             });
 
             $result[ 'requestList' ] = $requestList;
-            $result[ 'list' ] = [];
+            // $result[ 'list' ] = [];
+
+            $list = [];
 
             $premiers = [];
 
@@ -78,7 +82,7 @@ trait GetEntierListForAdvancedSearchTrait{
                                 for( $y = 0; $y < count( $requestList ); $y++ ){
                                     $searchValue = mb_convert_case( $requestList[ $y ], MB_CASE_UPPER );
                                     if( strpos( $fileName, $searchValue ) !== false ){
-                                        array_push( $result[ 'list' ], $arr[$index] );
+                                        array_push( $list, $arr[$index] );
 
                                         if( $isOnlyPremiers ){
                                             array_push( $premiers, $fileName );
@@ -94,6 +98,16 @@ trait GetEntierListForAdvancedSearchTrait{
                 };
 
             };
+
+            // $result[ 'list' ] = [];
+
+            $list_with_file_data = $this->AddFileDataToPlayReportList([
+                'companyAlias' => $companyAlias,
+                'playReportList' => $list,
+
+            ]);
+
+            $result[ 'list' ] = $list_with_file_data;
 
 
         };
