@@ -18,10 +18,8 @@ Route::prefix('/air-schedule')->middleware( [ 'auth', 'validate.company', 'valid
 
     Route::post('/get-starting-data',               [ GetStartingDataAirScheduleController::class, 'post' ]);
     Route::post('/get-schedule-result-day-data',    [ GetScheduleResultDayDataController::class, 'post' ]);
-    Route::post('/save-schedule-list',              [ SaveScheduleListController::class, 'post' ]);
-    Route::post('/remove-schedule',                 [ RemoveScheduleController::class, 'post' ]);
-
-
+    Route::post('/save-schedule-list',              [ SaveScheduleListController::class, 'post' ])->middleware( [ 'access.schedule_edit' ] );
+    Route::post('/remove-schedule',                 [ RemoveScheduleController::class, 'post' ])->middleware( [ 'access.schedule_remove' ] );
 
 
 

@@ -35,12 +35,14 @@ Route::prefix('/air-layout')->middleware( [ 'auth', 'validate.company', 'validat
     Route::post('/add-new-event',                           [ AddNewEventController::class, 'post' ])->middleware( [ 'access.layout_event_add' ] );
     Route::post('/save-event-list',                         [ SaveEventListController::class, 'post' ])->middleware( [ 'access.layout_event_edit' ] );
     Route::post('/remove-event',                            [ RemoveEventController::class, 'post' ])->middleware( [ 'access.layout_event_remove' ] );
-    Route::post('/save-grid-event-list',                    [ SaveGridEventListController::class, 'post' ]);
-    Route::post('/add-new-grid-event',                      [ AddNewGridEventController::class, 'post' ]);
-    Route::post('/remove-grid-event',                       [ RemoveGridEventController::class, 'post' ]);
-    Route::post('/set-grid-events-day-list-after-cutting',  [ SetGridEventsDayListAfterCuttingController::class, 'post' ]);
+    Route::post('/save-grid-event-list',                    [ SaveGridEventListController::class, 'post' ])->middleware( [ 'access.layout_grid_edit' ] );
+    Route::post('/add-new-grid-event',                      [ AddNewGridEventController::class, 'post' ])->middleware( [ 'access.layout_grid_edit' ] );
+    Route::post('/remove-grid-event',                       [ RemoveGridEventController::class, 'post' ])->middleware( [ 'access.layout_grid_edit' ] );
+    Route::post('/set-grid-events-day-list-after-cutting',  [ SetGridEventsDayListAfterCuttingController::class, 'post' ])->middleware( [ 'access.layout_grid_edit' ] );
     Route::post('/save-one-event-data',                     [ SaveOneEventDataController::class, 'post' ])->middleware( [ 'access.layout_event_edit' ] );
-    Route::post('/save-grid-event-list-for-one-day',        [ SaveGridEvenListForOneDayController::class, 'post' ]);
+    Route::post('/save-grid-event-list-for-one-day',        [ SaveGridEvenListForOneDayController::class, 'post' ])->middleware( [ 'access.layout_grid_edit' ] );
+
+
 
 
 // 'access.layout_event_add'

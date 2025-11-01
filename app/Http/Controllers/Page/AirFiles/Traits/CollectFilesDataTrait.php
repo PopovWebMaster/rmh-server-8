@@ -8,7 +8,7 @@ use App\Models\Company;
 use App\Models\AirFilePrefix;
 use App\Models\AirFileNames;
 
-
+use App\Models\Events;
 
 
 use Storage;
@@ -71,10 +71,19 @@ trait CollectFilesDataTrait{
                                     $event_id = null;
                                     $premiere_sec = null;
 
-                                    $airFileNames = AirFileNames::where( 'name', '=', $name )->first();
+                                    $airFileNames = AirFileNames::where( 'name', '=', $name )->where( 'company_id', '=', $company_id ) ->first();
+
                                     if( $airFileNames !== null ){
                                         $event_id =     $airFileNames->event_id;
                                         $premiere_sec = $airFileNames->premiere_sec;
+
+                                        // $eventModel = Events::where( 'company_id', '=', $company_id )->where( 'id', '=', $event_id )->first();
+                                        // if( $eventModel === null ){
+                                        //     $event_id = null;
+                                        // };
+
+
+
                                     };
 
                                     if( $premiere_sec !== null ){

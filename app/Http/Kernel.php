@@ -81,16 +81,16 @@ class Kernel extends HttpKernel
         'access.layout_category_add' => \App\Http\Middleware\AccessRights\LayoutCategoryAdd::class,
         'access.layout_category_edit' => \App\Http\Middleware\AccessRights\LayoutCategoryEdit::class,
         'access.layout_category_remove' => \App\Http\Middleware\AccessRights\LayoutCategoryRemove::class,
+        'access.layout_grid_edit' => \App\Http\Middleware\AccessRights\LayoutGridEdit::class,
+
+
+        'access.schedule_create_new' => \App\Http\Middleware\AccessRights\ScheduleCreateNew::class,
+        'access.schedule_remove' => \App\Http\Middleware\AccessRights\ScheduleRemove::class,
+        'access.schedule_edit' => \App\Http\Middleware\AccessRights\ScheduleEdit::class,
 
 
 
-
-
-
-
-
-
-        
+ 
 
     ];
 }

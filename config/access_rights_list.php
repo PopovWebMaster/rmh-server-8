@@ -16,11 +16,20 @@
         'layout_event_edit',
         'layout_event_add',
 
+        'layout_grid_edit',
+
+
         'layout_category_add',
         'layout_category_edit',
         'layout_category_remove',
 
         'application_other_managers_see',
+
+        'schedule_create_new',
+        'schedule_remove',
+        'schedule_edit',
+
+
 
 
 

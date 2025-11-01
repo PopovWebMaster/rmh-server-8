@@ -6,6 +6,7 @@ use Storage;
 
 use App\Models\AirFileNames;
 use App\Models\Company;
+use App\Models\Events;
 
 trait AddFileDataToPlayReportListTrait{
 
@@ -36,6 +37,13 @@ trait AddFileDataToPlayReportListTrait{
                 $airFileNames = AirFileNames::where( 'company_id', '=', $company_id )->where( 'name', '=', $fileName )->first();
                 if( $airFileNames !== null ){
                     $file_eventId = $airFileNames->event_id;
+
+
+                    $eventModel = Events::where( 'company_id', '=', $company_id )->where( 'id', '=', $file_eventId )->first();
+                    if( $eventModel === null ){
+                        $file_eventId = null;
+                    };
+
                     $premiere_sec = $airFileNames->premiere_sec;
                     $premiere_YYYY_MM_DD = date( "Y-m-d",  $premiere_sec );
                     $strT = strtotime( $premiere_YYYY_MM_DD );

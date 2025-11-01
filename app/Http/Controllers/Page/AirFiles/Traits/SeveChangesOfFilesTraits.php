@@ -30,7 +30,7 @@ trait SeveChangesOfFilesTraits{
             'filesData' => [ 'required', 'array' ],
             'filesData.*.name' =>           [ 'required', 'string' ],
             'filesData.*.premiereSec' =>    [ 'required', 'numeric' ],
-            'filesData.*.event_id' =>       [ 'nullable', 'exists:events,id' ],
+            // 'filesData.*.event_id' =>       [ 'nullable', 'exists:events,id' ],
         ]);
 
         if( $validate->fails() ){
