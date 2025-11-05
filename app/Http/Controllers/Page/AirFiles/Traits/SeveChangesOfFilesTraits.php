@@ -64,8 +64,9 @@ trait SeveChangesOfFilesTraits{
                     }else{
                         $airFileNames->name =           $name;
                         $airFileNames->event_id =       $event_id;
-                        $airFileNames->premiere_sec =   $premiereSec;
-
+                        if( $premiereSec < $airFileNames->premiere_sec ){
+                            $airFileNames->premiere_sec =   $premiereSec;
+                        };
                         $airFileNames->save();
                     };
                 };

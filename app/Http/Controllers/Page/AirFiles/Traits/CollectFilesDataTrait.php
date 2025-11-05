@@ -77,18 +77,14 @@ trait CollectFilesDataTrait{
                                         $event_id =     $airFileNames->event_id;
                                         $premiere_sec = $airFileNames->premiere_sec;
 
-                                        // $eventModel = Events::where( 'company_id', '=', $company_id )->where( 'id', '=', $event_id )->first();
-                                        // if( $eventModel === null ){
-                                        //     $event_id = null;
-                                        // };
-
-
-
                                     };
 
                                     if( $premiere_sec !== null ){
                                         if( $premiere_sec < $premiereSec ){
                                             $premiereSec = $premiere_sec;
+                                        }else if( $premiereSec < $premiere_sec ){
+                                            $airFileNames->premiere_sec = $premiereSec;
+                                            $airFileNames->save();
                                         };
                                     };
 
