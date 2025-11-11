@@ -1,19 +1,17 @@
 <?php 
 
-namespace App\Http\Controllers\Page\AirSchedule\Traits;
+namespace App\Http\Controllers\Page\AirPlayReport\Traits;
+
 
 use Validator;
 
-use App\Http\Controllers\Page\AirSchedule\Traits\GetSchaduleResultListTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\GetReleaseListForDayTrait;
 
+trait GetReleaseListForOneDayTrait{
 
-trait GetScheduleResultDayDataTrait{
-
-    use GetSchaduleResultListTrait;
     use GetReleaseListForDayTrait;
 
-    public function GetScheduleResultDayData( $request, $user ){
+    public function GetReleaseListForOneDay( $request, $user ){
 
         $result = [
             'ok' => false,
@@ -34,10 +32,8 @@ trait GetScheduleResultDayDataTrait{
         }else{
 
             $result[ 'release_list' ] = $this->GetReleaseListForDay( $companyAlias, $YYYY_MM_DD );
-            $result[ 'scheduleEventsList' ] = $this->GetSchaduleResultList( $companyAlias, $YYYY_MM_DD );
 
             $result[ 'ok' ] = true;
-
 
         };
 
@@ -49,4 +45,3 @@ trait GetScheduleResultDayDataTrait{
 
 
 ?>
-

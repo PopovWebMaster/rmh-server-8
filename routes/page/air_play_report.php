@@ -8,7 +8,7 @@ use App\Http\Controllers\Page\AirPlayReport\Post\GetOneDayPlayReportListControll
 use App\Http\Controllers\Page\AirPlayReport\Post\GetEntierListForSearchValueController;
 use App\Http\Controllers\Page\AirPlayReport\Post\GetEntierListForAdvancedSearchController;
 use App\Http\Controllers\Page\AirPlayReport\Post\GetEntierListForAdvancedSearchByEventsController;
-
+use App\Http\Controllers\Page\AirPlayReport\Post\GetReleaseListForOneDayController;
 
 
 Route::get('/company/{company?}/air-play-report', [ AirPlayReportController::class, 'get' ])->middleware( [ 'auth', 'validate.company.get' ] );
@@ -22,6 +22,10 @@ Route::prefix('/air-play-report')->middleware( [ 'auth', 'validate.company', 'va
     Route::post('/get-entier-list-for-advanced-search', [ GetEntierListForAdvancedSearchController::class, 'post' ]);
 
     Route::post('/get-entier-list-for-advanced-search-by-events', [ GetEntierListForAdvancedSearchByEventsController::class, 'post' ]);
+
+
+    Route::post('/get-release-list-for-one-day', [ GetReleaseListForOneDayController::class, 'post' ]);
+
 
 
 

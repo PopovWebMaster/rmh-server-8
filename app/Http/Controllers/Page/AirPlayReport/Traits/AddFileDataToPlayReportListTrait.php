@@ -31,6 +31,8 @@ trait AddFileDataToPlayReportListTrait{
 
             $isPremiere = false;
 
+            
+
             if( $type === 'movie' ){
                 $fileName = $playReportList[ $index ]->file->name;
 
@@ -44,12 +46,14 @@ trait AddFileDataToPlayReportListTrait{
                         $file_eventId = null;
                     };
 
+                    $YYYY_MM_DD = $playReportList[ $index ]->date->YYYY_MM_DD;
+
                     $premiere_sec = $airFileNames->premiere_sec;
                     $premiere_YYYY_MM_DD = date( "Y-m-d",  $premiere_sec );
                     $strT = strtotime( $premiere_YYYY_MM_DD );
                     $premiere_startTime = $premiere_sec - $strT;
 
-                    if( $premiere_YYYY_MM_DD === $playReportList[ $index ]->date->YYYY_MM_DD ){
+                    if( $premiere_YYYY_MM_DD === $YYYY_MM_DD ){
                         $itemStartTime = $playReportList[ $index ]->startTime->ms / 1000;
 
                         if( $premiere_startTime === $itemStartTime ){
@@ -57,11 +61,9 @@ trait AddFileDataToPlayReportListTrait{
                         };
 
                     };
-
-
-
-
                 };
+
+                
 
             };
 

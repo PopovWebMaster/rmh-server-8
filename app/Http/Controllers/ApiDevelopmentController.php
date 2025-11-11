@@ -44,7 +44,7 @@ use App\Http\Controllers\Page\AirPlayReport\Traits\GetEntierListForSearchValueTr
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetOneDayPlayReportListTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetEntierListForAdvancedSearchTrait;
 use App\Http\Controllers\Page\AirPlayReport\Traits\GetEntierListForAdvancedSearchByEventsTrait;
-
+use App\Http\Controllers\Page\AirPlayReport\Traits\GetReleaseListForOneDayTrait;
 
 
 
@@ -118,6 +118,7 @@ class ApiDevelopmentController extends Controller
     use GetOneDayPlayReportListTrait;
     use GetEntierListForAdvancedSearchTrait;
     use GetEntierListForAdvancedSearchByEventsTrait;
+    use GetReleaseListForOneDayTrait;
 
 
     use GetStartingDataAirScheduleTrait;
@@ -356,6 +357,18 @@ class ApiDevelopmentController extends Controller
                 $result = $this->GetEntierListForAdvancedSearch( $request, $user );
                 break;
 
+            case 'air-play-report/get-entier-list-for-advanced-search-by-events':
+                $result = $this->GetEntierListForAdvancedSearchByEvents( $request, $user );
+                break;
+
+            case 'air-play-report/get-release-list-for-one-day':
+                $result = $this->GetReleaseListForOneDay( $request, $user );
+                break;
+
+
+
+
+
             case 'air-logs/get-starting-data':
                 $result = $this->GetStartingDataAirLogs( $request, $user );
                 break;
@@ -364,26 +377,7 @@ class ApiDevelopmentController extends Controller
                 $result = $this->AddPlayReport( $request, $user );
                 break;
 
-            case 'air-play-report/get-entier-list-for-advanced-search-by-events':
-                $result = $this->GetEntierListForAdvancedSearchByEvents( $request, $user );
-                break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
+            
 
 
 

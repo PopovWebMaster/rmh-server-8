@@ -117,7 +117,6 @@ trait GetEntierListForAdvancedSearchByEventsTrait{
             $list_with_file_data = $this->AddFileDataToPlayReportList([
                 'companyAlias' => $companyAlias,
                 'playReportList' => $list,
-
             ]);
 
             $result[ 'list' ] = $list_with_file_data;
