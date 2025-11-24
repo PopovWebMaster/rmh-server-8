@@ -115,6 +115,11 @@ trait RemoveEventTrait{
                     $airFilePrefix->map->delete();
                 };
 
+                $eventLinkedFile = EventLinkedFile::where( 'company_id', '=', $company_id )->where( 'event_id', '=', $eventId )->get();
+                if( count( $eventLinkedFile ) > 0 ){
+                    $eventLinkedFile->map->delete();
+                };
+
 
                 $result[ 'eventsList' ] = $this->GetEventsList( $companyAlias );
                 $result[ 'gridEventsList' ] = $this->GetGridEventsList( $companyAlias );

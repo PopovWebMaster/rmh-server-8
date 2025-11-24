@@ -22,6 +22,10 @@ trait ValidateOneEventTrait{
         $eventType =            $params[ 'eventType' ];
         $categoryId =           $params[ 'categoryId' ];
         $eventDurationTime =    $params[ 'eventDurationTime' ];
+        $eventLinkedFile =      isset( $params[ 'eventLinkedFile' ] )? $params[ 'eventLinkedFile' ]: null;
+
+
+        
 
         $validate = Validator::make( [ 
             'eventName' =>              $eventName,
@@ -29,12 +33,19 @@ trait ValidateOneEventTrait{
             'eventType' =>              $eventType,
             'categoryId' =>             $categoryId,
             'eventDurationTime' =>      $eventDurationTime,
+            'eventLinkedFile' =>        $eventLinkedFile,
+
         ], [
             'eventName' =>          Events::RULE[ 'name' ],
             'eventNotes' =>         Events::RULE[ 'notes' ],
             'eventType' =>          Events::RULE[ 'type' ],
             'categoryId' =>         Events::RULE[ 'category_id' ],
             'eventDurationTime' =>  Events::RULE[ 'durationTime' ],
+            'eventLinkedFile' =>            [ 'nullable', 'array' ],
+            'eventLinkedFile.*.name' =>     [ 'required', 'string' ],
+            'eventLinkedFile.*.duration' => [ 'required', 'numeric', 'min:5', 'max:80000' ],
+
+
         ]);
 
         if( $validate->fails() ){

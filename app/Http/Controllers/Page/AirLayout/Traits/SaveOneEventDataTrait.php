@@ -8,6 +8,12 @@ use App\Http\Controllers\Traits\Validate\ValidateOneEventTrait;
 use App\Models\Company;
 use App\Models\Events;
 use App\Models\GridEvents;
+use App\Models\EventLinkedFile;
+
+
+
+
+
 
 trait SaveOneEventDataTrait{
 
@@ -32,6 +38,9 @@ trait SaveOneEventDataTrait{
 
         $durationSec =          isset( $request[ 'data'][ 'durationSec' ] )?        $request[ 'data'][ 'durationSec' ] :        null;
 
+        $eventLinkedFile =      isset( $request[ 'data'][ 'eventLinkedFile' ] )?    $request[ 'data'][ 'eventLinkedFile' ] :        null;
+
+
         /*
             $durationSec добавляется только когда меняется время в событии
             он нужен только для того чтоб в событиях сетки время перебить;
@@ -47,6 +56,8 @@ trait SaveOneEventDataTrait{
             'eventType' =>          $eventType,
             'categoryId' =>         $categoryId,
             'eventDurationTime' =>  $eventDurationTime,
+            'eventLinkedFile' =>  $eventLinkedFile,
+
 
         ]);
 
@@ -83,10 +94,46 @@ trait SaveOneEventDataTrait{
                     $model->save();
                 };
 
+                $linkedFile = EventLinkedFile::where( 'company_id', '=', $company_id )->where( 'event_id', '=', $eventId )->get();
+                if( count( $linkedFile ) > 0 ){
+                    $linkedFile->map->delete();
+                };
+
+                if( $eventLinkedFile !== null ){
+                    for( $i = 0; $i < count( $eventLinkedFile ); $i++ ){
+                        $fileName = $eventLinkedFile[ $i ][ 'name' ];
+                        $fileDuration = $eventLinkedFile[ $i ][ 'duration' ];
+                        $model = new EventLinkedFile;
+                        $model->name = $fileName;
+                        $model->duration = $fileDuration;
+                        $model->company_id = $company_id;
+                        $model->event_id = $eventId;
+
+
+                        $model->save();
+                    };
+                };
+
+
+
+
+
+
+                
+
+
+
+
+
                 
             };
 
             $result[ 'list' ] = $this->GetEventsList( $companyAlias );
+
+            $result[ 'data' ] = [
+                'eventLinkedFile' => $eventLinkedFile,
+            ];
+
 
         };
         return $result;
