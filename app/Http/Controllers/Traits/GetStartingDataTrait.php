@@ -15,6 +15,7 @@ use App\Http\Controllers\Page\AirSchedule\Traits\GetAllScheduleFileNamesTrait;
 use App\Http\Controllers\Page\AirFiles\Traits\GetAirFilePrefixListTrait;
 
 use App\Http\Controllers\Traits\GetManagerListTrait;
+use App\Http\Controllers\Page\AirSchedule\Traits\GetFreeReleasesListTrait;
 
 
 use App\Models\Company;
@@ -36,6 +37,7 @@ trait GetStartingDataTrait{
     use GetManagerListTrait;
     use GetAllScheduleFileNamesTrait;
     use GetAirFilePrefixListTrait;
+    use GetFreeReleasesListTrait;
 
 
     public function GetStartingData( $what_to_take, $request, $user ){
@@ -58,7 +60,9 @@ trait GetStartingDataTrait{
 
                 'managerList'
                 'allScheduleFileNames'
-                'airFilePrefix'
+                'airFilePrefix',
+
+                'freeReleaseList'
 
 
             ];
@@ -148,6 +152,11 @@ trait GetStartingDataTrait{
         if( in_array( 'airFilePrefix', $what_to_take ) ){
             $result[ 'airFilePrefix' ] = $this->GetAirFilePrefixList( $companyAlias );
         };
+
+        if( in_array( 'freeReleaseList', $what_to_take ) ){
+            $result[ 'freeReleaseList' ] = $this->GetFreeReleasesList( $companyAlias );
+        };
+
 
 
 

@@ -51,6 +51,7 @@ use App\Http\Controllers\Page\AirPlayReport\Traits\GetReleaseListForOneDayTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\GetStartingDataAirScheduleTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\GetScheduleResultDayDataTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\SaveScheduleListTrait;
+use App\Http\Controllers\Page\AirSchedule\Traits\SaveFreeReleaseListTrait;
 
 use App\Http\Controllers\Page\AirSchedule\Traits\RemoveScheduleTrait;
 
@@ -125,6 +126,7 @@ class ApiDevelopmentController extends Controller
     use GetScheduleResultDayDataTrait;
     use SaveScheduleListTrait;
     use RemoveScheduleTrait;
+    use SaveFreeReleaseListTrait;
 
     use AddPlayReportTrait;
     use GetStartingDataAdminTrait;
@@ -244,6 +246,21 @@ class ApiDevelopmentController extends Controller
             case 'air-schedule/remove-schedule':
                 $result = $this->RemoveSchedule( $request, $user );
                 break;
+
+            case 'air-schedule/save-free-releases-list':
+                $result = $this->SaveFreeReleaseList( $request, $user );
+                break;
+
+
+
+
+
+
+
+
+
+
+
 
 
             case 'air-application/get-starting-data':

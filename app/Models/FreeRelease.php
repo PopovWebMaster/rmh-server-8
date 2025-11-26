@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EventLinkedFile extends Model
+class FreeRelease extends Model
 {
     use HasFactory;
 
-    protected $table = 'event_linked_file';
+    protected $table = 'free_release';
     protected $fillable = [
         'company_id',
         'event_id',
