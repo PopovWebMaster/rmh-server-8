@@ -9,35 +9,11 @@ use App\Models\SubApplicationRelease;
 
 trait GetSubApplicationListTrait{
 
-    public function GetSubApplicationList( $application_id, $period = null ){ // $period[ 'from' ] , $period[ 'to' ] || null || \all
+    public function GetSubApplicationList( $application_id, $period = null, $onlyReleaseLength = false ){ // $period[ 'from' ] , $period[ 'to' ] || null || \all
 
         $result = [];
 
         $subApplications = SubApplication::where( 'application_id', '=', $application_id )->get();
-
-        // $subApplications = null;
-
-        // if( $period === null ){
-
-        //     $subApplications = SubApplication::where( 'application_id', '=', $application_id )->get();
-
-
-        // }else{
-        //     // $records = ModelName::whereBetween('date_column', ['2023-01-01', '2023-01-31'])->get();
-        //     // $subApplications = SubApplication::whereBetween( 'created_at', [ $period[ 'from' ] , $period[ 'to' ] ])->get();
-
-        //     $subApplications = SubApplication::where( 'application_id', '=', $application_id )
-        //                                     ->where( 'period_from', '>=', $period[ 'from' ] )
-        //                                     ->where( 'period_to', '>=', $period[ 'to' ] )
-        //                                     ->get();
-
-        // };
-
-
-
-
-
-
 
         if( $subApplications !== null ){
 
@@ -64,6 +40,7 @@ trait GetSubApplicationListTrait{
                 // $modelRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )->get();
 
                 $modelRelease = [];
+                $release_list_count = 0;
                 if( $period !== null ){
                     // $modelRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )
                     //                                         ->where( 'date', '=', $period[ 'from' ] )
@@ -86,29 +63,30 @@ trait GetSubApplicationListTrait{
 
                 };
 
+                $release_list_count = count( $modelRelease );
 
-
-                foreach( $modelRelease as $model_release ){
-
-                    $file_name = '';
-                    if( count( $file_names ) > 0 ){
-                        $file_name = $file_names[ count( $file_names ) - 1 ];
+                if( $onlyReleaseLength ){
+                    
+                }else{
+                    foreach( $modelRelease as $model_release ){
+                        $file_name = '';
+                        if( count( $file_names ) > 0 ){
+                            $file_name = $file_names[ count( $file_names ) - 1 ];
+                        };
+                        array_push( $release_list, [
+                            'sub_application_id' => $sub_application_id,
+                            'grid_event_id' =>      $model_release->grid_event_id,
+                            'date' =>               $model_release->date,
+                            'time_sec' =>           $model_release->time_sec,
+                            'duration_sec' =>       $model_2->duration_sec,
+                            'name' =>               $model_2->name,
+                            'file_name' =>          $file_name,
+                            'type' =>               $model_2->type,
+                        ] );
                     };
-
-                    array_push( $release_list, [
-                        'sub_application_id' => $sub_application_id,
-
-                        'grid_event_id' =>      $model_release->grid_event_id,
-                        'date' =>               $model_release->date,
-                        'time_sec' =>           $model_release->time_sec,
-
-                        'duration_sec' =>       $model_2->duration_sec,
-                        'name' =>               $model_2->name,
-                        'file_name' =>          $file_name,
-                        'type' =>               $model_2->type,
-
-                    ] );
                 };
+
+                
 
                 array_push( $result, [
                     'id' =>             $sub_application_id,
@@ -124,8 +102,7 @@ trait GetSubApplicationListTrait{
                     'file_names' =>     $file_names,
                     'description' =>    $description,
                     'release_list' =>   $release_list,
-
-
+                    'release_list_count' => $release_list_count,
 
                 ] );
 

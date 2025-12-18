@@ -62,6 +62,8 @@ trait GetApplicationListByPeriodTrait{
                 'manager' =>                $this->GetManagerInfo__( $manager_id ),
                 'category_id' =>            $category_id,
                 'event_id' =>               $event_id,
+                
+
                 'sub_application_list' =>   $this->GetSubApplicationList( $application_id, $period ),
             ] );
 

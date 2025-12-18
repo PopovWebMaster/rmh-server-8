@@ -59,6 +59,10 @@ class SiteController extends Controller
 
         ]);
 
+        // $json = json_encode( ['11' => 100, 'text' => 'Русский текст'], JSON_UNESCAPED_UNICODE );
+
+        // $this->data[ 'starting_data_hidden' ] = $json ;
+
     } 
 
     private function add_js_css_files_to_the_data( $list_of_pages ){

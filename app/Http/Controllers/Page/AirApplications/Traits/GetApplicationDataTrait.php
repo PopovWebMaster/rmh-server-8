@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Page\AirApplications\Traits;
 
 use App\Http\Controllers\Traits\Validate\ValidateApplicationIdTrait;
-use App\Http\Controllers\Page\AirApplications\Traits\GetOneApplicationDataTrait;
+// use App\Http\Controllers\Page\AirApplications\Traits\GetOneApplicationDataTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\GetApplicationListByParamsTrait;
 
 use App\Models\Company;
 use App\Models\Application;
@@ -11,7 +12,8 @@ use App\Models\Application;
 trait GetApplicationDataTrait{
 
     use ValidateApplicationIdTrait;
-    use GetOneApplicationDataTrait;
+    // use GetOneApplicationDataTrait;
+    use GetApplicationListByParamsTrait;
 
     public function GetApplicationData( $request, $user ){
         $result = [
@@ -39,7 +41,17 @@ trait GetApplicationDataTrait{
                 
                 $result[ 'ok' ] = true;
 
-                $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
+                $list = $this->GetApplicationListByParams([
+                    'companyAlias' =>   $companyAlias,
+                    'period' =>         'all',
+                    'applicationId' =>  $applicationId,
+                    'eventId' =>        'all',
+                    'withSubApplication' => true,
+                ]);
+
+                // $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
+                $result[ 'application' ] = $list[ 0 ];
+
 
             };
         };

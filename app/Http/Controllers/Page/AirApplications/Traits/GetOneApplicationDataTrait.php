@@ -13,6 +13,9 @@ trait GetOneApplicationDataTrait{
     use GetSubApplicationListTrait;
 
     public function GetOneApplicationData( $application_id ){
+
+        //  не использовать !!!!!!!!!!!!
+        // использовать GetApplicationListByParamsTrait
         $result = [];
 
         $application = Application::find( $application_id );

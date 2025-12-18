@@ -9,6 +9,8 @@ use App\Http\Controllers\Traits\GetCategoryListTrait;
 use App\Http\Controllers\Traits\GetEventsListTrait;
 use App\Http\Controllers\Traits\GetGridEventsListTrait;
 use App\Http\Controllers\Traits\GetApplicationListTrait;
+use App\Http\Controllers\Page\AirApplications\Traits\GetApplicationListByParamsTrait;
+
 use App\Http\Controllers\Page\Admin\Traits\GetOneCompanyDataTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\GetSchaduleResultListTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\GetAllScheduleFileNamesTrait;
@@ -32,6 +34,7 @@ trait GetStartingDataTrait{
     use GetEventsListTrait;
     use GetGridEventsListTrait;
     use GetApplicationListTrait;
+    use GetApplicationListByParamsTrait;
     use GetOneCompanyDataTrait;
     use GetSchaduleResultListTrait;
     use GetManagerListTrait;
@@ -119,8 +122,14 @@ trait GetStartingDataTrait{
 
         if( in_array( 'applicationList', $what_to_take ) ){
 
-            $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );
+            // $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );
+            $result[ 'applicationList' ] = $this->GetApplicationListByParams([
+                'companyAlias' =>       $companyAlias,
+                'period' =>         'all',
+                'applicationId' =>  'all',
+                'eventId' =>        'all',
 
+            ]);
 
         };
 

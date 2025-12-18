@@ -12,8 +12,10 @@ use App\Models\Application;
 use App\Models\SubApplicationRelease;
 
 
-use App\Http\Controllers\Page\AirApplications\Traits\GetOneApplicationDataTrait;
-use App\Http\Controllers\Traits\GetApplicationListTrait;
+// use App\Http\Controllers\Page\AirApplications\Traits\GetOneApplicationDataTrait;
+// use App\Http\Controllers\Traits\GetApplicationListTrait;
+
+use App\Http\Controllers\Page\AirApplications\Traits\GetApplicationListByParamsTrait;
 
 
 use Validator;
@@ -21,8 +23,9 @@ use Validator;
 
 trait SaveSubApplicationReleaseTrait{
 
-    use GetOneApplicationDataTrait;
-    use GetApplicationListTrait;
+    // use GetOneApplicationDataTrait;
+    // use GetApplicationListTrait;
+    use GetApplicationListByParamsTrait;
 
     public function SaveSubApplicationRelease( $request, $user ){
 
@@ -45,7 +48,9 @@ trait SaveSubApplicationReleaseTrait{
         ], [
             'applicationId' =>                  [ 'required', 'exists:application,id' ],
             'subApplicationId' =>               [ 'required', 'exists:sub_application,id' ],
-            'releaseList.*.grid_event_id' =>    [ 'nullable', 'exists:grid_events,id'],
+            // 'releaseList.*.grid_event_id' =>    [ 'nullable', 'exists:grid_events,id'],
+            'releaseList.*.grid_event_id' =>    [ 'nullable', 'numeric' ],
+
             'releaseList.*.date' =>             [ 'required', 'string' ],
             'releaseList.*.time_sec' =>         [ 'required', 'numeric', 'min:0', 'max:86400' ],
         ]);
@@ -71,7 +76,7 @@ trait SaveSubApplicationReleaseTrait{
                     $result[ 'message' ] = 'Подзаявка не имеет отношения к заявке';
                 }else{
 
-                    $result[ 'ok' ] = true;
+                    
                     $subApplicationReleaseList = SubApplicationRelease::where( 'sub_application_id', '=', $subApplicationId )->get();
 
                     if( count( $subApplicationReleaseList ) > 0 ){
@@ -92,14 +97,36 @@ trait SaveSubApplicationReleaseTrait{
                         $subApplicationRelease->save();
                     };
 
-                    $period = [
-                        'from' => $subApplication->period_from,
-                        'to' => $subApplication->period_to,
+                    $list = $this->GetApplicationListByParams([
+                        'companyAlias' =>   $companyAlias,
+                        'period' =>         'all',
+                        'applicationId' =>  $applicationId,
+                        'eventId' =>        'all',
+                        'withSubApplication' => true,
+                        'withReleaseList' => true,
+                    ]);
 
-                    ];
+                    // $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
+                    $result[ 'application' ] = $list[ 0 ];
 
-                    $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
-                    $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias, $period );
+                    $result[ 'applicationList' ] = $this->GetApplicationListByParams([
+                        'companyAlias' =>       $companyAlias,
+                        'period' =>         'all',
+                        'applicationId' =>  'all',
+                        'eventId' =>        'all',
+
+                    ]);
+
+
+                    $result[ 'ok' ] = true;
+                    // $period = [
+                    //     'from' => $subApplication->period_from,
+                    //     'to' => $subApplication->period_to,
+
+                    // ];
+
+                    // $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
+                    // $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias, $period );
 
                 };
 

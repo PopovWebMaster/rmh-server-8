@@ -28,6 +28,8 @@
 	<link href= {{ $css_main }} rel="stylesheet">
 	@yield('link_css')
 
+	
+
 </head>	
 		
 <body>

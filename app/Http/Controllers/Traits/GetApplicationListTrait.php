@@ -22,6 +22,12 @@ trait GetApplicationListTrait{
 
     public function GetApplicationList( $companyAlias, $release_period = null ){
 
+        /*
+        
+            не использовать!!!!!!
+            использовать GetApplicationListByParamsTrait
+        */
+
         $company = Company::where( 'alias', '=', $companyAlias )->first();
         $company_id = $company->id;
 
@@ -30,6 +36,8 @@ trait GetApplicationListTrait{
                                    ->get();
 
         $list = [];
+        // $timeStart = time();
+
         foreach( $applications as $model ){
 
             $application_id = $model->id;
@@ -65,11 +73,18 @@ trait GetApplicationListTrait{
                 'category_id' =>            $category_id,
                 'event_id' =>               $event_id,
                 'sub_application_list' =>   $this->GetSubApplicationList( $application_id, $release_period ),
-                // 'sub_application_list' =>   $sub_application_list,
 
             ] );
 
         };
+
+        // $timeFinish = time();
+
+        // array_push( $list, [
+        //     'TEST' => $timeFinish - $timeStart,
+
+
+        // ] );
 
         return $list;
         

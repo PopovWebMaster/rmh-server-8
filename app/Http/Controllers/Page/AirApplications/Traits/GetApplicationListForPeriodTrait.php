@@ -10,10 +10,13 @@ use App\Http\Controllers\Traits\Validate\ValidateYYYYMMDDTrait;
 
 use App\Http\Controllers\Traits\GetApplicationListTrait;
 
+use App\Http\Controllers\Page\AirApplications\Traits\GetApplicationListByParamsTrait;
+
 trait GetApplicationListForPeriodTrait{
 
     use ValidateYYYYMMDDTrait;
     use GetApplicationListTrait;
+    use GetApplicationListByParamsTrait;
 
     public function GetApplicationListForPeriod( $request, $user ){
         $result = [
@@ -38,7 +41,39 @@ trait GetApplicationListForPeriodTrait{
                 'to' =>     $request[ 'data' ][ 'period_to' ],
             ];
 
-            $result[ 'list' ] = $this->GetApplicationList( $companyAlias, $period );
+            $eventId = $request[ 'data' ][ 'eventId' ];
+            $applicationId = $request[ 'data' ][ 'applicationId' ];
+
+            // $result[ 'list' ] = $this->GetApplicationList( $companyAlias, $period ); // !!!!!!!!!!!!!
+
+            if( $eventId === null ){
+                $result[ 'list' ] = $this->GetApplicationListByParams([
+                    'companyAlias' =>   $companyAlias,
+                    'period' =>         $period,
+                    'applicationId' =>  $applicationId,
+                    'eventId' =>        $eventId,
+                    'withSubApplication' => true,
+                    'withReleaseList' => true,
+                ]);
+            }else{
+                $result[ 'list' ] = $this->GetApplicationListByParams([
+                    'companyAlias' =>   $companyAlias,
+                    'period' =>         $period,
+                    'applicationId' =>  'all',
+                    'eventId' =>        $eventId,
+                    'withSubApplication' => true,
+                    'withReleaseList' => true,
+                ]);
+            };
+
+
+
+            // $result[ 'datatest' ] = [
+            //     'eventId' => $eventId,
+            //     'period' => $period,
+
+            // ];
+
 
 
         };
