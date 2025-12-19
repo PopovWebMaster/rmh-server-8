@@ -10,6 +10,7 @@ use App\Http\Controllers\Page\AirSchedule\Post\SaveScheduleListController;
 
 use App\Http\Controllers\Page\AirSchedule\Post\RemoveScheduleController;
 use App\Http\Controllers\Page\AirSchedule\Post\SaveFreeReleaseListController;
+use App\Http\Controllers\Page\AirSchedule\Post\GetScheduleFreeReleaseListController;
 
 
 
@@ -22,6 +23,8 @@ Route::prefix('/air-schedule')->middleware( [ 'auth', 'validate.company', 'valid
     Route::post('/save-schedule-list',              [ SaveScheduleListController::class, 'post' ])->middleware( [ 'access.schedule_edit' ] );
     Route::post('/remove-schedule',                 [ RemoveScheduleController::class, 'post' ])->middleware( [ 'access.schedule_remove' ] );
     Route::post('/save-free-releases-list',         [ SaveFreeReleaseListController::class, 'post' ])->middleware( [ 'access.schedule_edit' ] );
+    Route::post('/get-schedule-free-releases-list', [ GetScheduleFreeReleaseListController::class, 'post' ])->middleware( [ 'access.schedule_edit' ] );
+
 
 
 

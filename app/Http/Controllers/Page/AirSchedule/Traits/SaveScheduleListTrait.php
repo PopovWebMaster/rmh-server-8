@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Page\AirSchedule\Traits;
 use App\Http\Controllers\Traits\Validate\ValidateYYYYMMDDTrait;
 use App\Http\Controllers\Traits\Validate\ValidateScheduleListTrait;
 
+use App\Http\Controllers\Page\AirSchedule\Traits\GetAllScheduleFileNamesTrait;
+
 use App\Models\Company;
 
 use Storage;
@@ -14,6 +16,7 @@ trait SaveScheduleListTrait{
 
     use ValidateYYYYMMDDTrait;
     use ValidateScheduleListTrait;
+    use GetAllScheduleFileNamesTrait;
 
     public function SaveScheduleList( $request, $user ){
 
@@ -34,7 +37,7 @@ trait SaveScheduleListTrait{
             // if( $validateList[ 'fails' ] ){
             //     $result[ 'message' ] = $validateList[ 'message' ];
             // }else{
-                $result[ 'ok' ] = true;
+                
 
                 $json = json_encode( $list, JSON_UNESCAPED_UNICODE );
 
@@ -45,6 +48,9 @@ trait SaveScheduleListTrait{
                 };
 
                 $disk = Storage::disk('schedule_result')->put( $puth, $json );
+                
+                $result[ 'ok' ] = true;
+                $result[ 'allScheduleFileNames' ] = $this->GetAllScheduleFileNames( $request, $user );
 
 
 

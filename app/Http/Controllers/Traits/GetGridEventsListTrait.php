@@ -13,12 +13,10 @@ trait GetGridEventsListTrait{
 
     use GetOneGridEventItemFromModelTrait;
 
-    public function GetGridEventsList( $companyAlias ){
+    public function GetGridEventsList( $companyAlias, $dayNum = null ){
 
         $company = Company::where( 'alias', '=', $companyAlias )->first();
         $company_id = $company->id;
-
-        $gridEvents = GridEvents::where( 'company_id', '=', $company_id )->get();
 
         $day_0 = [];
         $day_1 = [];
@@ -27,6 +25,18 @@ trait GetGridEventsListTrait{
         $day_4 = [];
         $day_5 = [];
         $day_6 = [];
+
+        // $gridEvents = GridEvents::where( 'company_id', '=', $company_id )->get();
+        $gridEvents = [];
+
+
+        if( $dayNum === null ){
+            $gridEvents = GridEvents::where( 'company_id', '=', $company_id )->get();
+        }else{
+            $gridEvents = GridEvents::where( 'company_id', '=', $company_id )
+                                    ->where( 'day_num', '=', $dayNum )
+                                    ->get();
+        };
 
         foreach( $gridEvents as $model ){
 
@@ -72,6 +82,9 @@ trait GetGridEventsListTrait{
             
 
         };
+        
+
+
 
         usort( $day_0, function( $val1, $val2 ){
             if ( $val1['startTime'] == $val2['startTime'] ){

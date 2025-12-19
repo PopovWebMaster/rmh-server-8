@@ -24,6 +24,8 @@ trait GetReleaseListForDayTrait{
 
         $application = Application::where( 'company_id', '=', $company_id )->get();
 
+        $YYYY_MM_DD_sec = strtotime( $YYYY_MM_DD );
+
         foreach( $application as $model_application ){
             $application_id = $model_application->id;
 
@@ -31,42 +33,48 @@ trait GetReleaseListForDayTrait{
 
             foreach( $subApplication as $model_sub_application ){
 
-                $sub_application_id = $model_sub_application->id;
+                $from_sec = strtotime( $model_sub_application->period_from );
+                $to_sec = strtotime( $model_sub_application->period_to );
+                if( $from_sec <= $YYYY_MM_DD_sec && $to_sec >= $YYYY_MM_DD_sec ){
+                    $sub_application_id = $model_sub_application->id;
 
-                $file_list = [];
+                    $file_list = [];
 
-                $subApplicationFileName = SubApplicationFileName::where( 'sub_application_id', '=', $sub_application_id )->get();
-                foreach( $subApplicationFileName as $file_model ){
-                    array_push( $file_list, $file_model->file_name );
+                    $subApplicationFileName = SubApplicationFileName::where( 'sub_application_id', '=', $sub_application_id )->get();
+                    foreach( $subApplicationFileName as $file_model ){
+                        array_push( $file_list, $file_model->file_name );
+                    };
+
+                    $subApplicationRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )
+                                                                ->where( 'date', '=', $YYYY_MM_DD )
+                                                                ->get();
+
+                    foreach( $subApplicationRelease as $release_model ){
+                        array_push( $list, [
+                            'id' =>                 $release_model->id,
+                            'grid_event_id' =>      $release_model->grid_event_id, 
+                            'YYYY_MM_DD' =>         $release_model->date, 
+                            'startTime' =>          $release_model->time_sec,
+
+                            'sub_application_id' => $sub_application_id,
+                            'releaseName' =>        $model_sub_application->name,
+                            'releaseDuration' =>    $model_sub_application->duration_sec,
+                            'air_notes' =>          $model_sub_application->air_notes === null? '': $model_sub_application->air_notes,
+
+                            'file_list' =>          $file_list,
+
+                            'application_id' =>     $application_id,
+                            'category_id' =>        $model_application->category_id,
+                            'manager_id' =>         $model_application->manager_id,
+                            'applicationName' =>    $model_application->name,
+                            'event_id' =>           $model_application->event_id,
+                            'force_event_id' =>     $model_application->force_event_id,
+
+                        ] );
+                    };
+
                 };
 
-                $subApplicationRelease = SubApplicationRelease::where( 'sub_application_id', '=', $sub_application_id )
-                                                              ->where( 'date', '=', $YYYY_MM_DD )
-                                                              ->get();
-
-                foreach( $subApplicationRelease as $release_model ){
-                    array_push( $list, [
-                        'id' =>                 $release_model->id,
-                        'grid_event_id' =>      $release_model->grid_event_id, 
-                        'YYYY_MM_DD' =>         $release_model->date, 
-                        'startTime' =>          $release_model->time_sec,
-
-                        'sub_application_id' => $sub_application_id,
-                        'releaseName' =>        $model_sub_application->name,
-                        'releaseDuration' =>    $model_sub_application->duration_sec,
-                        'air_notes' =>          $model_sub_application->air_notes === null? '': $model_sub_application->air_notes,
-
-                        'file_list' =>          $file_list,
-
-                        'application_id' =>     $application_id,
-                        'category_id' =>        $model_application->category_id,
-                        'manager_id' =>         $model_application->manager_id,
-                        'applicationName' =>    $model_application->name,
-                        'event_id' =>           $model_application->event_id,
-                        'force_event_id' =>     $model_application->force_event_id,
-
-                    ] );
-                };
 
             };
         };

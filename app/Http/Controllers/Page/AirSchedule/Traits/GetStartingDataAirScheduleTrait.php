@@ -14,10 +14,10 @@ trait GetStartingDataAirScheduleTrait{
             'userData',
             'categoryList',
             'eventsList',
-            'gridEventsList',
+            // 'gridEventsList',
             // 'currentDaySchaduleList',
             'allScheduleFileNames',
-            'freeReleaseList',
+            // 'freeReleaseList',
         ];
 
         $result = $this->GetStartingData( $what_to_take, $request, $user );

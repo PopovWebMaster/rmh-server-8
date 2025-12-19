@@ -55,6 +55,7 @@ use App\Http\Controllers\Page\AirSchedule\Traits\SaveScheduleListTrait;
 use App\Http\Controllers\Page\AirSchedule\Traits\SaveFreeReleaseListTrait;
 
 use App\Http\Controllers\Page\AirSchedule\Traits\RemoveScheduleTrait;
+use App\Http\Controllers\Page\AirSchedule\Traits\GetScheduleFreeReleaseListTrait;
 
 use App\Http\Controllers\Page\AirLogs\Traits\AddPlayReportTrait;
 
@@ -128,6 +129,7 @@ class ApiDevelopmentController extends Controller
     use GetScheduleResultDayDataTrait;
     use SaveScheduleListTrait;
     use RemoveScheduleTrait;
+    use GetScheduleFreeReleaseListTrait;
     use SaveFreeReleaseListTrait;
 
     use AddPlayReportTrait;
@@ -254,6 +256,9 @@ class ApiDevelopmentController extends Controller
                 break;
 
 
+            case 'air-schedule/get-schedule-free-releases-list':
+                $result = $this->GetScheduleFreeReleaseList( $request, $user );
+                break;
 
 
 
