@@ -37,6 +37,11 @@ trait SaveApplicationChangesTrait{
         $applicationManagerNotes =  isset( $request['data']['applicationManagerNotes'] )?   $request['data']['applicationManagerNotes']: null;
         $applicationManagerId =     isset( $request['data']['applicationManagerId'] )?   $request['data']['applicationManagerId']: null;
 
+        $subApplicationId =     isset( $request['data']['subApplicationId'] )?          $request['data']['subApplicationId']: null;
+
+
+        
+
 
         
         /*
@@ -68,6 +73,9 @@ trait SaveApplicationChangesTrait{
 
                 $result[ 'ok' ] = true;
 
+                $result[ 'data' ] = $request['data'];
+
+
                 $application->category_id =     $applicationCategoryId;
                 $application->name =            $applicationName;
                 $application->num =             $applicationNum;
@@ -95,9 +103,6 @@ trait SaveApplicationChangesTrait{
                     };
                 };
 
-
-
-                
 
                 $result[ 'application' ] = $this->GetOneApplicationData( $applicationId );
                 $result[ 'applicationList' ] = $this->GetApplicationList( $companyAlias );

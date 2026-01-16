@@ -51,7 +51,7 @@ trait SaveGridEvenListForOneDayTrait{
                 // $eventId =        $gridDayList[ $i ][ 'eventId' ];
                 // $firstSegmentId = $gridDayList[ $i ][ 'firstSegmentId' ];
                 $id =             $gridDayList[ $i ][ 'id' ];
-                // $isKeyPoint =     $gridDayList[ $i ][ 'isKeyPoint' ];
+                $isKeyPoint =     $gridDayList[ $i ][ 'isKeyPoint' ];
                 $notes =          $gridDayList[ $i ][ 'notes' ];
                 // $pushIt =         $gridDayList[ $i ][ 'pushIt' ];
                 $startTime =      $gridDayList[ $i ][ 'startTime' ];
@@ -63,7 +63,7 @@ trait SaveGridEvenListForOneDayTrait{
 
                 if( $gridEvent !== null ){
                     // $gridEvent->day_num = $dayNum;
-                    // $gridEvent->is_a_key_point = $isKeyPoint;
+                    $gridEvent->is_a_key_point = $isKeyPoint;
                     $gridEvent->start_time = $startTime;
                     $gridEvent->duration_time = $durationTime;
                     // $gridEvent->event_id = $eventId;
