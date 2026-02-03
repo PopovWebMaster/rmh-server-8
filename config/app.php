@@ -128,6 +128,7 @@ return [
     'APP_IS_PRODUCTION' => env('APP_IS_PRODUCTION'),
     'company_type_tv' => 'tv',
     'company_program_system_forward' => 'Forward-TA',
+    'MIN_EVENT_DURATION_SEC' => 2,
 
 
     /*

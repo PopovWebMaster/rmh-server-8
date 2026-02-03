@@ -28,12 +28,14 @@ trait SaveFreeReleaseListTrait{
         $companyAlias =     isset( $request['data']['companyAlias'] )?      $request['data']['companyAlias']:       null;
         $freeReleasesList = isset( $request['data']['freeReleasesList'] )?  $request['data']['freeReleasesList']:   null;
 
+        $min = config( 'app.MIN_EVENT_DURATION_SEC' );
+
         $validate = Validator::make( [ 
             'freeReleasesList' => $freeReleasesList,
         ], [
             'freeReleasesList' =>           [ 'required', 'array' ],
             'freeReleasesList.*.fileName' => [ 'required', 'string', 'min:5', 'max:255' ],
-            'freeReleasesList.*.duration' => [ 'required', 'numeric', 'min:5', 'max:80000' ],
+            'freeReleasesList.*.duration' => [ 'required', 'numeric', 'min:'.$min, 'max:80000' ],
             'freeReleasesList.*.eventId' =>  [ 'required', 'exists:events,id' ],
         ]);
 

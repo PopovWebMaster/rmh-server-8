@@ -22,6 +22,7 @@ trait ValidateSubApplicationSeriesTrait{
         $durationSec =      $params[ 'durationSec' ];
         $airNotes =         $params[ 'airNotes' ];
 
+        $min = config( 'app.MIN_EVENT_DURATION_SEC' );
 
         $validate = Validator::make( [ 
             'applicationId' =>  $applicationId,
@@ -38,7 +39,7 @@ trait ValidateSubApplicationSeriesTrait{
             'serialNumTo' =>    [ 'required', 'numeric', 'min:1', 'max:1000000' ],
             'periodFrom' =>     [ 'required', 'string' ],
             'periodTo' =>       [ 'required', 'string' ],
-            'durationSec' =>    [ 'required', 'numeric', 'min:0', 'max:86400' ],
+            'durationSec' =>    [ 'required', 'numeric', 'min:'.$min, 'max:86400' ],
             'airNotes' =>       [ 'nullable', 'string' ],
         ]);
 

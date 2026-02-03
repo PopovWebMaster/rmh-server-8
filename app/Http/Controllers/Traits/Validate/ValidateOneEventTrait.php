@@ -25,7 +25,7 @@ trait ValidateOneEventTrait{
         $eventLinkedFile =      isset( $params[ 'eventLinkedFile' ] )? $params[ 'eventLinkedFile' ]: null;
 
 
-        
+        $min = config( 'app.MIN_EVENT_DURATION_SEC' );
 
         $validate = Validator::make( [ 
             'eventName' =>              $eventName,
@@ -43,7 +43,7 @@ trait ValidateOneEventTrait{
             'eventDurationTime' =>  Events::RULE[ 'durationTime' ],
             'eventLinkedFile' =>            [ 'nullable', 'array' ],
             'eventLinkedFile.*.name' =>     [ 'required', 'string' ],
-            'eventLinkedFile.*.duration' => [ 'required', 'numeric', 'min:5', 'max:80000' ],
+            'eventLinkedFile.*.duration' => [ 'required', 'numeric', 'min:'.$min, 'max:80000' ],
 
 
         ]);

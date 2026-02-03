@@ -38,6 +38,8 @@ trait ValidateOneGridEventTrait{
             };
         };
 
+        $min = config( 'app.MIN_EVENT_DURATION_SEC' );
+
         $validate = Validator::make( [ 
             'dayNum' =>         $dayNum,
             'cutPart' =>        $cutPart,
@@ -54,7 +56,7 @@ trait ValidateOneGridEventTrait{
         ], [
             'dayNum' =>         [ 'required', 'numeric', Rule::in([ 0, 1, 2, 3, 4, 5, 6 ]) ],
             'cutPart' =>        [ 'nullable', 'numeric', 'max:500' ],
-            'durationTime' =>   [ 'required', 'numeric', 'min:0', 'max:86400' ],
+            'durationTime' =>   [ 'required', 'numeric', 'min:'.$min, 'max:86400' ],
             'eventId' =>        [ 'required', 'exists:events,id' ],
             'firstSegmentId' => [ 'nullable', 'exists:grid_events,id' ],
             'id' =>             $id_rule,
