@@ -100,7 +100,7 @@ trait GetSubApplicationListTrait{
                     'type' =>           $model_2->type,
 
                     'file_names' =>     $file_names,
-                    'description' =>    $description,
+                    'description' =>    $description === null? '': $description,
                     'release_list' =>   $release_list,
                     'release_list_count' => $release_list_count,
 

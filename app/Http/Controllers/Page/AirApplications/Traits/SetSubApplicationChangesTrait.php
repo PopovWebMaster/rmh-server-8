@@ -61,7 +61,7 @@ trait SetSubApplicationChangesTrait{
 
         $description = isset( $subApplication['description'] )? $subApplication['description']: null;
 
-        if( $description !== null ){
+        // if( $description !== null ){
             $model = SubApplicationDescription::where( 'sub_application_id', '=', $id )->first();
             if( $model === null ){
                 $new_model = new SubApplicationDescription;
@@ -72,7 +72,7 @@ trait SetSubApplicationChangesTrait{
                 $model->description = $description;
                 $model->save();
             };
-        };
+        // };
 
 
         // $type =             $subApplication['type'];
