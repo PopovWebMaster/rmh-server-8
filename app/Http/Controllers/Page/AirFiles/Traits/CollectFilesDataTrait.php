@@ -62,6 +62,8 @@ trait CollectFilesDataTrait{
 
                                 $premiereSec = ( $dateMs + $startTimeMs )/1000;
 
+                                $fileDuration = $arr[$index]->fileDuration->ms/1000;
+
                                 if( isset( $airFiles[ $name ] ) ){
                                     $airFiles[ $name ][ 'count' ] = $airFiles[ $name ][ 'count' ] + 1;
                                     if( $airFiles[ $name ][ 'premiereSec' ] > $premiereSec ){
@@ -92,6 +94,7 @@ trait CollectFilesDataTrait{
                                         'premiereSec' => $premiereSec,
                                         'count' => 1,
                                         'event_id' => $event_id,
+                                        'fileDuration' => $fileDuration,
 
                                     ];
 
