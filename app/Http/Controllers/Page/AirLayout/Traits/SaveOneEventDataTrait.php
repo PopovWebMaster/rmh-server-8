@@ -82,16 +82,21 @@ trait SaveOneEventDataTrait{
                 $events->durationTime = $eventDurationTime;
                 $events->save();
 
-                $gridEvents = GridEvents::where( 'company_id', '=', $company_id )->where( 'event_id', '=', $eventId )->get();
+                if( $events->type === 'block' ){
+                    /*
+                        здесь ничего не делать если блок,
+                        а если файл, то нужно изменить durationSec для всех в сетке
+                    */
+                }else{
+                    $gridEvents = GridEvents::where( 'company_id', '=', $company_id )->where( 'event_id', '=', $eventId )->get();
 
-                foreach( $gridEvents as $model ){
-                    $model->notes = $eventNotes;
-                    
-                    if( $durationSec !== null ){
-                        $model->duration_time = $durationSec;
+                    foreach( $gridEvents as $model ){
+                        $model->notes = $eventNotes;
+                        if( $durationSec !== null ){
+                            $model->duration_time = $durationSec;
+                        };
+                        $model->save();
                     };
-
-                    $model->save();
                 };
 
                 $linkedFile = EventLinkedFile::where( 'company_id', '=', $company_id )->where( 'event_id', '=', $eventId )->get();

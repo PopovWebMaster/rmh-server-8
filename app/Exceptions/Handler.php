@@ -7,6 +7,17 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    // public function report( Throwable $e )
+    // {
+    //     // dd($e->statusCode);
+    //     $code = $e->getStatusCode();
+    //     if( $code === 404 ){
+    //         return redirect()->route('home');
+    //     };
+    //     dd( $code );
+
+    // }
+
     /**
      * A list of the exception types that are not reported.
      *

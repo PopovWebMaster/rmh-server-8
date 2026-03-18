@@ -95,6 +95,7 @@ trait CollectFilesDataTrait{
                                         'count' => 1,
                                         'event_id' => $event_id,
                                         'fileDuration' => $fileDuration,
+                                        'puth' => $arr[$index]->file->puth,
 
                                     ];
 
