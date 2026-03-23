@@ -7,6 +7,8 @@ namespace App\Http\Controllers\Page\AirSchedule\Traits;
 
 use App\Models\Company;
 use App\Models\FreeRelease;
+use App\Models\Events;
+
 
 
 
@@ -36,7 +38,7 @@ trait SaveFreeReleaseListTrait{
             'freeReleasesList' =>           [ 'required', 'array' ],
             'freeReleasesList.*.fileName' => [ 'required', 'string', 'min:5', 'max:255' ],
             'freeReleasesList.*.duration' => [ 'required', 'numeric', 'min:'.$min, 'max:80000' ],
-            'freeReleasesList.*.eventId' =>  [ 'required', 'exists:events,id' ],
+            // 'freeReleasesList.*.eventId' =>  [ 'required', 'exists:events,id' ],
         ]);
 
         if( $validate->fails() ){
@@ -57,12 +59,20 @@ trait SaveFreeReleaseListTrait{
                 $file_name =    $freeReleasesList[ $i ][ 'fileName' ];
                 $duration =     $freeReleasesList[ $i ][ 'duration' ];
 
-                $freeRelease = new FreeRelease;
-                $freeRelease->company_id =  $company_id;
-                $freeRelease->event_id =    $event_id;
-                $freeRelease->file_name =   $file_name;
-                $freeRelease->duration =    $duration;
-                $freeRelease->save();
+                $EventsModel = Events::find( $event_id );
+
+                if( $EventsModel !== null ){
+                    $freeRelease = new FreeRelease;
+                    $freeRelease->company_id =  $company_id;
+                    $freeRelease->event_id =    $event_id;
+                    $freeRelease->file_name =   $file_name;
+                    $freeRelease->duration =    $duration;
+                    $freeRelease->save();
+                }else{
+                    $FreeRelease_del = FreeRelease::where( 'company_id', '=', $company_id )->where( 'event_id', '=', $event_id )->get();
+                    $FreeRelease_del->map->delete();
+                };
+
 
             };
 
